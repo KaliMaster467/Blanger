@@ -37,7 +37,7 @@ public class App {
 
             @Override
             public void run() {
-                final JFrame f = new JFrame();
+                final Public.Wnd f = new Public.Wnd();
                 System.out.println(System.currentTimeMillis() - now);
                 f.setBounds(0, 0, 800, 600);
                 f.setVisible(true);
