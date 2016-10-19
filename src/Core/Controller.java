@@ -5,16 +5,21 @@
  */
 package Core;
 
+import Public.Wnd;
+import javax.swing.JFrame;
+
 /**
  *
  * @author root
  */
 public class Controller {
     private View vista;
-    public Controller()
+    public Controller(Wnd hInstance)
     {
-        vista = new View();
+        vista = new View(hInstance);
     }
+
+ 
     protected View getView()
     {
         return vista;

@@ -5,7 +5,10 @@
  */
 package Core;
 
+import AppSource.Controllers.*;
+import Public.Wnd;
 import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -32,15 +35,36 @@ public class App {
     public void DefaultIni() throws InterruptedException, InvocationTargetException
     {
         final long now = System.currentTimeMillis();
-        // for correct result wee need to do all in the swing thread
+        
         SwingUtilities.invokeAndWait(new Runnable() {
 
             @Override
             public void run() {
                 final Public.Wnd f = new Public.Wnd();
                 System.out.println(System.currentTimeMillis() - now);
-                f.setBounds(0, 0, 800, 600);
+                f.setBounds((int)Wnd.getWndSize().getWidth() /2 , (int)Wnd.getWndSize().getHeight() /2, (int)Wnd.getWndSize().getWidth() - 200
+                        , (int)Wnd.getWndSize().getHeight() - 200);
+                
                 f.setVisible(true);
+                
+                
+                try {
+                    //Prueba
+                    f.addController("AppSource.Controllers.StartLauncher");
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
             }
         });
         System.out.println(System.currentTimeMillis() - now);        

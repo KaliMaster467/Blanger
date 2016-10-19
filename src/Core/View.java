@@ -4,12 +4,27 @@
  * and open the template in the editor.
  */
 package Core;
+
+import Public.Wnd;
+import java.awt.Toolkit;
+
+import javax.swing.JPanel;
+
 /**
  *
  * @author root
  */
 public class View {
-    public void Render(){
-        
+    public static final int VHEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 200;
+    public static final int VWIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 300;
+    private Wnd hInstance;
+    
+    public View(Wnd hInstance)
+    {
+        this.hInstance = hInstance;
+    }
+    
+    public void Render(JPanel Frame){
+        hInstance.addWndFrame(Frame);
     }
 }
