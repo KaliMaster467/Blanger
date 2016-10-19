@@ -15,8 +15,8 @@ import javax.swing.JPanel;
  * @author root
  */
 public class View {
-    public static final int VHEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 200;
-    public static final int VWIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth() - 300;
+    public static final int VHEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 50;
+    public static final int VWIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private Wnd hInstance;
     
     public View(Wnd hInstance)

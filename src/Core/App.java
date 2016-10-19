@@ -42,8 +42,8 @@ public class App {
             public void run() {
                 final Public.Wnd f = new Public.Wnd();
                 System.out.println(System.currentTimeMillis() - now);
-                f.setBounds((int)Wnd.getWndSize().getWidth() /2 , (int)Wnd.getWndSize().getHeight() /2, (int)Wnd.getWndSize().getWidth() - 200
-                        , (int)Wnd.getWndSize().getHeight() - 200);
+                f.setBounds(20 , 0, (int)Wnd.getWndSize().getWidth() - 200
+                        , (int)Wnd.getWndSize().getHeight() - 150);
                 
                 f.setVisible(true);
                 

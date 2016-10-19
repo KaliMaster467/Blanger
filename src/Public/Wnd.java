@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import AppSource.Controllers.*;
+import java.awt.Font;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -41,7 +42,7 @@ public class Wnd extends JFrame {
     
     public Wnd()
     {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     
         this.setUndecorated(true);
         this.setResizable(true);
         WndDragger = new DragPanel(this);
@@ -89,10 +90,11 @@ public class Wnd extends JFrame {
             });
             this.setBounds(0, 0, this.getWidth(), 100);
             this.setLayout(null);
-            this.setBackground(Color.red);
+            this.setBackground(Color.black);
             this.setVisible(true);
             wndClose = getDCO();
             this.add(wndClose);
+            this.add(getMAX());
         }
         
         private JButton getDCO()
@@ -107,9 +109,27 @@ public class Wnd extends JFrame {
                 }
                 
             });
+            hclose.setOpaque(true);
+            hclose.setBackground(Color.black);
+            hclose.setForeground(Color.white);
+            Font fuente = new Font("Arial", Font.BOLD, 20);
+            hclose.setFont(fuente);
+            hclose.setBorder(null);
+            hclose.setFocusPainted(false);
             hclose.setVisible(true);
     
             return hclose;
+        }
+        private JButton getMAX()
+        
+        {
+            Public.Styles.NOpButtons maxb = new Public.Styles.NOpButtons();
+            maxb.setBounds((int)Wnd.getWndSize().getWidth() - 50, 0, 50, 50);
+            maxb.setLayout(null);
+            maxb.setBackground(Color.red);
+            maxb.setVisible(true);
+            
+            return maxb;
         }
        
     }
