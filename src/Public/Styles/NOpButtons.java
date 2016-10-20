@@ -17,15 +17,31 @@ import javax.swing.JButton;
  * @author root
  */
 public class NOpButtons extends JButton{
-    private Shape triangulo = createTriangulo();
     
-    public void paintBorder(Graphics g)
+    private Polygon shape;
+    
+    public NOpButtons()
     {
-        ((Graphics2D)g).draw(triangulo);
+        setContentAreaFilled(false);
+        initialize();
+        
+    }
+    protected void initialize()
+    {
+        shape = new Polygon();
+        setSize(50, 50);
+        shape.addPoint(0, 0);
+        shape.addPoint( 0 , 25);
+        shape.addPoint( 50 ,100  );
+    }
+    protected void paintBorder(Graphics g)
+    {
+        
     }
     public void paintComponent(Graphics g)
     {
-        ((Graphics2D)g).fill(triangulo);
+        super.paintComponent(g);
+        g.fillPolygon(shape);
     }
     public Dimension getPreferredSize()
     {
@@ -33,14 +49,7 @@ public class NOpButtons extends JButton{
     }
     public boolean contains(int x, int y)
     {
-        return triangulo.contains(x, y);
+        return shape.contains(x, y);
     }
-    private Shape createTriangulo()
-    {
-        Polygon p = new Polygon();
-        p.addPoint(0, 100);
-        p.addPoint( 100 , 0   );
-        p.addPoint( 200 ,100  );
-        return p;
-    }
+   
 }

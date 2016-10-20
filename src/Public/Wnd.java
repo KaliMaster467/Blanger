@@ -94,7 +94,7 @@ public class Wnd extends JFrame {
             this.setVisible(true);
             wndClose = getDCO();
             this.add(wndClose);
-            this.add(getMAX());
+            
         }
         
         private JButton getDCO()
@@ -102,7 +102,7 @@ public class Wnd extends JFrame {
             JButton hclose = new JButton("X");
             hclose.setSize(50, 50);
             hclose.setLayout(null);
-            hclose.addActionListener(new ActionListener(){
+            hclose.addActionListener(new ActionListener(){ 
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     hInstance.dispose();
@@ -111,7 +111,7 @@ public class Wnd extends JFrame {
             });
             hclose.setOpaque(true);
             hclose.setBackground(Color.black);
-            hclose.setForeground(Color.white);
+            hclose.setForeground(Color.red);
             Font fuente = new Font("Arial", Font.BOLD, 20);
             hclose.setFont(fuente);
             hclose.setBorder(null);
@@ -120,18 +120,7 @@ public class Wnd extends JFrame {
     
             return hclose;
         }
-        private JButton getMAX()
-        
-        {
-            Public.Styles.NOpButtons maxb = new Public.Styles.NOpButtons();
-            maxb.setBounds((int)Wnd.getWndSize().getWidth() - 50, 0, 50, 50);
-            maxb.setLayout(null);
-            maxb.setBackground(Color.red);
-            maxb.setVisible(true);
-            
-            return maxb;
-        }
-       
+
     }
     public void addWndFrame(JPanel hextFrame)
     {
