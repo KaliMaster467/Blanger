@@ -34,7 +34,7 @@ import java.net.URLClassLoader;
  *
  * @author root
  */
-public class Wnd extends JFrame {
+public class Wnd extends JFrame{
     
     private static final int  WHEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     private static final int  WWIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
@@ -49,7 +49,9 @@ public class Wnd extends JFrame {
         this.add(WndDragger);
     }
 
-    private class DragPanel extends JPanel{
+
+
+    private class DragPanel extends JPanel implements Runnable{
     
         private Point initialclick;  
         final JFrame hInstance;
@@ -58,6 +60,19 @@ public class Wnd extends JFrame {
         public DragPanel(final JFrame hInstance)
         {
             this.hInstance = hInstance;
+            Thread mouse = new Thread(this);
+            mouse.run();
+            this.setBounds(0, 0, this.getWidth(), 100);
+            this.setLayout(null);
+            this.setBackground(Color.black);
+            this.setVisible(true);
+            wndClose = getDCO();
+            this.add(wndClose);       
+            
+        }
+    @Override
+    public void run() {
+            
             
             this.addMouseListener(new MouseAdapter(){
                 
@@ -78,25 +93,21 @@ public class Wnd extends JFrame {
 
         
                 int xMoved = (thisX + e.getX()) - (thisX + initialclick.x);
-                int yMoved = (thisY + e.getY()) - (thisY + initialclick.y);
-
-               
                 int X = thisX + xMoved;
+                hInstance.setLocation(X, hInstance.getLocation().y);
+                int yMoved = (thisY + e.getY()) - (thisY + initialclick.y);
                 int Y = thisY + yMoved;
-                hInstance.setLocation(X, Y);
+                hInstance.setLocation(hInstance.getLocation().x, Y);
+               
+               
+                
+                
                 
                 
             }
             });
-            this.setBounds(0, 0, this.getWidth(), 100);
-            this.setLayout(null);
-            this.setBackground(Color.black);
-            this.setVisible(true);
-            wndClose = getDCO();
-            this.add(wndClose);
-            
-        }
-        
+ 
+    }        
         private JButton getDCO()
         {
             JButton hclose = new JButton("X");

@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -51,19 +52,15 @@ public class App {
                 try {
                     //Prueba
                     f.addController("AppSource.Controllers.StartLauncher");
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (NoSuchMethodException ex) {
-                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InstantiationException ex) {
-                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IllegalAccessException ex) {
-                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IllegalArgumentException ex) {
-                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InvocationTargetException ex) {
-                    Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                } catch (Exception ex) {
+                    
+                    JOptionPane.showMessageDialog(null, "No existe");
+                    try{
+                        f.addController("AppSource.Controllers.StartLauncher");
+                    }catch(Exception e) {
+                        e.printStackTrace();
+                    }  
+                }   
                
             }
         });
