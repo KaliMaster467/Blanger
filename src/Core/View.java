@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  *
  * @author root
  */
-public class View {
+public class View extends JPanel{
     public static final int VHEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight() - 50;
     public static final int VWIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private Wnd hInstance;
@@ -23,8 +23,14 @@ public class View {
     {
         this.hInstance = hInstance;
     }
-    
+    public View()
+    {
+        
+    }
     public void Render(JPanel Frame){
         hInstance.addWndFrame(Frame);
+    }
+    public Wnd getHins(){
+        return hInstance;
     }
 }

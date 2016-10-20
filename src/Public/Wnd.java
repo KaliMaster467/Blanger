@@ -56,6 +56,8 @@ public class Wnd extends JFrame{
         private Point initialclick;  
         final JFrame hInstance;
         private JButton wndClose;
+        private JButton wndMax;
+        private JButton wndMin;
         
         public DragPanel(final JFrame hInstance)
         {
@@ -67,7 +69,11 @@ public class Wnd extends JFrame{
             this.setBackground(Color.black);
             this.setVisible(true);
             wndClose = getDCO();
-            this.add(wndClose);       
+            wndMax = getMAX();
+            wndMin = getMIN();
+            this.add(wndClose);  
+            this.add(wndMax);
+            this.add(wndMin);
             
         }
     @Override
@@ -98,12 +104,7 @@ public class Wnd extends JFrame{
                 int yMoved = (thisY + e.getY()) - (thisY + initialclick.y);
                 int Y = thisY + yMoved;
                 hInstance.setLocation(hInstance.getLocation().x, Y);
-               
-               
-                
-                
-                
-                
+
             }
             });
  
@@ -111,25 +112,79 @@ public class Wnd extends JFrame{
         private JButton getDCO()
         {
             JButton hclose = new JButton("X");
-            hclose.setSize(50, 50);
+            hclose.setSize(30, 30);
             hclose.setLayout(null);
             hclose.addActionListener(new ActionListener(){ 
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     hInstance.dispose();
+                    System.exit(0);
                 }
                 
             });
             hclose.setOpaque(true);
             hclose.setBackground(Color.black);
             hclose.setForeground(Color.red);
-            Font fuente = new Font("Arial", Font.BOLD, 20);
+            Font fuente = new Font("Arial", Font.BOLD, 10);
             hclose.setFont(fuente);
             hclose.setBorder(null);
             hclose.setFocusPainted(false);
+            hclose.setFocusable(false);
+            hclose.setBorderPainted(false);
             hclose.setVisible(true);
     
             return hclose;
+        }
+        private JButton getMAX()
+        {
+            JButton hmax = new JButton("o");
+            hmax.setBounds(hInstance.getLocation().x + 30, 0, 30, 30);
+            hmax.setLayout(null);
+            hmax.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    hInstance.setExtendedState(hInstance.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+                }
+              
+            });
+            hmax.setOpaque(true);
+            hmax.setBackground(Color.black);
+            hmax.setForeground(Color.green);
+            Font fuente = new Font("Arial", Font.BOLD, 12);
+            hmax.setFont(fuente);
+            hmax.setBorder(null);
+            hmax.setFocusPainted(false);
+            hmax.setBorderPainted(false);
+            hmax.setFocusable(false);
+            hmax.setVisible(true);  
+            
+            return hmax;
+        }
+        public JButton getMIN()
+        {
+            JButton hmin = new JButton("-");
+            hmin.setBounds(hInstance.getLocation().x + 60, 0, 30, 30);
+            hmin.setLayout(null);
+            hmin.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    hInstance.setExtendedState(JFrame.NORMAL);
+                    hInstance.setBounds(200, 200, Wnd.WWIDTH - 200, Wnd.WHEIGHT - 200);
+                }
+              
+            });
+            hmin.setOpaque(true);
+            hmin.setBackground(Color.black);
+            hmin.setForeground(Color.orange);
+            Font fuente = new Font("Arial", Font.BOLD, 12);
+            hmin.setFont(fuente);
+            hmin.setBorder(null);
+            hmin.setFocusPainted(false);
+            hmin.setBorderPainted(false);
+            hmin.setFocusable(false);
+            hmin.setVisible(true);  
+            
+            return hmin;            
         }
 
     }

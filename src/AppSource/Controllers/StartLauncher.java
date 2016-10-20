@@ -19,7 +19,7 @@ public class StartLauncher extends Controller{
     {
         
         super(hInstance);
-        sl = new AppSource.Views.StartLauncher();
+        sl = new AppSource.Views.StartLauncher(hInstance);
         super.getView().Render(sl);
         
     }
