@@ -16,6 +16,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.EmptyBorder;
@@ -28,6 +29,7 @@ public class StartLauncher extends View implements Runnable{
     
     private final Wnd hInstance;
     private JLabel usr;
+    private JTextField _usrTxt;
     
     public StartLauncher(Wnd hInstance)
     {
@@ -42,11 +44,22 @@ public class StartLauncher extends View implements Runnable{
         
         usr = new JLabel(imgus, SwingConstants.CENTER);
     
-        usr.setBounds((hInstance.getWidth() / 3) + hInstance.getWidth() / 12, 50, 256, 256 );
+        usr.setBounds((hInstance.getWidth() / 3), 50, hInstance.getWidth() / 3, 256 );
         usr.setLayout(null);
         usr.setVisible(true);
         this.add(usr);
+     
+        
+        _usrTxt = new JTextField();
+        _usrTxt.setVisible(true);
+        _usrTxt.setLayout(null);
+        _usrTxt.setBounds(hInstance.getWidth()/3, usr.getLocation().y + 300, hInstance.getWidth() / 3, 30);
+        _usrTxt.setOpaque(false);
+        _usrTxt.setBackground(new Color(255, 255, 255, 128));
+        this.add(_usrTxt);
+        
         this.setVisible(true);
+        
         Thread sizes = new Thread(this);
         sizes.start();
     }
@@ -64,9 +77,10 @@ public class StartLauncher extends View implements Runnable{
 
     @Override
     public void run() {
-        while(true)
+        while(this.isShowing())
         {
-            usr.setBounds((hInstance.getWidth() / 3) + + hInstance.getWidth() / 12, 50, 256, 256 );
+            usr.setBounds((hInstance.getWidth() / 3), 50, hInstance.getWidth() / 3, 256 );
+            _usrTxt.setBounds(hInstance.getWidth()/3, usr.getLocation().y + 300, hInstance.getWidth() / 3, 30);
         }
     }
     private class StartLauncher_Main_Login_Container extends JPanel
