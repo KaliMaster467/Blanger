@@ -8,10 +8,13 @@ package AppSource.Views;
 
 import Core.Controller;
 import Core.View;
+import Public.Styles.Fonts.Raleway;
 import Public.Wnd;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -30,32 +33,51 @@ public class StartLauncher extends View implements Runnable{
     private final Wnd hInstance;
     private JLabel usr;
     private JTextField _usrTxt;
+    private JLabel _wlcTxt;
+    private Raleway fon;
     
     public StartLauncher(Wnd hInstance)
     {
         this.hInstance = hInstance;
         setLayout(null);
-        setBounds(0, 50, View.VWIDTH, View.VHEIGHT);
+        setBounds(0, 60, View.VWIDTH, View.VHEIGHT);
         
         this.setBackground(java.awt.Color.black);
+        
         //this.add(new StartLauncher_Main_Login_Container(hInstance.getLocation().x
         //,hInstance.getLocation().y));
         ImageIcon imgus = new ImageIcon(getClass().getResource("/res/user.png"));
         
+        _wlcTxt = new JLabel("Bienvenido", SwingConstants.CENTER);
+        _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, 50, hInstance.getWidth() / 2, 60 );
+        _wlcTxt.setForeground(Color.white);
+        fon = new Raleway();
+        _wlcTxt.setFont(fon.getTitleFont());
+        _wlcTxt.setBorder(BorderFactory.createCompoundBorder(_wlcTxt.getBorder(), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+        _wlcTxt.setHorizontalAlignment(JLabel.CENTER);
+        _wlcTxt.setVisible(true);
+        this.add(_wlcTxt);
+        
         usr = new JLabel(imgus, SwingConstants.CENTER);
     
-        usr.setBounds((hInstance.getWidth() / 3), 50, hInstance.getWidth() / 3, 256 );
+        usr.setBounds((hInstance.getWidth() / 3), 80, hInstance.getWidth() / 3, 256 );
         usr.setLayout(null);
         usr.setVisible(true);
         this.add(usr);
      
         
-        _usrTxt = new JTextField();
-        _usrTxt.setVisible(true);
+        _usrTxt = new JTextField(SwingConstants.CENTER);
+        
         _usrTxt.setLayout(null);
-        _usrTxt.setBounds(hInstance.getWidth()/3, usr.getLocation().y + 300, hInstance.getWidth() / 3, 30);
-        _usrTxt.setOpaque(false);
-        _usrTxt.setBackground(new Color(255, 255, 255, 128));
+        _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 250, hInstance.getWidth() / 5, 30);
+        //_usrTxt.setOpaque(false);
+        //_usrTxt.setBackground(new Color(255, 255, 255, 128));
+        _usrTxt.setForeground(Color.black);
+        _usrTxt.setFont(fon.getMinFont());
+        _usrTxt.setBorder(null);
+        _usrTxt.setCaretColor(Color.red);
+        _usrTxt.setVisible(true);
+        
         this.add(_usrTxt);
         
         this.setVisible(true);
@@ -79,8 +101,9 @@ public class StartLauncher extends View implements Runnable{
     public void run() {
         while(this.isShowing())
         {
-            usr.setBounds((hInstance.getWidth() / 3), 50, hInstance.getWidth() / 3, 256 );
-            _usrTxt.setBounds(hInstance.getWidth()/3, usr.getLocation().y + 300, hInstance.getWidth() / 3, 30);
+            usr.setBounds((hInstance.getWidth() / 3), 80, hInstance.getWidth() / 3, 256 );
+            _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 250, hInstance.getWidth() / 5, 30);
+             _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, 50, hInstance.getWidth() / 2, 60 );
         }
     }
     private class StartLauncher_Main_Login_Container extends JPanel
