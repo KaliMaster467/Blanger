@@ -8,6 +8,7 @@ package AppSource.Views;
 
 import Core.Controller;
 import Core.View;
+import Public.Styles.BorderRadius;
 import Public.Styles.Fonts.Raleway;
 import Public.Wnd;
 import java.awt.Color;
@@ -17,6 +18,7 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -37,6 +39,8 @@ public class StartLauncher extends View implements Runnable{
     private JLabel _wlcTxt;
     private Raleway fon;
     private JPasswordField _pswTxt;
+    private JButton _logIn;
+    
     
     public StartLauncher(Wnd hInstance)
     {
@@ -92,6 +96,18 @@ public class StartLauncher extends View implements Runnable{
         _pswTxt.setVisible(true);
         this.add(_pswTxt);
         
+        _logIn = new JButton();
+        _logIn.setBounds(hInstance.getWidth()/5 * 2, _pswTxt.getLocation().y + 100, hInstance.getWidth() / 5, 50);
+        _logIn.setForeground(Color.black);
+        _logIn.setFont(fon.getMinFont());
+        _logIn.setOpaque(true);
+        _logIn.setBackground(Color.red);
+        _logIn.setVisible(true);
+        _logIn.setBorder(new BorderRadius(Color.black,1,00,0));
+        _logIn.setFocusPainted(false);
+        _logIn.setText("Iniciar");
+        this.add(_logIn);
+        
         this.setVisible(true);
         
         Thread sizes = new Thread(this);
@@ -115,8 +131,9 @@ public class StartLauncher extends View implements Runnable{
         {
             usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 120, hInstance.getWidth() / 3, 256 );
             _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5, 30);
-             _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/8 , hInstance.getWidth() / 2, 60 );
-             _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5, 30);
+            _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5, 30);
+            _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/8, hInstance.getWidth() / 2, 60 );     
+            _logIn.setBounds(hInstance.getWidth()/5 * 2, _pswTxt.getLocation().y + 100, hInstance.getWidth() / 5, 50);
         }
     }
     private class StartLauncher_Main_Login_Container extends JPanel

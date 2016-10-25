@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import AppSource.Controllers.*;
+import Public.Styles.Fonts.Raleway;
 import java.awt.Font;
 import java.io.File;
 import java.lang.reflect.Constructor;
@@ -58,22 +59,34 @@ public class Wnd extends JFrame{
         private JButton wndClose;
         private JButton wndMax;
         private JButton wndMin;
+        private JButton wndIni;
+        private JButton wndHerr;
+        private JButton wndSop;
+        private Raleway fon;
         
         public DragPanel(final JFrame hInstance)
         {
+            fon = new Raleway();
             this.hInstance = hInstance;
             Thread mouse = new Thread(this);
             mouse.run();
             this.setBounds(0, 0, this.getWidth(), 100);
             this.setLayout(null);
             this.setBackground(Color.black);
-            this.setVisible(true);
+            
             wndClose = getDCO();
             wndMax = getMAX();
             wndMin = getMIN();
+            wndIni = getIni();
+            wndHerr = getHerr();
+            wndSop = getSop();
             this.add(wndClose);  
             this.add(wndMax);
             this.add(wndMin);
+            this.add(wndIni);
+            this.add(wndHerr);
+            this.add(wndSop);
+            this.setVisible(true);
             
         }
     @Override
@@ -186,7 +199,51 @@ public class Wnd extends JFrame{
             
             return hmin;            
         }
-
+        public JButton getIni()
+        {
+            JButton ini = new JButton();
+            ini.setOpaque(true);
+            ini.setBackground(Color.black);
+            ini.setBounds(0, wndClose.getLocation().y + wndClose.getHeight(), 60, 30);
+            ini.setText("Inicio");
+            ini.setForeground(Color.WHITE);
+            ini.setFont(fon.getMinFont());
+            ini.setBorder(null);
+            ini.setFocusPainted(false);
+            ini.setVisible(true);
+            
+            return ini;
+        }
+        public JButton getHerr()
+        {
+            JButton Herr = new JButton();
+            Herr.setOpaque(true);
+            Herr.setBackground(Color.black);
+            Herr.setBounds(wndIni.getWidth(), wndClose.getLocation().y + wndClose.getHeight(), 110, 30);
+            Herr.setText("Configuracion");
+            Herr.setForeground(Color.WHITE);
+            Herr.setFont(fon.getMinFont());
+            Herr.setBorder(null);
+            Herr.setFocusPainted(false);
+            Herr.setVisible(true);
+            
+            return Herr;
+        }
+        public JButton getSop()
+        {
+            JButton Sop = new JButton();
+            Sop.setOpaque(true);
+            Sop.setBackground(Color.black);
+            Sop.setBounds(wndIni.getWidth() + 110, wndClose.getLocation().y + wndClose.getHeight(), 70, 30);
+            Sop.setText("Soporte");
+            Sop.setForeground(Color.WHITE);
+            Sop.setFont(fon.getMinFont());
+            Sop.setBorder(null);
+            Sop.setFocusPainted(false);
+            Sop.setVisible(true);
+            
+            return Sop;
+        }        
     }
     public void addWndFrame(JPanel hextFrame)
     {
