@@ -53,7 +53,7 @@ public class StartLauncher extends View implements Runnable{
 
         
         _wlcTxt = new JLabel("Bienvenido", SwingConstants.CENTER);
-        _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, 50, hInstance.getWidth() / 2, 60 );
+        _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/8, hInstance.getWidth() / 2, 60 );
         _wlcTxt.setForeground(Color.white);
         fon = new Raleway();
         _wlcTxt.setFont(fon.getTitleFont());
@@ -64,7 +64,7 @@ public class StartLauncher extends View implements Runnable{
         
         usr = new JLabel(imgus, SwingConstants.CENTER);
     
-        usr.setBounds((hInstance.getWidth() / 3), 80, hInstance.getWidth() / 3, 256 );
+        usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 120, hInstance.getWidth() / 3, 256 );
         usr.setLayout(null);
         usr.setVisible(true);
         this.add(usr);
@@ -73,7 +73,7 @@ public class StartLauncher extends View implements Runnable{
         _usrTxt = new JTextField(SwingConstants.CENTER);
         
         _usrTxt.setLayout(null);
-        _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 250, hInstance.getWidth() / 5, 30);
+        _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5, 30);
         //_usrTxt.setOpaque(false);
         //_usrTxt.setBackground(new Color(255, 255, 255, 128));
         _usrTxt.setForeground(Color.black);
@@ -85,8 +85,10 @@ public class StartLauncher extends View implements Runnable{
         this.add(_usrTxt);
         
         _pswTxt = new JPasswordField();
-        _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 700, hInstance.getWidth() / 5, 30);
-        _pswTxt.setForeground(Color.white);
+        _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5, 30);
+        _pswTxt.setForeground(Color.black);
+        _pswTxt.setFont(fon.getMinFont());
+        _pswTxt.setBorder(null);
         _pswTxt.setVisible(true);
         this.add(_pswTxt);
         
@@ -111,10 +113,10 @@ public class StartLauncher extends View implements Runnable{
     public void run() {
         while(this.isShowing())
         {
-            usr.setBounds((hInstance.getWidth() / 3), 80, hInstance.getWidth() / 3, 256 );
-            _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 2, hInstance.getWidth() / 5, 30);
-             _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, 50, hInstance.getWidth() / 2, 60 );
-             _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 700, hInstance.getWidth() / 5, 30);
+            usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 120, hInstance.getWidth() / 3, 256 );
+            _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5, 30);
+             _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/8 , hInstance.getWidth() / 2, 60 );
+             _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5, 30);
         }
     }
     private class StartLauncher_Main_Login_Container extends JPanel

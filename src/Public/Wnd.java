@@ -125,7 +125,7 @@ public class Wnd extends JFrame{
             hclose.setOpaque(true);
             hclose.setBackground(Color.black);
             hclose.setForeground(Color.red);
-            Font fuente = new Font("Arial", Font.BOLD, 10);
+            Font fuente = new Font("Verdana", Font.BOLD, 10);
             hclose.setFont(fuente);
             hclose.setBorder(null);
             hclose.setFocusPainted(false);
@@ -150,7 +150,7 @@ public class Wnd extends JFrame{
             hmax.setOpaque(true);
             hmax.setBackground(Color.black);
             hmax.setForeground(Color.green);
-            Font fuente = new Font("Arial", Font.BOLD, 12);
+            Font fuente = new Font("Verdana", Font.BOLD, 12);
             hmax.setFont(fuente);
             hmax.setBorder(null);
             hmax.setFocusPainted(false);
@@ -176,7 +176,7 @@ public class Wnd extends JFrame{
             hmin.setOpaque(true);
             hmin.setBackground(Color.black);
             hmin.setForeground(Color.orange);
-            Font fuente = new Font("Arial", Font.BOLD, 12);
+            Font fuente = new Font("Verdana", Font.BOLD, 12);
             hmin.setFont(fuente);
             hmin.setBorder(null);
             hmin.setFocusPainted(false);
