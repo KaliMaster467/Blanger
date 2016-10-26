@@ -68,7 +68,7 @@ public class StartLauncher extends View implements Runnable{
         
         usr = new JLabel(imgus, SwingConstants.CENTER);
     
-        usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 120, hInstance.getWidth() / 3, 256 );
+        usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 90, hInstance.getWidth() / 3, 256 );
         usr.setLayout(null);
         usr.setVisible(true);
         this.add(usr);
@@ -98,12 +98,12 @@ public class StartLauncher extends View implements Runnable{
         
         _logIn = new JButton();
         _logIn.setBounds(hInstance.getWidth()/5 * 2, _pswTxt.getLocation().y + 100, hInstance.getWidth() / 5, 50);
-        _logIn.setForeground(Color.black);
-        _logIn.setFont(fon.getMinFont());
+        _logIn.setForeground(Color.white);
+        _logIn.setFont(fon.getBtnFont());
         _logIn.setOpaque(true);
-        _logIn.setBackground(Color.red);
+        _logIn.setBackground(Color.black);
         _logIn.setVisible(true);
-        _logIn.setBorder(new BorderRadius(Color.black,1,00,0));
+        _logIn.setBorder(new BorderRadius(Color.white, 1, 0, 0));
         _logIn.setFocusPainted(false);
         _logIn.setText("Iniciar");
         this.add(_logIn);
@@ -129,7 +129,7 @@ public class StartLauncher extends View implements Runnable{
     public void run() {
         while(this.isShowing())
         {
-            usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 120, hInstance.getWidth() / 3, 256 );
+            usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 90, hInstance.getWidth() / 3, 256 );
             _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5, 30);
             _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5, 30);
             _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/8, hInstance.getWidth() / 2, 60 );     

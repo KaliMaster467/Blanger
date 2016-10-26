@@ -182,7 +182,7 @@ public class Wnd extends JFrame{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     hInstance.setExtendedState(JFrame.NORMAL);
-                    hInstance.setBounds(200, 200, Wnd.WWIDTH - 200, Wnd.WHEIGHT - 200);
+                    hInstance.setBounds(200, 200, Wnd.WWIDTH - 200, (int)Wnd.getWndSize().getHeight() - 100);
                 }
               
             });
