@@ -15,20 +15,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import AppSource.Controllers.*;
+
 import Public.Styles.Fonts.Raleway;
 import java.awt.Font;
-import java.io.File;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 
 /**
  * 
@@ -40,6 +39,7 @@ public class Wnd extends JFrame{
     private static final int  WHEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     private static final int  WWIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     private DragPanel WndDragger;
+    public String control;
     
     public Wnd()
     {
@@ -48,14 +48,13 @@ public class Wnd extends JFrame{
         this.setResizable(true);
         WndDragger = new DragPanel(this);
         this.add(WndDragger);
+        
     }
-
-
-
-    private class DragPanel extends JPanel implements Runnable{
+    private class DragPanel extends JPanel implements Runnable, ActionListener{
     
-        private Point initialclick;  
-        final JFrame hInstance;
+        private Point initialclick; 
+        public String control = "StartLauncher";
+        final Wnd hInstance;
         private JButton wndClose;
         private JButton wndMax;
         private JButton wndMin;
@@ -64,7 +63,7 @@ public class Wnd extends JFrame{
         private JButton wndSop;
         private Raleway fon;
         
-        public DragPanel(final JFrame hInstance)
+        public DragPanel(Wnd hInstance)
         {
             fon = new Raleway();
             this.hInstance = hInstance;
@@ -80,14 +79,17 @@ public class Wnd extends JFrame{
             wndIni = getIni();
             wndHerr = getHerr();
             wndSop = getSop();
-            this.add(wndClose);  
+            addComp();
+            
+        }
+        public void addComp(){
+                        this.add(wndClose);  
             this.add(wndMax);
             this.add(wndMin);
             this.add(wndIni);
             this.add(wndHerr);
             this.add(wndSop);
             this.setVisible(true);
-            
         }
     @Override
     public void run() {
@@ -210,7 +212,9 @@ public class Wnd extends JFrame{
             ini.setFont(fon.getMinFont());
             ini.setBorder(null);
             ini.setFocusPainted(false);
+            ini.addActionListener(this);
             ini.setVisible(true);
+            
             
             return ini;
         }
@@ -244,10 +248,39 @@ public class Wnd extends JFrame{
             
             return Sop;
         }        
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(e.getActionCommand().equals("Inicio"))
+            {
+                JOptionPane.showMessageDialog(null, "Inicio");
+                
+                try {
+                    hInstance.addController("AppSource.Controllers.StartLauncher");
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        }
     }
     public void addWndFrame(JPanel hextFrame)
     {
+        WndDragger.removeAll();
+        
         WndDragger.add(hextFrame);
+        WndDragger.addComp();
+        
         WndDragger.revalidate();
         WndDragger.repaint();
     }
@@ -264,26 +297,6 @@ public class Wnd extends JFrame{
         return dragPan;
     }
     public void addController(String Controller) throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        /*try {
-            Class  cls = Class.forName(Controller);
-            Object cInstance = cls.newInstance();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Class myClass = Class.forName(Controller);
-
-        Class[] types = {Double.TYPE, this.getClass()};
-        Constructor constructor = myClass.getConstructor(types);
-
-        Object[] parameters = {new Double(0), this};
-        Object instanceOfMyClass = constructor.newInstance();*/
-        //File root = new File(".");
-        //URLClassLoader classLoader = URLClassLoader.newInstance(new URL[] { root.toURI().toURL() });
-        //Class<?> cls = Class.forName(Controller, false, classLoader);
         Constructor c = Class.forName(Controller).getConstructor(Wnd.class);
         Object cls = (Object) c.newInstance(this);
     }
