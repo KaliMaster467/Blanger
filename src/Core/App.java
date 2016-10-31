@@ -51,7 +51,7 @@ public class App {
                 
                 try {
                     //Prueba
-                    f.addController("AppSource.Controllers.MainUserMenu");
+                    f.addController("AppSource.Controllers.StartLauncher");
                 } catch (Exception ex) {
                     
                     JOptionPane.showMessageDialog(null, "No existe");

@@ -256,7 +256,7 @@ public class Wnd extends JFrame{
                 JOptionPane.showMessageDialog(null, "Inicio");
                 
                 try {
-                    hInstance.addController("AppSource.Controllers.StartLauncher");
+                    hInstance.addController("AppSource.Controllers.MainUserMenu");
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (NoSuchMethodException ex) {
@@ -276,6 +276,7 @@ public class Wnd extends JFrame{
     }
     public void addWndFrame(JPanel hextFrame)
     {
+        
         WndDragger.removeAll();
         
         WndDragger.add(hextFrame);
