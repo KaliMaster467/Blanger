@@ -27,6 +27,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 
 /**
@@ -61,14 +62,14 @@ public class Wnd extends JFrame{
         private JButton wndIni;
         private JButton wndHerr;
         private JButton wndSop;
+        private JButton optIni;
         private Raleway fon;
         
         public DragPanel(Wnd hInstance)
         {
             fon = new Raleway();
             this.hInstance = hInstance;
-            Thread mouse = new Thread(this);
-            mouse.run();
+
             this.setBounds(0, 0, this.getWidth(), 100);
             this.setLayout(null);
             this.setBackground(Color.black);
@@ -79,7 +80,10 @@ public class Wnd extends JFrame{
             wndIni = getIni();
             wndHerr = getHerr();
             wndSop = getSop();
+            optIni = getoptI();
             addComp();
+            Thread mouse = new Thread(this);
+            mouse.run();
             
         }
         public void addComp(){
@@ -89,6 +93,7 @@ public class Wnd extends JFrame{
             this.add(wndIni);
             this.add(wndHerr);
             this.add(wndSop);
+            this.add(optIni);
             this.setVisible(true);
         }
     @Override
@@ -96,7 +101,7 @@ public class Wnd extends JFrame{
             
             
             this.addMouseListener(new MouseAdapter(){
-                
+            
                 public void mousePressed(MouseEvent e)
                 {
                     
@@ -122,7 +127,7 @@ public class Wnd extends JFrame{
 
             }
             });
- 
+            
     }        
         private JButton getDCO()
         {
@@ -248,12 +253,27 @@ public class Wnd extends JFrame{
             
             return Sop;
         }        
-
+        public JButton getoptI()
+        {
+            JButton opt = new JButton("Iniciar sesión");
+            opt.setBackground(new Color(255, 51, 51));
+            opt.setLayout(null);
+            
+            opt.setFont(fon.getMinFont());
+            opt.setForeground(Color.white);
+            opt.setBounds(Wnd.WWIDTH - 150, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
+            opt.setBorder(null);
+            opt.setFocusPainted(false);
+            opt.setVisible(true);
+            
+            return opt;
+            
+        }
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getActionCommand().equals("Inicio"))
             {
-                JOptionPane.showMessageDialog(null, "Inicio");
+                //JOptionPane.showMessageDialog(null, "Inicio");
                 
                 try {
                     hInstance.addController("AppSource.Controllers.MainUserMenu");

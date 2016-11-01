@@ -59,7 +59,7 @@ public class MainUserMenu extends View implements Runnable{
         _userP = new JPanel();
         _userP.setLayout(null);
         _userP.setBackground(Color.white);
-        _userP.setBounds(_sideBar.getWidth(), this.getHeight() / 3, View.VWIDTH - _sideBar.getWidth(), View.VHEIGHT);
+        _userP.setBounds(_sideBar.getWidth(), this.getHeight() / 5, View.VWIDTH - _sideBar.getWidth(), View.VHEIGHT);
         _userP.setVisible(true);
         
         return _userP;
@@ -69,7 +69,9 @@ public class MainUserMenu extends View implements Runnable{
         return _sideBar;
     }
     public class Mumain extends JPanel{
+        
     private MainUserMenu mainContainer;
+    
     public Mumain(MainUserMenu mainContainer)
     {
         this.mainContainer = mainContainer;
