@@ -6,6 +6,8 @@
 package Public;
 
 import Core.Controller;
+import Public.Styles.BorderRadius;
+import Public.Styles.Fonts.Lato;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
@@ -26,6 +28,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
@@ -46,7 +50,7 @@ public class Wnd extends JFrame{
     {
      
         this.setUndecorated(true);
-        this.setResizable(true);
+        //this.setResizable(true);
         WndDragger = new DragPanel(this);
         this.add(WndDragger);
         
@@ -63,6 +67,8 @@ public class Wnd extends JFrame{
         private JButton wndHerr;
         private JButton wndSop;
         private JButton optIni;
+        private JButton blcStore;
+        private JLabel wndTit;
         private Raleway fon;
         
         public DragPanel(Wnd hInstance)
@@ -81,19 +87,24 @@ public class Wnd extends JFrame{
             wndHerr = getHerr();
             wndSop = getSop();
             optIni = getoptI();
+            blcStore = getblcS();
+            wndTit = getwndTit();
             addComp();
             Thread mouse = new Thread(this);
             mouse.run();
             
         }
         public void addComp(){
-                        this.add(wndClose);  
+            this.add(wndClose);  
             this.add(wndMax);
             this.add(wndMin);
             this.add(wndIni);
             this.add(wndHerr);
             this.add(wndSop);
             this.add(optIni);
+            this.add(wndTit);
+            this.add(blcStore);
+            
             this.setVisible(true);
         }
     @Override
@@ -164,6 +175,8 @@ public class Wnd extends JFrame{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     hInstance.setExtendedState(hInstance.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+                    optIni.setBounds(Wnd.WWIDTH - 150, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
+                    blcStore.setBounds(Wnd.WWIDTH - 300, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
                 }
               
             });
@@ -180,6 +193,20 @@ public class Wnd extends JFrame{
             
             return hmax;
         }
+        public JLabel getwndTit()
+        {   
+            Lato foni = new Lato();
+            JLabel tit = new JLabel("BlackManager", SwingConstants.CENTER);
+            tit.setLayout(null);
+            tit.setBounds(700, 0, 500, 60);
+            tit.setForeground(Color.white);
+            
+            tit.setFont(foni.getMainWnd());
+            tit.setBorder(BorderFactory.createCompoundBorder(tit.getBorder(), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+            tit.setHorizontalAlignment(JLabel.CENTER);
+            tit.setVisible(true);
+            return tit;
+        }
         public JButton getMIN()
         {
             JButton hmin = new JButton("-");
@@ -190,6 +217,8 @@ public class Wnd extends JFrame{
                 public void actionPerformed(ActionEvent e) {
                     hInstance.setExtendedState(JFrame.NORMAL);
                     hInstance.setBounds(200, 200, Wnd.WWIDTH - 200, (int)Wnd.getWndSize().getHeight() - 100);
+                    optIni.setBounds(hInstance.getWidth() - 150, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
+                    blcStore.setBounds(hInstance.getWidth() - 300, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
                 }
               
             });
@@ -262,12 +291,25 @@ public class Wnd extends JFrame{
             opt.setFont(fon.getMinFont());
             opt.setForeground(Color.white);
             opt.setBounds(Wnd.WWIDTH - 150, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
-            opt.setBorder(null);
+            opt.setBorder(new BorderRadius(Color.black, 1, 0, 0));
             opt.setFocusPainted(false);
+            opt.addActionListener(this);
             opt.setVisible(true);
             
             return opt;
             
+        }
+        public JButton getblcS()
+        {   
+            JButton store = new JButton("BlackStore");
+            store.setBackground(Color.white);
+            store.setFont(fon.getMinFont());
+            store.setForeground(Color.black);
+            store.setBounds(Wnd.WWIDTH - 300, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
+            store.setBorder(new BorderRadius(Color.black, 1, 0, 0));
+            store.setFocusPainted(false);
+            store.setVisible(true);
+            return store;
         }
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -291,6 +333,23 @@ public class Wnd extends JFrame{
                     Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
+            }else if(e.getActionCommand().equals("Iniciar sesión"))
+            {
+                try {
+                    hInstance.addController("AppSource.Controllers.StartLauncher");
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }
