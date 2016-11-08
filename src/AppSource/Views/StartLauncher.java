@@ -127,7 +127,7 @@ public class StartLauncher extends View implements Runnable{
 
     @Override
     public void run() {
-        while(true)
+        while(this.isShowing())
         {
             usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 90, hInstance.getWidth() / 3, 256 );
             _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5, 30);

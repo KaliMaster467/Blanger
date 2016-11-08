@@ -301,7 +301,7 @@ public class Wnd extends JFrame{
         }
         public JButton getblcS()
         {   
-            JButton store = new JButton("BlackStore");
+            JButton store = new JButton("Blackstore");
             store.setBackground(Color.white);
             store.setFont(fon.getMinFont());
             store.setForeground(Color.black);
