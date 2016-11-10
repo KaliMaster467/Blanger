@@ -26,6 +26,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.EmptyBorder;
+import Public.Styles.RoundedButton;
+
 
 /**
  *
@@ -39,7 +41,7 @@ public class StartLauncher extends View implements Runnable{
     private JLabel _wlcTxt;
     private Raleway fon;
     private JPasswordField _pswTxt;
-    private JButton _logIn;
+    private Public.Styles.RoundedButton _logIn;
     
     
     public StartLauncher(Wnd hInstance)
@@ -96,16 +98,17 @@ public class StartLauncher extends View implements Runnable{
         _pswTxt.setVisible(true);
         this.add(_pswTxt);
         
-        _logIn = new JButton();
+        _logIn = new RoundedButton("Iniciar");
+        
         _logIn.setBounds(hInstance.getWidth()/5 * 2, _pswTxt.getLocation().y + 100, hInstance.getWidth() / 5, 50);
         _logIn.setForeground(Color.white);
         _logIn.setFont(fon.getBtnFont());
-        _logIn.setOpaque(true);
+        //_logIn.setOpaque(true);
         _logIn.setBackground(Color.black);
         _logIn.setVisible(true);
-        _logIn.setBorder(new BorderRadius(Color.white, 1, 0, 0));
-        _logIn.setFocusPainted(false);
-        _logIn.setText("Iniciar");
+        //_logIn.setBorder(new BorderRadius(Color.white, 1, 0, 0));
+        //_logIn.setFocusPainted(false);
+        //_logIn.setText("Iniciar");
         this.add(_logIn);
         
         this.setVisible(true);
