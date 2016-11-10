@@ -12,8 +12,14 @@ import Public.Wnd;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -50,9 +56,33 @@ public class MainUserMenu extends View implements Runnable{
         _sideBar.setBounds(0, 0, View.VWIDTH/6, View.VHEIGHT);
         _sideBar.setBorder(new BorderRadius(Color.black, 1, 0, 0));
         _sideBar.setBackground(Color.white);
-        _sideBar.setVisible(true);
         
+
+        _sideBar.add(getBut("Personaliza", 0, this.getHeight()/4));
+        _sideBar.add(getBut("Información", 0, this.getHeight()/4 + this.getHeight() / 20));
+        _sideBar.add(getBut("Contenido", 0, this.getHeight()/4 + 2*this.getHeight() / 20));
         return _sideBar;
+    }
+    private JButton getBut(String option , int w, int h){
+        Public.Styles.Fonts.Raleway ral = new Public.Styles.Fonts.Raleway();
+        
+        ImageIcon icon = new ImageIcon(getClass().getResource("/res/arrow.png"));
+        
+        Image imag = icon.getImage();
+        
+        ImageIcon nic = new ImageIcon(MainUserMenu.getScaledImage(imag, 50, 50));
+        
+        JButton _personalize = new JButton(option, nic);
+        _personalize.setOpaque(true);
+        _personalize.setBackground(Color.white);
+        _personalize.setForeground(Color.BLACK);
+        _personalize.setFocusable(false);
+        _personalize.setBorder(null);
+        _personalize.setFont(ral.getBtnFont());
+        _personalize.setBounds(1, h, _sideBar.getWidth() - 2, this.getHeight() / 20);
+        _personalize.setHorizontalAlignment(SwingConstants.LEFT);
+        
+        return _personalize;
     }
     private JPanel userP()
     {
@@ -69,6 +99,16 @@ public class MainUserMenu extends View implements Runnable{
     {
         return _sideBar;
     }
+    private static Image getScaledImage(Image srcImg, int w, int h){
+    BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+    Graphics2D g2 = resizedImg.createGraphics();
+
+    g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+    g2.drawImage(srcImg, 0, 0, w, h, null);
+    g2.dispose();
+
+    return resizedImg;
+}
     public class Mumain extends JPanel{
         
     private MainUserMenu mainContainer;

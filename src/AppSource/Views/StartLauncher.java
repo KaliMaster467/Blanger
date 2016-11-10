@@ -57,7 +57,7 @@ public class StartLauncher extends View implements Runnable{
 
         
         _wlcTxt = new JLabel("Bienvenido", SwingConstants.CENTER);
-        _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/8, hInstance.getWidth() / 2, 60 );
+        _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/10, hInstance.getWidth() / 2, 60 );
         _wlcTxt.setForeground(Color.white);
         fon = new Raleway();
         _wlcTxt.setFont(fon.getTitleFont());
@@ -113,21 +113,22 @@ public class StartLauncher extends View implements Runnable{
         Thread sizes = new Thread(this);
         sizes.start();
     }
-    public void paint(Graphics g)
+    protected void paintComponent(Graphics g)
     {
-        Dimension dim = this.getSize();
+        super.paintComponent(g);
+       
         
-        ImageIcon imgb = new ImageIcon(getClass().getResource("/res/start.jpg"));
+        ImageIcon imgb = new ImageIcon(getClass().getResource("/res/back.gif"));
         
-        g.drawImage(imgb.getImage(), 0, 0, dim.width, dim.height, null);
+        g.drawImage(imgb.getImage(), 0, 0, getWidth(), getHeight(), this);
         setOpaque(false);
-        super.paint(g);
+        //super.paint(g);
                     
     }
-
+    
     @Override
     public void run() {
-        while(this.isShowing())
+        while(true)
         {
             usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 90, hInstance.getWidth() / 3, 256 );
             _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5, 30);

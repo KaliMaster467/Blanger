@@ -363,6 +363,7 @@ public class Wnd extends JFrame{
         
         WndDragger.revalidate();
         WndDragger.repaint();
+        
     }
     private JPanel DraggerInstance()
     {
