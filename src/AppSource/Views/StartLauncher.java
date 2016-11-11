@@ -62,7 +62,7 @@ public class StartLauncher extends View implements Runnable{
         
         Image imag = imgus.getImage();
         
-        ImageIcon nic = new ImageIcon(MainUserMenu.getScaledImage(imag, 150, 150));
+        ImageIcon nic = new ImageIcon(MainUserMenu.getScaledImage(imag, 190, 190));
         
         _wlcTxt = new JLabel("Bienvenido", SwingConstants.CENTER);
         _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/10, hInstance.getWidth() / 2, 60 );
