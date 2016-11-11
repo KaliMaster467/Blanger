@@ -5,8 +5,10 @@
  */
 package Public.Styles;
 
+import Public.Styles.Fonts.Raleway;
 import java.awt.AWTEvent;
 import java.awt.AWTEventMulticaster;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
@@ -75,16 +77,18 @@ public class RoundedButton extends Component {
         } else {
             g.setColor(getBackground());
         }
-        g.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
+        g.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 50, 50);
 
         // draw the perimeter of the button
-        g.setColor(getBackground().darker().darker().darker());
-        g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
+       // g.setColor(getBackground().darker().darker().darker());
+        g.setColor(Color.white);
+        g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 50, 50);
 
         // draw the label centered in the button
         Font f = getFont();
+        Raleway way = new Raleway();
         if (f != null) {
-            FontMetrics fm = getFontMetrics(getFont());
+            FontMetrics fm = getFontMetrics(way.getBtnFont());
             g.setColor(getForeground());
             g.drawString(label, getWidth() / 2 - fm.stringWidth(label) / 2, getHeight() / 2 + fm.getMaxDescent());
         }
@@ -96,8 +100,9 @@ public class RoundedButton extends Component {
     @Override
     public Dimension getPreferredSize() {
         Font f = getFont();
+        Raleway way = new Raleway();
         if (f != null) {
-            FontMetrics fm = getFontMetrics(getFont());
+            FontMetrics fm = getFontMetrics(way.getBtnFont());
             int max = Math.max(fm.stringWidth(label) + 40, fm.getHeight() + 40);
             return new Dimension(max, max);
         } else {

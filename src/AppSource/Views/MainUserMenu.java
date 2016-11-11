@@ -44,10 +44,17 @@ public class MainUserMenu extends View implements Runnable{
         add(_userP);
         add(_mainP);
         add(_sideBar);
+        
+     
     }
     @Override
     public void run() {
-        
+        /*while(true){
+        _sideBar.setBounds(0, 0, View.VWIDTH/6, View.VHEIGHT);
+        _mainP.setBounds(getSidebar().getWidth(), 0, View.VWIDTH - getSidebar().getWidth(), View.VHEIGHT);
+        _userP.setBounds(_sideBar.getWidth(), this.getHeight() / 5, View.VWIDTH - _sideBar.getWidth(), View.VHEIGHT);
+        }
+        System.out.println("Se destruyo el hilo main");*/
     }
     private JPanel sideBar()
     {
@@ -70,7 +77,7 @@ public class MainUserMenu extends View implements Runnable{
         
         Image imag = icon.getImage();
         
-        ImageIcon nic = new ImageIcon(MainUserMenu.getScaledImage(imag, 50, 50));
+        ImageIcon nic = new ImageIcon(MainUserMenu.getScaledImage(imag, 20, 20));
         
         JButton _personalize = new JButton(option, nic);
         _personalize.setOpaque(true);
@@ -99,7 +106,7 @@ public class MainUserMenu extends View implements Runnable{
     {
         return _sideBar;
     }
-    private static Image getScaledImage(Image srcImg, int w, int h){
+    public static Image getScaledImage(Image srcImg, int w, int h){
         BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = resizedImg.createGraphics();
 

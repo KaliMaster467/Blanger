@@ -27,6 +27,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.EmptyBorder;
 import Public.Styles.RoundedButton;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 
 
 /**
@@ -54,9 +58,11 @@ public class StartLauncher extends View implements Runnable{
         
         //this.add(new StartLauncher_Main_Login_Container(hInstance.getLocation().x
         //,hInstance.getLocation().y));
-        ImageIcon imgus = new ImageIcon(getClass().getResource("/res/user.png"));
+        ImageIcon imgus = new ImageIcon(getClass().getResource("/res/userx.png"));
         
-
+        Image imag = imgus.getImage();
+        
+        ImageIcon nic = new ImageIcon(MainUserMenu.getScaledImage(imag, 150, 150));
         
         _wlcTxt = new JLabel("Bienvenido", SwingConstants.CENTER);
         _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/10, hInstance.getWidth() / 2, 60 );
@@ -68,9 +74,9 @@ public class StartLauncher extends View implements Runnable{
         _wlcTxt.setVisible(true);
         this.add(_wlcTxt);
         
-        usr = new JLabel(imgus, SwingConstants.CENTER);
+        usr = new JLabel(nic, SwingConstants.CENTER);
     
-        usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 90, hInstance.getWidth() / 3, 256 );
+        usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 130, hInstance.getWidth() / 3, 256 );
         usr.setLayout(null);
         usr.setVisible(true);
         this.add(usr);
@@ -79,22 +85,22 @@ public class StartLauncher extends View implements Runnable{
         _usrTxt = new JTextField(SwingConstants.CENTER);
         
         _usrTxt.setLayout(null);
-        _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5, 30);
+        _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5 , 40);
         //_usrTxt.setOpaque(false);
         //_usrTxt.setBackground(new Color(255, 255, 255, 128));
         _usrTxt.setForeground(Color.black);
         _usrTxt.setFont(fon.getMinFont());
-        _usrTxt.setBorder(null);
+        _usrTxt.setBorder(new BorderRadius(Color.black, 2, 0, 0));
         _usrTxt.setCaretColor(Color.red);
         _usrTxt.setVisible(true);
         
         this.add(_usrTxt);
         
         _pswTxt = new JPasswordField();
-        _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5, 30);
+        _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5 , 40);
         _pswTxt.setForeground(Color.black);
         _pswTxt.setFont(fon.getMinFont());
-        _pswTxt.setBorder(null);
+        _pswTxt.setBorder(new BorderRadius(Color.black, 2, 0, 0));
         _pswTxt.setVisible(true);
         this.add(_pswTxt);
         
@@ -133,12 +139,22 @@ public class StartLauncher extends View implements Runnable{
     public void run() {
         while(true)
         {
-            usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 90, hInstance.getWidth() / 3, 256 );
-            _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5, 30);
-            _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5, 30);
+            usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 130, hInstance.getWidth() / 3, 256 );
+            _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5, 40);
+            _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5, 40);
             _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/8, hInstance.getWidth() / 2, 60 );     
             _logIn.setBounds(hInstance.getWidth()/5 * 2, _pswTxt.getLocation().y + 100, hInstance.getWidth() / 5, 50);
         }
+    }
+        private static Image getScaledImage(Image srcImg, int w, int h){
+        BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = resizedImg.createGraphics();
+
+        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2.drawImage(srcImg, 0, 0, w, h, null);
+        g2.dispose();
+
+        return resizedImg;
     }
     private class StartLauncher_Main_Login_Container extends JPanel
     {       
