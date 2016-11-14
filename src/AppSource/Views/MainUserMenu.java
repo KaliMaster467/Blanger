@@ -31,9 +31,11 @@ public class MainUserMenu extends View implements Runnable{
     private Mumain _mainP;
     private JPanel _userP;
     private final Wnd hInstance;
-    public MainUserMenu(Wnd hInstance)
+    private final AppSource.Controllers.MainUserMenu cont;
+    public MainUserMenu(Wnd hInstance, AppSource.Controllers.MainUserMenu cont)
     {
         this.hInstance = hInstance;
+        this.cont = cont;
         setLayout(null);
         setBounds(0, 60, View.VWIDTH, View.VHEIGHT);
         this.setBackground(java.awt.Color.black);

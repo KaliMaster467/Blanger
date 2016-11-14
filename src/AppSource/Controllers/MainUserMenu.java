@@ -16,7 +16,7 @@ public class MainUserMenu extends Controller{
     private AppSource.Views.MainUserMenu sl;
     public MainUserMenu(Wnd hInstance) {
         super(hInstance);
-        sl = new AppSource.Views.MainUserMenu(hInstance);
+        sl = new AppSource.Views.MainUserMenu(hInstance, this);
         super.getView().Render(sl);
     }
     

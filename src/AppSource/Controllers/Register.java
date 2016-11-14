@@ -3,28 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//StarLauncher Controlador
 package AppSource.Controllers;
+
 import Core.Controller;
 import Public.Wnd;
-
 
 /**
  *
  * @author root
  */
-public class StartLauncher extends Controller{
-    private AppSource.Views.StartLauncher sl; 
-    public StartLauncher(Wnd hInstance)
-    {
-        
+public class Register extends Controller{
+    private AppSource.Views.Register sl;
+    public Register(Wnd hInstance) {
         super(hInstance);
-        sl = new AppSource.Views.StartLauncher(hInstance, this);
+        sl = new AppSource.Views.Register(hInstance, this);
         super.getView().Render(sl);
-        
     }
-    public void test()
-    {
-        System.out.println("oko");
-    }
+    
 }

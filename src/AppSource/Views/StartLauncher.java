@@ -27,17 +27,24 @@ import javax.swing.SwingConstants;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.EmptyBorder;
 import Public.Styles.RoundedButton;
+import java.awt.BorderLayout;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BoxLayout;
 
 
 /**
  *
  * @author alb
  */
-public class StartLauncher extends View implements Runnable{
+public class StartLauncher extends View implements Runnable, ActionListener{
     
     private final Wnd hInstance;
     private JLabel usr;
@@ -46,11 +53,12 @@ public class StartLauncher extends View implements Runnable{
     private Raleway fon;
     private JPasswordField _pswTxt;
     private Public.Styles.RoundedButton _logIn;
+    private final AppSource.Controllers.StartLauncher cont;
     
-    
-    public StartLauncher(Wnd hInstance)
+    public StartLauncher(Wnd hInstance, AppSource.Controllers.StartLauncher cont)
     {
         this.hInstance = hInstance;
+        this.cont = cont;
         setLayout(null);
         setBounds(0, 60, View.VWIDTH, View.VHEIGHT);
         
@@ -87,20 +95,23 @@ public class StartLauncher extends View implements Runnable{
         _usrTxt.setLayout(null);
         _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5 , 40);
         //_usrTxt.setOpaque(false);
-        //_usrTxt.setBackground(new Color(255, 255, 255, 128));
-        _usrTxt.setForeground(Color.black);
+        _usrTxt.setBackground(new Color(0, 0, 0, 50));
+        _usrTxt.setForeground(Color.white);
         _usrTxt.setFont(fon.getMinFont());
-        _usrTxt.setBorder(new BorderRadius(Color.black, 2, 0, 0));
+        _usrTxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.white));
         _usrTxt.setCaretColor(Color.red);
+        _usrTxt.setCaretPosition(SwingConstants.CENTER);
         _usrTxt.setVisible(true);
         
         this.add(_usrTxt);
         
         _pswTxt = new JPasswordField();
+        _pswTxt.setBackground(new Color(0, 0, 0, 50));
         _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5 , 40);
-        _pswTxt.setForeground(Color.black);
+        _pswTxt.setForeground(Color.white);
         _pswTxt.setFont(fon.getMinFont());
-        _pswTxt.setBorder(new BorderRadius(Color.black, 2, 0, 0));
+         _pswTxt.setCaretColor(Color.red);
+        _pswTxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.white));
         _pswTxt.setVisible(true);
         this.add(_pswTxt);
         
@@ -116,6 +127,7 @@ public class StartLauncher extends View implements Runnable{
         //_logIn.setFocusPainted(false);
         //_logIn.setText("Iniciar");
         this.add(_logIn);
+        this.add(reg());
         
         this.setVisible(true);
         
@@ -155,6 +167,45 @@ public class StartLauncher extends View implements Runnable{
         g2.dispose();
 
         return resizedImg;
+    }
+    private JPanel reg()
+    {
+        
+        JPanel panel = new JPanel();
+        panel.setBounds(0, hInstance.getHeight() - View.VHEIGHT, 300, 100);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
+        panel.setOpaque(true);
+        panel.setBackground(new Color(255, 255, 255, 50));
+        
+        
+        JButton register = new JButton("Registrate");
+        register.addActionListener(this);
+        panel.add(register);
+        panel.setVisible(true);
+        
+        return panel;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("Registrate")){
+            try {
+                cont.test();
+                hInstance.addController("AppSource.Controllers.Register");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     private class StartLauncher_Main_Login_Container extends JPanel
     {       
