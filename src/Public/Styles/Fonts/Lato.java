@@ -30,7 +30,25 @@ public class Lato {
             GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
             genv.registerFont(font);
             // makesure to derive the size
-            font = font.deriveFont(50f); 
+            font = font.deriveFont(30f); 
+            f =  font;
+        } catch (IOException ex) {
+            Logger.getLogger(Raleway.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FontFormatException ex) {
+            Logger.getLogger(Raleway.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return f;        
+    }
+        public Font getform()
+    {
+        Font f = null;
+        
+        try {
+            Font font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("/res/Fonts/Lato-Thin.ttf").openStream());
+            GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            genv.registerFont(font);
+            // makesure to derive the size
+            font = font.deriveFont(30f); 
             f =  font;
         } catch (IOException ex) {
             Logger.getLogger(Raleway.class.getName()).log(Level.SEVERE, null, ex);
@@ -47,7 +65,7 @@ public class Lato {
             GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
             genv.registerFont(font);
             // makesure to derive the size
-            font = font.deriveFont(80f); 
+            font = font.deriveFont(75f); 
             f =  font;
         } catch (IOException ex) {
             Logger.getLogger(Raleway.class.getName()).log(Level.SEVERE, null, ex);

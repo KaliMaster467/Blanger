@@ -19,5 +19,6 @@ public class Register extends Controller{
         sl = new AppSource.Views.Register(hInstance, this);
         super.getView().Render(sl);
     }
+   
     
 }

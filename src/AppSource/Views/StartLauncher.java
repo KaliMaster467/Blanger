@@ -97,7 +97,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         //_usrTxt.setOpaque(false);
         _usrTxt.setBackground(new Color(0, 0, 0, 50));
         _usrTxt.setForeground(Color.white);
-        _usrTxt.setFont(fon.getMinFont());
+        _usrTxt.setFont(fon.getForm());
         _usrTxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.white));
         _usrTxt.setCaretColor(Color.red);
         _usrTxt.setCaretPosition(SwingConstants.CENTER);
@@ -109,7 +109,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         _pswTxt.setBackground(new Color(0, 0, 0, 50));
         _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5 , 40);
         _pswTxt.setForeground(Color.white);
-        _pswTxt.setFont(fon.getMinFont());
+        _pswTxt.setFont(fon.getForm());
          _pswTxt.setCaretColor(Color.red);
         _pswTxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.white));
         _pswTxt.setVisible(true);
