@@ -12,6 +12,8 @@ import Public.Wnd;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -42,24 +44,11 @@ public class Register extends View{
         //add(mainScroll(mainPanel));
         //JScrollPane pane = new JScrollPane(mainPanel);
         //pane.setPreferredSize(new Dimension(400, 200));
-        
-        //add(pane, BorderLayout.CENTER);
+       
         this.setVisible(true);
+        
     }    
- 
-    private JScrollPane mainScroll(MainPanel mainPanel){
-        
-        JScrollPane pane = new JScrollPane(mainPanel);
-        pane.setPreferredSize(new Dimension(mainPanel.getWidth(), 200));
-
-        //scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        
-               
-         
-        return pane;
-    }
-    
-    private class MainPanel extends JPanel implements Runnable{
+    private class MainPanel extends JPanel implements Runnable, ActionListener{
         
         private JLabel _title;
         private JLabel _Nombre;
@@ -80,13 +69,19 @@ public class Register extends View{
             this.hInstance = hInstance;
             this.cont = cont;
             this.mainContainer = mainContainer;
+            this.setPreferredSize(new Dimension(View.VWIDTH, 3000));
             
-
+            init();
             
+            
+            
+        }
+        private void init(){
             this.setBounds(0, 0, View.VWIDTH, 2000);
-            this.setPreferredSize(new Dimension(this.getWidth(), 2000));
+            
             this.setBackground(Color.white);  
-            this.setLayout(new BorderLayout(0, 0));
+            //this.setLayout(new BorderLayout(0, 0));
+            setLayout(new BoxLayout(this, 0));
             
             Lato ral = new Lato();
             Raleway ra = new Raleway();
@@ -100,6 +95,7 @@ public class Register extends View{
             
             _Nombre.setForeground(Color.black);
             _Nombre.setFont(ral.getMainWnd());
+          
             
             _inombre = new JTextField();
             _inombre.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
@@ -134,6 +130,7 @@ public class Register extends View{
             _itel.setFont(ra.getForm());
             
             but = new JButton("Registrate");
+            but.addActionListener(this);
             
             add(but);
             add(_itel);
@@ -150,7 +147,6 @@ public class Register extends View{
             
             Thread t = new Thread(this);
             t.start();
-            
         }
 
         @Override
@@ -166,6 +162,13 @@ public class Register extends View{
                 _tel.setBounds(hInstance.getWidth()/5 * 2 + 5, _sname.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
                 _itel.setBounds(hInstance.getWidth()/5 * 2 - 10, _sname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
                 but.setBounds(hInstance.getWidth()/5 * 2 - 10, _tel.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
+            }
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(e.getActionCommand().equals("Registrate")){
+                cont.InsertUser();
             }
         }
     }

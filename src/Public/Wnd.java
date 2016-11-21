@@ -31,6 +31,8 @@ import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 
 
@@ -53,6 +55,7 @@ public class Wnd extends JFrame{
         //this.setResizable(true);
         WndDragger = new DragPanel(this);
         this.add(WndDragger);
+        
         
     }
     private class DragPanel extends JPanel implements Runnable, ActionListener{
@@ -360,10 +363,10 @@ public class Wnd extends JFrame{
         
         WndDragger.add(hextFrame);
         WndDragger.addComp();
-        
+       
         WndDragger.revalidate();
         WndDragger.repaint();
-        
+  
     }
     private JPanel DraggerInstance()
     {
