@@ -70,6 +70,7 @@ public class MainUserMenu extends View implements Runnable{
         _sideBar.add(getBut("Personaliza", 0, this.getHeight()/4 + 20));
         _sideBar.add(getBut("Información", 0, this.getHeight()/4 + this.getHeight() / 20 + 20));
         _sideBar.add(getBut("Contenido", 0, this.getHeight()/4 + 2*this.getHeight() / 20 + 20));
+        _sideBar.add(getBut("Mi perfil", 0, this.getHeight()/4 + 3*this.getHeight() /20 + 20));
         return _sideBar;
     }
     private JButton getBut(String option , int w, int h){

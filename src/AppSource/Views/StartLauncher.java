@@ -73,7 +73,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         ImageIcon nic = new ImageIcon(MainUserMenu.getScaledImage(imag, 190, 190));
         
         _wlcTxt = new JLabel("Bienvenido", SwingConstants.CENTER);
-        _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/10, hInstance.getWidth() / 2, 60 );
+        _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/10 - 30, hInstance.getWidth() / 2, 60 );
         _wlcTxt.setForeground(Color.white);
         fon = new Raleway();
         _wlcTxt.setFont(fon.getTitleFont());
@@ -154,7 +154,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
             usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 130, hInstance.getWidth() / 3, 256 );
             _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5, 40);
             _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5, 40);
-            _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/8, hInstance.getWidth() / 2, 60 );     
+            _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/8 - 30, hInstance.getWidth() / 2, 60 );     
             _logIn.setBounds(hInstance.getWidth()/5 * 2, _pswTxt.getLocation().y + 100, hInstance.getWidth() / 5, 50);
         }
     }

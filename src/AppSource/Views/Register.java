@@ -81,7 +81,7 @@ public class Register extends View{
             
             this.setBackground(Color.white);  
             //this.setLayout(new BorderLayout(0, 0));
-            setLayout(new BoxLayout(this, 0));
+            setLayout(null);
             
             Lato ral = new Lato();
             Raleway ra = new Raleway();
@@ -152,8 +152,8 @@ public class Register extends View{
         @Override
         public void run() {
             while(true){
-                _title.setBounds(hInstance.getWidth()/5 *  2 + 20, this.getHeight()/15, hInstance.getWidth() / 4 - 50, 95);
-                _Nombre.setBounds(hInstance.getWidth()/5 * 2 + 5, _title.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
+                _title.setBounds(hInstance.getWidth()/5 *  2 + 20, this.getHeight()/15 - 100, hInstance.getWidth() / 4 - 50, 95);
+                _Nombre.setBounds(hInstance.getWidth()/5 * 2 + 5, _title.getLocation().y + 140, hInstance.getWidth() / 5 , 40);
                 _inombre.setBounds(hInstance.getWidth()/5 * 2 - 10, _Nombre.getLocation().y + 50, hInstance.getWidth() / 4 - 50 , 40);
                 _fname.setBounds(hInstance.getWidth()/5 * 2 + 5, _Nombre.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
                 _ifname.setBounds(hInstance.getWidth()/5 * 2 - 10, _Nombre.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
@@ -161,14 +161,14 @@ public class Register extends View{
                 _isname.setBounds(hInstance.getWidth()/5 * 2 - 10, _fname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
                 _tel.setBounds(hInstance.getWidth()/5 * 2 + 5, _sname.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
                 _itel.setBounds(hInstance.getWidth()/5 * 2 - 10, _sname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
-                but.setBounds(hInstance.getWidth()/5 * 2 - 10, _tel.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
+                but.setBounds(hInstance.getWidth()/5 * 2 - 10, _tel.getLocation().y + 180, hInstance.getWidth() / 4 - 50 , 40);
             }
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getActionCommand().equals("Registrate")){
-                cont.InsertUser();
+                cont.InsertUser(_inombre.getText(), _ifname.getText(), _isname.getText(), Integer.parseInt(_itel.getText()));
             }
         }
     }

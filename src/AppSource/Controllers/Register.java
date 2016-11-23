@@ -24,7 +24,7 @@ public class Register extends Controller{
         
     }
         
-    public void InsertUser(){
+    public void InsertUser(String nombre, String fnombre, String snombre, int tel){
         Services.Input in = new Services.Input();
         ObjectFactory factory = new ObjectFactory();
         JAXBElement<String> createInputEmail = factory.createInputEmail("description");
@@ -32,11 +32,11 @@ public class Register extends Controller{
         JAXBElement<String> createInputDelegation = factory.createInputDelegation("description");
         JAXBElement<String> createInputFLastName = factory.createInputFLastName("description");
         JAXBElement<String> createInputSLastName = factory.createInputSLastName("description");
-        JAXBElement<String> createInputName = factory.createInputName("description");
+        JAXBElement<String> createInputName = factory.createInputName(nombre);
         JAXBElement<String> createInputPassw = factory.createInputPassw("description");
         
        
-        in.setTelephone(55745);
+        in.setTelephone(tel);
         in.setDelegation(createInputDelegation);
         in.setDirection(createInputDirection);
         in.setFLastName(createInputFLastName);
