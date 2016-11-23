@@ -28,15 +28,22 @@ public class Register extends Controller{
         Services.Input in = new Services.Input();
         ObjectFactory factory = new ObjectFactory();
         JAXBElement<String> createInputEmail = factory.createInputEmail("description");
+        JAXBElement<String> createInputDirection = factory.createInputDirection("description");
+        JAXBElement<String> createInputDelegation = factory.createInputDelegation("description");
+        JAXBElement<String> createInputFLastName = factory.createInputFLastName("description");
+        JAXBElement<String> createInputSLastName = factory.createInputSLastName("description");
+        JAXBElement<String> createInputName = factory.createInputName("description");
+        JAXBElement<String> createInputPassw = factory.createInputPassw("description");
         
        
         in.setTelephone(55745);
-        in.setDelegation(createInputEmail);
-        in.setDirection(createInputEmail);
-        in.setFLastName(createInputEmail);
+        in.setDelegation(createInputDelegation);
+        in.setDirection(createInputDirection);
+        in.setFLastName(createInputFLastName);
         in.setEmail(createInputEmail);
-        in.setSLastName(createInputEmail);
-        in.setPassw(createInputEmail);
+        in.setSLastName(createInputSLastName);
+        in.setPassw(createInputPassw);
+        in.setName(createInputName);
        
        
         if(Register.getInfo(in).equals("OK")){
