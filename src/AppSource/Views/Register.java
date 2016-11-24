@@ -55,10 +55,14 @@ public class Register extends View{
         private JLabel _fname;
         private JLabel _sname;
         private JLabel _tel;
+        private JLabel _correo;
+        private JLabel _pass;
         private JTextField _inombre;
         private JTextField _ifname;
         private JTextField _isname;
         private JTextField _itel;
+        private JTextField _icorreo;
+        private JTextField _ipass;
         private Wnd hInstance;
         private JScrollPane _scroll;
         private AppSource.Controllers.Register cont;
@@ -131,6 +135,24 @@ public class Register extends View{
             _itel.setVisible(true);
             _itel.setFont(ra.getForm());
             
+            _correo = new JLabel("Correo:");
+            _correo.setForeground(Color.black);
+            _correo.setFont(ral.getMainWnd());
+            
+            _icorreo = new JTextField();
+            _icorreo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
+            _icorreo.setVisible(true);
+            _icorreo.setFont(ra.getForm());
+            
+            _pass = new JLabel("Contraseña:");
+            _pass.setForeground(Color.black);
+            _pass.setFont(ral.getMainWnd());
+            
+            _ipass = new JTextField();
+            _ipass.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
+            _ipass.setVisible(true);
+            _ipass.setFont(ra.getForm());
+            
             but = new JButton("Registrate");
             but.addActionListener(this);
             
@@ -144,6 +166,10 @@ public class Register extends View{
             add(_inombre);
             add(_title);
             add(_Nombre);
+            add(_correo);
+            add(_icorreo);
+            add(_pass);
+            add(_ipass);
             
             this.setVisible(true);
             
@@ -155,14 +181,18 @@ public class Register extends View{
         public void run() {
             while(true){
                 _title.setBounds(hInstance.getWidth()/5 *  2 + 20, this.getHeight()/15 - 80, hInstance.getWidth() / 4 - 50, 95);
-                _Nombre.setBounds(hInstance.getWidth()/5 * 2 + 5, _title.getLocation().y + 140, hInstance.getWidth() / 5 , 40);
-                _inombre.setBounds(hInstance.getWidth()/5 * 2 - 10, _Nombre.getLocation().y + 50, hInstance.getWidth() / 4 - 50 , 40);
-                _fname.setBounds(hInstance.getWidth()/5 * 2 + 5, _Nombre.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
-                _ifname.setBounds(hInstance.getWidth()/5 * 2 - 10, _Nombre.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
-                _sname.setBounds(hInstance.getWidth()/5 * 2 + 5, _fname.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
-                _isname.setBounds(hInstance.getWidth()/5 * 2 - 10, _fname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
-                _tel.setBounds(hInstance.getWidth()/5 * 2 + 5, _sname.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
-                _itel.setBounds(hInstance.getWidth()/5 * 2 - 10, _sname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
+                _Nombre.setBounds(hInstance.getWidth()/10 * 2 + 5, _title.getLocation().y + 120, hInstance.getWidth() / 5 , 40);
+                _inombre.setBounds(hInstance.getWidth()/10 * 2 - 10, _Nombre.getLocation().y + 50, hInstance.getWidth() / 4 - 50 , 40);
+                _fname.setBounds(hInstance.getWidth()/10 * 2 + 5, _Nombre.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
+                _ifname.setBounds(hInstance.getWidth()/10 * 2 - 10, _Nombre.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
+                _sname.setBounds(hInstance.getWidth()/10 * 2 + 5, _fname.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
+                _isname.setBounds(hInstance.getWidth()/10 * 2 - 10, _fname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
+                _tel.setBounds(hInstance.getWidth()/10 * 2 + 5, _sname.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
+                _itel.setBounds(hInstance.getWidth()/10 * 2 - 10, _sname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
+                _correo.setBounds(hInstance.getWidth()/4 * 2 + 5, _title.getLocation().y + 120, hInstance.getWidth() / 5 , 40);
+                _icorreo.setBounds(hInstance.getWidth()/4 * 2 - 10, _correo.getLocation().y + 50, hInstance.getWidth() / 4 - 50 , 40);
+                _pass.setBounds(hInstance.getWidth()/4 * 2 + 5, _correo.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
+                _ipass.setBounds(hInstance.getWidth()/4 * 2 - 10, _correo.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
                 but.setBounds(hInstance.getWidth()/5 * 2 - 10, _tel.getLocation().y + 180, hInstance.getWidth() / 4 - 50 , 40);
             }
         }
@@ -170,7 +200,7 @@ public class Register extends View{
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getActionCommand().equals("Registrate")){
-                cont.InsertUser(_inombre.getText(), _ifname.getText(), _isname.getText(), Integer.parseInt(_itel.getText()));
+                cont.InsertUser(_inombre.getText(), _ifname.getText(), _isname.getText(), Integer.parseInt(_itel.getText()), _icorreo.getText(), _ipass.getText());
                 //cont.RetreiveUser("Albert", "");
             }
         }

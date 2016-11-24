@@ -44,14 +44,15 @@ public class StartLauncher extends Controller{
         
         Buscar.Usuario usu = new Buscar.Usuario();
         javax.xml.ws.Holder<java.lang.String> nom = new javax.xml.ws.Holder<java.lang.String>();
+        javax.xml.ws.Holder<java.lang.String> dat = new javax.xml.ws.Holder<java.lang.String>();
               
-        StartLauncher.getInfo(in, id, date, fname, sname, nom, tel, mail, del, passw, dir, st);
+        StartLauncher.getInfo(in, id, dat, fname, sname, nom, tel, mail, del, passw, dir, st);
         
         if(nom.value == null){
             
             JOptionPane.showMessageDialog(null, "No se encontro al Usuario");
         }else{
-            JOptionPane.showMessageDialog(null, nom.value);
+            JOptionPane.showMessageDialog(null, "Nombre" + nom.value + "Fecha: " + dat.value);
         }
     }
     private static void getInfo(Buscar.Input search, javax.xml.ws.Holder<Integer> id, javax.xml.ws.Holder<java.lang.String> date, javax.xml.ws.Holder<java.lang.String> fLastName, javax.xml.ws.Holder<java.lang.String> sLastName, javax.xml.ws.Holder<java.lang.String> name, javax.xml.ws.Holder<Integer> telephone, javax.xml.ws.Holder<java.lang.String> email, javax.xml.ws.Holder<java.lang.String> delegation, javax.xml.ws.Holder<java.lang.String> passw, javax.xml.ws.Holder<java.lang.String> direction, javax.xml.ws.Holder<Boolean> status) {

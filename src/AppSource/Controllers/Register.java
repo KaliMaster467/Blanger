@@ -26,16 +26,16 @@ public class Register extends Controller{
         
     }
         
-    public void InsertUser(String nombre, String fnombre, String snombre, int tel){
+    public void InsertUser(String nombre, String fnombre, String snombre, int tel, String mail, String pass){
         Services.Input in = new Services.Input();
         ObjectFactory factory = new ObjectFactory();
-        JAXBElement<String> createInputEmail = factory.createInputEmail("descripti");
-        JAXBElement<String> createInputDirection = factory.createInputDirection("descripti");
-        JAXBElement<String> createInputDelegation = factory.createInputDelegation("descripti");
+        JAXBElement<String> createInputEmail = factory.createInputEmail(mail);
+        JAXBElement<String> createInputDirection = factory.createInputDirection("del");
+        JAXBElement<String> createInputDelegation = factory.createInputDelegation("dir");
         JAXBElement<String> createInputFLastName = factory.createInputFLastName(fnombre);
         JAXBElement<String> createInputSLastName = factory.createInputSLastName(snombre);
         JAXBElement<String> createInputName = factory.createInputName(nombre);
-        JAXBElement<String> createInputPassw = factory.createInputPassw("descripti");
+        JAXBElement<String> createInputPassw = factory.createInputPassw(pass);
         
        
         in.setTelephone(tel);

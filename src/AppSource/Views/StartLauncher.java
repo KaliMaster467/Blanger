@@ -207,7 +207,8 @@ public class StartLauncher extends View implements Runnable, ActionListener{
                 Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else if(e.getActionCommand().equals("Iniciar")){
-            cont.RetreiveUser(_usrTxt.getText(), "");
+            cont.RetreiveUser(_usrTxt.getText(), _pswTxt.getText()
+            );
         }
     }
     private class StartLauncher_Main_Login_Container extends JPanel
