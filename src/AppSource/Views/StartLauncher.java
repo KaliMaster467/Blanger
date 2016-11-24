@@ -121,6 +121,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         _logIn.setForeground(Color.white);
         _logIn.setFont(fon.getBtnFont());
         //_logIn.setOpaque(true);
+        _logIn.addActionListener(this);
         _logIn.setBackground(Color.black);
         _logIn.setVisible(true);
         //_logIn.setBorder(new BorderRadius(Color.white, 1, 0, 0));
@@ -205,6 +206,8 @@ public class StartLauncher extends View implements Runnable, ActionListener{
             } catch (InvocationTargetException ex) {
                 Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }else if(e.getActionCommand().equals("Iniciar")){
+            cont.RetreiveUser(_usrTxt.getText(), "");
         }
     }
     private class StartLauncher_Main_Login_Container extends JPanel

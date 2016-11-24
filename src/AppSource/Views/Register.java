@@ -60,6 +60,7 @@ public class Register extends View{
         private JTextField _isname;
         private JTextField _itel;
         private Wnd hInstance;
+        private JScrollPane _scroll;
         private AppSource.Controllers.Register cont;
         private JPanel mainContainer;
         private JButton but;
@@ -80,8 +81,9 @@ public class Register extends View{
             this.setBounds(0, 0, View.VWIDTH, 2000);
             
             this.setBackground(Color.white);  
-            //this.setLayout(new BorderLayout(0, 0));
-            setLayout(null);
+            this.setLayout(new BorderLayout(0, 0));
+            setLayout(new BorderLayout());
+            
             
             Lato ral = new Lato();
             Raleway ra = new Raleway();
@@ -152,7 +154,7 @@ public class Register extends View{
         @Override
         public void run() {
             while(true){
-                _title.setBounds(hInstance.getWidth()/5 *  2 + 20, this.getHeight()/15 - 100, hInstance.getWidth() / 4 - 50, 95);
+                _title.setBounds(hInstance.getWidth()/5 *  2 + 20, this.getHeight()/15 - 80, hInstance.getWidth() / 4 - 50, 95);
                 _Nombre.setBounds(hInstance.getWidth()/5 * 2 + 5, _title.getLocation().y + 140, hInstance.getWidth() / 5 , 40);
                 _inombre.setBounds(hInstance.getWidth()/5 * 2 - 10, _Nombre.getLocation().y + 50, hInstance.getWidth() / 4 - 50 , 40);
                 _fname.setBounds(hInstance.getWidth()/5 * 2 + 5, _Nombre.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
@@ -169,6 +171,7 @@ public class Register extends View{
         public void actionPerformed(ActionEvent e) {
             if(e.getActionCommand().equals("Registrate")){
                 cont.InsertUser(_inombre.getText(), _ifname.getText(), _isname.getText(), Integer.parseInt(_itel.getText()));
+                //cont.RetreiveUser("Albert", "");
             }
         }
     }

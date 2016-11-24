@@ -8,7 +8,9 @@ package AppSource.Controllers;
 import Core.Controller;
 import Core.ObjectFactory;
 import Public.Wnd;
+import javax.swing.JOptionPane;
 import javax.xml.bind.JAXBElement;
+
 
 /**
  *
@@ -27,13 +29,13 @@ public class Register extends Controller{
     public void InsertUser(String nombre, String fnombre, String snombre, int tel){
         Services.Input in = new Services.Input();
         ObjectFactory factory = new ObjectFactory();
-        JAXBElement<String> createInputEmail = factory.createInputEmail("description");
-        JAXBElement<String> createInputDirection = factory.createInputDirection("description");
-        JAXBElement<String> createInputDelegation = factory.createInputDelegation("description");
-        JAXBElement<String> createInputFLastName = factory.createInputFLastName("description");
-        JAXBElement<String> createInputSLastName = factory.createInputSLastName("description");
+        JAXBElement<String> createInputEmail = factory.createInputEmail("descripti");
+        JAXBElement<String> createInputDirection = factory.createInputDirection("descripti");
+        JAXBElement<String> createInputDelegation = factory.createInputDelegation("descripti");
+        JAXBElement<String> createInputFLastName = factory.createInputFLastName(fnombre);
+        JAXBElement<String> createInputSLastName = factory.createInputSLastName(snombre);
         JAXBElement<String> createInputName = factory.createInputName(nombre);
-        JAXBElement<String> createInputPassw = factory.createInputPassw("description");
+        JAXBElement<String> createInputPassw = factory.createInputPassw("descripti");
         
        
         in.setTelephone(tel);
@@ -52,12 +54,11 @@ public class Register extends Controller{
             System.out.println("nel");
         }
     }
-    
+
     private static String getInfo(Services.Input insert) {
         Services.CrearAlumno service = new Services.CrearAlumno();
         Services.CrearAlumnoPortType port = service.getCrearAlumno();
         return port.getInfo(insert);
     }
-   
     
 }
