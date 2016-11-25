@@ -6,7 +6,7 @@
 package Core;
 
 import AppSource.Controllers.*;
-import Core.aux.Usuario;
+import Core.auxil.Usuario;
 import Public.Wnd;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;

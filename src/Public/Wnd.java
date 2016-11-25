@@ -7,7 +7,7 @@ package Public;
 
 import Core.App;
 import Core.Controller;
-import Core.aux.Usuario;
+import Core.auxil.Usuario;
 import Public.Styles.BorderRadius;
 import Public.Styles.Fonts.Lato;
 import java.awt.Color;

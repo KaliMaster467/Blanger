@@ -6,7 +6,7 @@
 package AppSource.Views;
 
 import Core.View;
-import Core.aux.Usuario;
+import Core.auxil.Usuario;
 import Public.Styles.BorderRadius;
 
 import Public.Wnd;

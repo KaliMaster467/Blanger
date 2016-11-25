@@ -6,7 +6,7 @@
 //StarLauncher Controlador
 package AppSource.Controllers;
 import Core.Controller;
-import Core.aux.Usuario;
+import Core.auxil.Usuario;
 import Public.Wnd;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
