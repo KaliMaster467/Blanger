@@ -8,6 +8,7 @@ package AppSource.Views;
 
 import Core.Controller;
 import Core.View;
+import Public.ErrorWnd;
 import Public.Styles.BorderRadius;
 import Public.Styles.Fonts.Raleway;
 import Public.Wnd;
@@ -207,6 +208,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
                 Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else if(e.getActionCommand().equals("Iniciar")){
+            //ErrorWnd err = new ErrorWnd(hInstance, "gg");
             cont.RetreiveUser(_usrTxt.getText(), _pswTxt.getText()
             );
         }

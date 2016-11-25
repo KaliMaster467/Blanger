@@ -48,11 +48,12 @@ public class Register extends Controller{
         in.setName(createInputName);
        
        
-        if(Register.getInfo(in).equals("OK")){
+        /*if(Register.getInfo(in).equals("OK")){
             System.out.println("OK");
         }else{
             System.out.println("nel");
-        }
+        }*/
+        System.out.println(Register.getInfo(in));
     }
 
     private static String getInfo(Services.Input insert) {

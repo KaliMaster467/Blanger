@@ -151,6 +151,7 @@ public class Wnd extends JFrame{
             hclose.addActionListener(new ActionListener(){ 
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                   
                     hInstance.dispose();
                     System.exit(0);
                 }

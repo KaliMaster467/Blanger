@@ -155,7 +155,11 @@ public class Register extends View{
             
             but = new JButton("Registrate");
             but.addActionListener(this);
-            
+            but.setOpaque(true);
+            but.setBackground(Color.black);
+            but.setForeground(Color.white);
+            but.setFont(ra.getForm());
+           
             add(but);
             add(_itel);
             add(_tel);

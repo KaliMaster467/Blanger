@@ -6,7 +6,10 @@
 //StarLauncher Controlador
 package AppSource.Controllers;
 import Core.Controller;
+import Public.ErrorWnd;
 import Public.Wnd;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.xml.bind.JAXBElement;
 
@@ -50,7 +53,9 @@ public class StartLauncher extends Controller{
         
         if(nom.value == null){
             
-            JOptionPane.showMessageDialog(null, "No se encontro al Usuario");
+            JOptionPane.showMessageDialog(null, "Contraseña o Usuario incorrectos", "EX", 0, null);
+           
+           
         }else{
             JOptionPane.showMessageDialog(null, "Nombre" + nom.value + "Fecha: " + dat.value);
         }
