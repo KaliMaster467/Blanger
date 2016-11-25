@@ -130,6 +130,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         this.add(_logIn);
         this.add(reg());
         
+        
         this.setVisible(true);
         
         Thread sizes = new Thread(this);
