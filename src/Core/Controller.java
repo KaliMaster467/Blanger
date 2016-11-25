@@ -14,8 +14,10 @@ import javax.swing.JFrame;
  */
 public class Controller {
     private View vista;
+    protected Wnd hInstance;
     public Controller(Wnd hInstance)
     {
+        this.hInstance = hInstance;
         vista = new View(hInstance);
     }
 

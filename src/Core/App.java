@@ -6,6 +6,7 @@
 package Core;
 
 import AppSource.Controllers.*;
+import Core.aux.Usuario;
 import Public.Wnd;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
@@ -20,7 +21,7 @@ import javax.swing.SwingUtilities;
  * @author alb
  */
 public class App {
-    
+    public Usuario user;
     public App()
     {
         System.out.println("Hola app");

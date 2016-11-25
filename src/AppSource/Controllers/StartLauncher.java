@@ -6,10 +6,11 @@
 //StarLauncher Controlador
 package AppSource.Controllers;
 import Core.Controller;
-import Public.ErrorWnd;
+import Core.aux.Usuario;
 import Public.Wnd;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.xml.bind.JAXBElement;
 
@@ -53,11 +54,32 @@ public class StartLauncher extends Controller{
         
         if(nom.value == null){
             
-            JOptionPane.showMessageDialog(null, "Contraseña o Usuario incorrectos", "EX", 0, null);
-           
-           
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos","EX" , 0, null);
         }else{
-            JOptionPane.showMessageDialog(null, "Nombre" + nom.value + "Fecha: " + dat.value);
+            JOptionPane.showMessageDialog(null, "Bienvenido: " + nom.value, "Bienvenido", 0);
+            Usuario.setNombre(nom.value);
+            Usuario.setDate(dat.value);
+            hInstance.WndDragger.repaint();
+            
+            //Usuario.setMail(mail.value);
+            //Usuario.setSnombre(sname.value);
+            //Usuario.setPass(passw.value);
+            //Usuario.setTel(tel.value);
+            try {
+                hInstance.addController("AppSource.Controllers.MainUserMenu");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     private static void getInfo(Buscar.Input search, javax.xml.ws.Holder<Integer> id, javax.xml.ws.Holder<java.lang.String> date, javax.xml.ws.Holder<java.lang.String> fLastName, javax.xml.ws.Holder<java.lang.String> sLastName, javax.xml.ws.Holder<java.lang.String> name, javax.xml.ws.Holder<Integer> telephone, javax.xml.ws.Holder<java.lang.String> email, javax.xml.ws.Holder<java.lang.String> delegation, javax.xml.ws.Holder<java.lang.String> passw, javax.xml.ws.Holder<java.lang.String> direction, javax.xml.ws.Holder<Boolean> status) {

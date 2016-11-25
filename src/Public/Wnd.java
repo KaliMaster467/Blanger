@@ -5,7 +5,9 @@
  */
 package Public;
 
+import Core.App;
 import Core.Controller;
+import Core.aux.Usuario;
 import Public.Styles.BorderRadius;
 import Public.Styles.Fonts.Lato;
 import java.awt.Color;
@@ -45,12 +47,17 @@ public class Wnd extends JFrame{
     
     private static final int  WHEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     private static final int  WWIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-    private DragPanel WndDragger;
+    public DragPanel WndDragger;
+    public static Usuario user = new Usuario();
+    
+   
     public String control;
+   
     
     public Wnd()
     {
-     
+        
+       
         this.setUndecorated(true);
         //this.setResizable(true);
         WndDragger = new DragPanel(this);
@@ -58,7 +65,10 @@ public class Wnd extends JFrame{
         
         
     }
-    private class DragPanel extends JPanel implements Runnable, ActionListener{
+    public DragPanel getWndDragger(){
+        return WndDragger;
+    }
+    public class DragPanel extends JPanel implements Runnable, ActionListener{
     
         private Point initialclick; 
         public String control = "StartLauncher";
@@ -288,6 +298,8 @@ public class Wnd extends JFrame{
         }        
         public JButton getoptI()
         {
+            JButton bu = null;
+            if(Usuario.getNombre() == null){
             JButton opt = new JButton("Iniciar sesión");
             opt.setBackground(new Color(255, 51, 51));
             opt.setLayout(null);
@@ -299,9 +311,24 @@ public class Wnd extends JFrame{
             opt.setFocusPainted(false);
             opt.addActionListener(this);
             opt.setVisible(true);
+           
+            bu = opt;
+            }else{
+            JButton opt = new JButton("Salir");
+            opt.setBackground(new Color(255, 51, 51));
+            opt.setLayout(null);
             
-            return opt;
-            
+            opt.setFont(fon.getMinFont());
+            opt.setForeground(Color.white);
+            opt.setBounds(Wnd.WWIDTH - 150, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
+            opt.setBorder(new BorderRadius(Color.black, 1, 0, 0));
+            opt.setFocusPainted(false);
+            opt.addActionListener(this);
+            opt.setVisible(true);
+            bu = opt;
+                          
+            }
+            return bu;
         }
         public JButton getblcS()
         {   

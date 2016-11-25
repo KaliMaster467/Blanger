@@ -6,6 +6,7 @@
 package AppSource.Views;
 
 import Core.View;
+import Core.aux.Usuario;
 import Public.Styles.BorderRadius;
 
 import Public.Wnd;
@@ -18,6 +19,7 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -96,12 +98,41 @@ public class MainUserMenu extends View implements Runnable{
     }
     private JPanel userP()
     {
+        Public.Styles.Fonts.Raleway ral = new Public.Styles.Fonts.Raleway();
         _userP = new JPanel();
         _userP.setLayout(null);
         _userP.setBackground(Color.white);
         _userP.setBorder(new BorderRadius(Color.black, 1, 0, 0));
         _userP.setBounds(_sideBar.getWidth(), this.getHeight() / 5, View.VWIDTH - _sideBar.getWidth(), View.VHEIGHT);
         _userP.setVisible(true);
+        
+        if(Usuario.getNombre() == null){
+            JLabel ini = new JLabel("Inicia sesión para tener una mejor experiéncia");
+            ini.setSize(1300, 300);
+            ini.setLocation(_userP.getWidth()/3, _userP.getHeight()/7);
+            ini.setForeground(Color.gray);
+            ini.setFont(ral.getBtnFont());
+            ini.setVisible(true);
+            _userP.add(ini);
+        }else{
+            JLabel lnombre = new JLabel("Nombre:");
+            lnombre.setSize(200, 50);
+            lnombre.setLocation(20, _userP.getHeight()/8);
+            lnombre.setForeground(Color.black);
+            lnombre.setFont(ral.getForm());
+            lnombre.setVisible(true);
+            
+            JLabel nombre = new JLabel(Usuario.getNombre());
+            nombre.setSize(200, 50);
+            nombre.setLocation(70, _userP.getHeight()/6);
+            nombre.setForeground(Color.black);
+            nombre.setFont(ral.getForm());
+            nombre.setVisible(true);     
+            
+            _userP.add(lnombre);
+            _userP.add(nombre);
+            
+        }
         
         return _userP;
     }

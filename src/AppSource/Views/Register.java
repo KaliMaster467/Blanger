@@ -18,7 +18,9 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
@@ -62,7 +64,7 @@ public class Register extends View{
         private JTextField _isname;
         private JTextField _itel;
         private JTextField _icorreo;
-        private JTextField _ipass;
+        private JPasswordField _ipass;
         private Wnd hInstance;
         private JScrollPane _scroll;
         private AppSource.Controllers.Register cont;
@@ -148,7 +150,7 @@ public class Register extends View{
             _pass.setForeground(Color.black);
             _pass.setFont(ral.getMainWnd());
             
-            _ipass = new JTextField();
+            _ipass = new JPasswordField();
             _ipass.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
             _ipass.setVisible(true);
             _ipass.setFont(ra.getForm());
@@ -204,8 +206,12 @@ public class Register extends View{
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getActionCommand().equals("Registrate")){
+                if(!_itel.getText().equals("")){
                 cont.InsertUser(_inombre.getText(), _ifname.getText(), _isname.getText(), Integer.parseInt(_itel.getText()), _icorreo.getText(), _ipass.getText());
                 //cont.RetreiveUser("Albert", "");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Llene nos campos","Error", 0, null);
+                }
             }
         }
     }
