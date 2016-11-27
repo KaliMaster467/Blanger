@@ -42,14 +42,23 @@ public class StartLauncher extends Controller{
         in.setUser(createInptUser);
         in.setPass(createInptPass);
         
-        javax.xml.ws.Holder<java.lang.String> date = null, fname = null, sname = null, name =null, mail = null, del = null, passw = null, dir = null;
-        javax.xml.ws.Holder<Boolean>  st = null;
-        javax.xml.ws.Holder<Integer> id = null, tel = null;
+        //javax.xml.ws.Holder<java.lang.String> date = null, fname = null, sname = null, name =null, mail = null, del = null, passw = null, dir = null;
+        //javax.xml.ws.Holder<Boolean>  st = null;
+        //javax.xml.ws.Holder<Integer> id = null, tel = null;
         
         Buscar.Usuario usu = new Buscar.Usuario();
         javax.xml.ws.Holder<java.lang.String> nom = new javax.xml.ws.Holder<java.lang.String>();
         javax.xml.ws.Holder<java.lang.String> dat = new javax.xml.ws.Holder<java.lang.String>();
-              
+        javax.xml.ws.Holder<java.lang.String> mail = new javax.xml.ws.Holder<java.lang.String>();
+        javax.xml.ws.Holder<java.lang.String> fname = new javax.xml.ws.Holder<java.lang.String>();
+        javax.xml.ws.Holder<java.lang.String> sname = new javax.xml.ws.Holder<java.lang.String>();
+        javax.xml.ws.Holder<Integer> tel = new javax.xml.ws.Holder<Integer>();
+        javax.xml.ws.Holder<Boolean> st = new javax.xml.ws.Holder<Boolean>();
+        javax.xml.ws.Holder<java.lang.String> passw = new javax.xml.ws.Holder<java.lang.String>();
+        javax.xml.ws.Holder<Integer>  id = new javax.xml.ws.Holder<Integer>();
+        javax.xml.ws.Holder<java.lang.String> dir = new javax.xml.ws.Holder<java.lang.String>();
+        javax.xml.ws.Holder<java.lang.String> del = new javax.xml.ws.Holder<java.lang.String>();
+        
         StartLauncher.getInfo(in, id, dat, fname, sname, nom, tel, mail, del, passw, dir, st);
         
         if(nom.value == null){
@@ -59,6 +68,7 @@ public class StartLauncher extends Controller{
             JOptionPane.showMessageDialog(null, "Bienvenido: " + nom.value, "Bienvenido", 0);
             Usuario.setNombre(nom.value);
             Usuario.setDate(dat.value);
+            Usuario.setMail(mail.value);
             hInstance.WndDragger.repaint();
             
             //Usuario.setMail(mail.value);

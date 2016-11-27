@@ -84,5 +84,22 @@ public class Raleway{
             Logger.getLogger(Raleway.class.getName()).log(Level.SEVERE, null, ex);
         }
         return f;
-    }       
+    }   
+    public Font getLabelFont(){
+        Font f = null;
+        
+        try {
+            Font font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("/res/Fonts/Raleway-Medium.ttf").openStream());
+            GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            genv.registerFont(font);
+            // makesure to derive the size
+            font = font.deriveFont(30f); 
+            f =  font;
+        } catch (IOException ex) {
+            Logger.getLogger(Raleway.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FontFormatException ex) {
+            Logger.getLogger(Raleway.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return f;
+    }     
 }

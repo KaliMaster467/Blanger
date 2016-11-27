@@ -66,7 +66,7 @@ public class MainUserMenu extends View implements Runnable{
         _sideBar.setLayout(null);
         _sideBar.setBounds(0, 0, View.VWIDTH/6, View.VHEIGHT);
         _sideBar.setBorder(new BorderRadius(Color.black, 1, 0, 0));
-        _sideBar.setBackground(Color.white);
+        _sideBar.setBackground(new Color(47, 47, 47));
         
 
         _sideBar.add(getBut("Personaliza", 0, this.getHeight()/4 + 20));
@@ -84,15 +84,15 @@ public class MainUserMenu extends View implements Runnable{
         
         ImageIcon nic = new ImageIcon(MainUserMenu.getScaledImage(imag, 20, 20));
         
-        JButton _personalize = new JButton(option, nic);
+        JButton _personalize = new JButton(option);
         _personalize.setOpaque(true);
-        _personalize.setBackground(Color.white);
-        _personalize.setForeground(Color.BLACK);
+        _personalize.setBackground(new Color(47, 47, 47));
+        _personalize.setForeground(Color.white);
         _personalize.setFocusable(false);
-        _personalize.setBorder(null);
+        _personalize.setBorder(new BorderRadius(Color.white, (int) .4, 0, 0));
         _personalize.setFont(ral.getBtnFont());
         _personalize.setBounds(1, h, _sideBar.getWidth() - 2, this.getHeight() / 20);
-        _personalize.setHorizontalAlignment(SwingConstants.LEFT);
+        _personalize.setHorizontalAlignment(SwingConstants.CENTER);
         
         return _personalize;
     }
@@ -117,20 +117,38 @@ public class MainUserMenu extends View implements Runnable{
         }else{
             JLabel lnombre = new JLabel("Nombre:");
             lnombre.setSize(200, 50);
-            lnombre.setLocation(20, _userP.getHeight()/8);
+            lnombre.setLocation(200, _userP.getHeight()/8);
             lnombre.setForeground(Color.black);
-            lnombre.setFont(ral.getForm());
+            lnombre.setFont(ral.getLabelFont());
             lnombre.setVisible(true);
             
             JLabel nombre = new JLabel(Usuario.getNombre());
             nombre.setSize(200, 50);
-            nombre.setLocation(70, _userP.getHeight()/6);
+            nombre.setLocation(350, _userP.getHeight()/8);
             nombre.setForeground(Color.black);
             nombre.setFont(ral.getForm());
-            nombre.setVisible(true);     
+            nombre.setVisible(true); 
+            
+            JLabel corr = new JLabel("Correo de la cuenta:");
+            corr.setSize(200, 50);
+            corr.setSize(300, 50);
+            corr.setLocation(200, _userP.getHeight()/6 + 20);
+            corr.setForeground(Color.black);
+            corr.setFont(ral.getLabelFont());
+            corr.setVisible(true);     
+            
+            JLabel corri = new JLabel(Usuario.getMail());
+            corri.setSize(200, 50);
+            
+            corri.setLocation(520, _userP.getHeight()/6 + 20);
+            corri.setForeground(Color.black);
+            corri.setFont(ral.getForm());
+            corri.setVisible(true);   
             
             _userP.add(lnombre);
             _userP.add(nombre);
+            _userP.add(corr);
+            _userP.add(corri);
             
         }
         

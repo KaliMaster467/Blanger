@@ -86,6 +86,8 @@ public class Wnd extends JFrame{
         
         public DragPanel(Wnd hInstance)
         {
+            Thread mouse = new Thread(this);
+            mouse.run();
             fon = new Raleway();
             this.hInstance = hInstance;
 
@@ -103,8 +105,7 @@ public class Wnd extends JFrame{
             blcStore = getblcS();
             wndTit = getwndTit();
             addComp();
-            Thread mouse = new Thread(this);
-            mouse.run();
+
             
         }
         public void addComp(){
@@ -143,11 +144,13 @@ public class Wnd extends JFrame{
 
         
                 int xMoved = (thisX + e.getX()) - (thisX + initialclick.x);
-                int X = thisX + xMoved;
-                hInstance.setLocation(X, hInstance.getLocation().y);
                 int yMoved = (thisY + e.getY()) - (thisY + initialclick.y);
+
+                // Move window to this position
+                int X = thisX + xMoved;
                 int Y = thisY + yMoved;
-                hInstance.setLocation(hInstance.getLocation().x, Y);
+                
+                hInstance.setLocation(X, Y);
 
             }
             });
@@ -164,6 +167,7 @@ public class Wnd extends JFrame{
                    
                     hInstance.dispose();
                     System.exit(0);
+                    
                 }
                 
             });
