@@ -89,7 +89,7 @@ public class MainUserMenu extends View implements Runnable{
         _personalize.setBackground(new Color(47, 47, 47));
         _personalize.setForeground(Color.white);
         _personalize.setFocusable(false);
-        _personalize.setBorder(new BorderRadius(Color.white, (int) .4, 0, 0));
+        _personalize.setBorder(null);
         _personalize.setFont(ral.getBtnFont());
         _personalize.setBounds(1, h, _sideBar.getWidth() - 2, this.getHeight() / 20);
         _personalize.setHorizontalAlignment(SwingConstants.CENTER);
@@ -144,6 +144,7 @@ public class MainUserMenu extends View implements Runnable{
             corri.setForeground(Color.black);
             corri.setFont(ral.getForm());
             corri.setVisible(true);   
+            
             
             _userP.add(lnombre);
             _userP.add(nombre);

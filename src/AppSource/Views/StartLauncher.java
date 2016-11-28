@@ -141,7 +141,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         super.paintComponent(g);
        
         
-        ImageIcon imgb = new ImageIcon(getClass().getResource("/res/back.gif"));
+        ImageIcon imgb = new ImageIcon(getClass().getResource("/res/bad.gif"));
         
         g.drawImage(imgb.getImage(), 0, 0, getWidth(), getHeight(), this);
         setOpaque(false);

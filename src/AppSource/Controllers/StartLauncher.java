@@ -7,6 +7,8 @@
 package AppSource.Controllers;
 import Core.Controller;
 import Core.auxil.Usuario;
+import Public.ErrWnd;
+import Public.OkWnd;
 import Public.Wnd;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
@@ -63,9 +65,12 @@ public class StartLauncher extends Controller{
         
         if(nom.value == null){
             
-            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos","EX" , 0, null);
+            //JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos","EX" , 0, null);
+            ErrWnd err = new ErrWnd("Usuario o contraseña incorrecta");
+            
         }else{
-            JOptionPane.showMessageDialog(null, "Bienvenido: " + nom.value, "Bienvenido", 0);
+            //JOptionPane.showMessageDialog(null, "Bienvenido: " + nom.value, "Bienvenido", 0);
+            OkWnd ok = new OkWnd("Bienvenido");
             Usuario.setNombre(nom.value);
             Usuario.setDate(dat.value);
             Usuario.setMail(mail.value);
