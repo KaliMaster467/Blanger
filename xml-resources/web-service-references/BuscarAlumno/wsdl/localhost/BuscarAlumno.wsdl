@@ -93,7 +93,7 @@
 <service name="BuscarAlumno">
   <documentation>gSOAP 2.8.36 generated service definition</documentation>
   <port name="BuscarAlumno" binding="tns:BuscarAlumno">
-    <SOAP:address location="http://localhost/cgi-bin/BuscarAlumno.cgi"/>
+    <SOAP:address location="http://192.168.1.69/cgi-bin/BuscarAlumno.cgi"/>
   </port>
 </service>
 

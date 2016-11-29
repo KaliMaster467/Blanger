@@ -79,7 +79,7 @@ public class Wnd extends JFrame{
         private JButton wndIni;
         private JButton wndHerr;
         private JButton wndSop;
-        private JButton optIni;
+        public JButton optIni;
         private JButton blcStore;
         private JLabel wndTit;
         private Raleway fon;

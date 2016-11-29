@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
 import javax.xml.bind.JAXBElement;
 
 
@@ -74,8 +75,23 @@ public class StartLauncher extends Controller{
             Usuario.setNombre(nom.value);
             Usuario.setDate(dat.value);
             Usuario.setMail(mail.value);
-            hInstance.WndDragger.repaint();
             
+             SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+             @Override
+            public Void doInBackground() {
+            
+            return null;
+            
+            }
+
+            @Override
+             protected void done() {
+         
+            hInstance.WndDragger.optIni.setText("Salir");
+        }
+            
+    }; 
+             worker.execute();
             //Usuario.setMail(mail.value);
             //Usuario.setSnombre(sname.value);
             //Usuario.setPass(passw.value);
