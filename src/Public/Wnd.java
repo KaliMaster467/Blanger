@@ -343,6 +343,7 @@ public class Wnd extends JFrame{
             store.setBounds(Wnd.WWIDTH - 300, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
             store.setBorder(new BorderRadius(Color.black, 1, 0, 0));
             store.setFocusPainted(false);
+            store.addActionListener(this);
             store.setVisible(true);
             return store;
         }
@@ -372,6 +373,22 @@ public class Wnd extends JFrame{
             {
                 try {
                     hInstance.addController("AppSource.Controllers.StartLauncher");
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NoSuchMethodException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvocationTargetException ex) {
+                    Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else if(e.getActionCommand().equals("Blackstore")){
+                try {
+                    hInstance.addController("AppSource.Controllers.Store");
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (NoSuchMethodException ex) {
