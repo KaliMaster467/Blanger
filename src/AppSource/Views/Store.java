@@ -14,6 +14,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -94,14 +96,21 @@ public class Store extends View{
             block.setBackground(Color.white);
 
             add(block, BorderLayout.CENTER);   
-
+                
             _topUI = new TopUI();
             //start.setBackground(Color.red);
             _topUI.setPreferredSize(new Dimension(this.getWidth(), 350));
+            
+            JPanel searchM = new JPanel();
+            searchM.setLayout(new FlowLayout());
+            searchM.setBackground(Color.red);
+            searchM.setPreferredSize(new Dimension(this.getWidth(), 100));
+            searchM.setSize(new Dimension(this.getWidth(), 100));
 
+            block.add(searchM, BorderLayout.CENTER);
+            
             add(_topUI, BorderLayout.PAGE_START);    
-            this.setComponentZOrder(block, 1);
-            this.setComponentZOrder(_topUI, 0);        
+                   
         }
 
     }

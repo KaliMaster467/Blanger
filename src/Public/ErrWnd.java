@@ -36,7 +36,7 @@ public class ErrWnd extends JFrame{
         
         Image imag = imgus.getImage();
         
-        ImageIcon nic = new ImageIcon(MainUserMenu.getScaledImage(imag, 190, 190));
+        ImageIcon nic = new ImageIcon(MainUserMenu.getScaledImage(imag, 120, 120));
         
         JPanel pan = new JPanel();
         pan.setBounds(0, 0, 700, 300);
@@ -45,14 +45,14 @@ public class ErrWnd extends JFrame{
         pan.setVisible(true);
         
         JLabel lab = new JLabel(nic);
-        lab.setBounds(20,30, 190, 190);
+        lab.setBounds(20,60, 120, 120);
         lab.setVisible(true);
         pan.add(lab);
         
         Raleway lat = new Raleway();
         
         JLabel des = new JLabel(ErrWnd.des);
-        des.setBounds(250, 30, 400, 100);
+        des.setBounds(190, 60, 500, 100);
         des.setForeground(Color.white);
         des.setFont(lat.getLabelFont());
         pan.add(des);

@@ -5,6 +5,7 @@
  */
 package Public;
 
+import AppSource.Views.StartLauncher;
 import Core.App;
 import Core.Controller;
 import Core.auxil.Usuario;
@@ -36,6 +37,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.SwingWorker;
 
 
 /**
@@ -402,7 +404,40 @@ public class Wnd extends JFrame{
                 } catch (InvocationTargetException ex) {
                     Logger.getLogger(Wnd.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }else if(e.getActionCommand().equals("Salir")){
+            Usuario.setNombre(null);
+            try {
+                hInstance.addController("AppSource.Controllers.StartLauncher");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
             }
+                         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+             @Override
+            public Void doInBackground() {
+            
+            return null;
+            
+            }
+
+            @Override
+             protected void done() {
+         
+            hInstance.WndDragger.optIni.setText("Iniciar sesión");
+        }
+            
+    }; 
+            worker.execute();
+        }
         }
     }
     public void addWndFrame(JPanel hextFrame)

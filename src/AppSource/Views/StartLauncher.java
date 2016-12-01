@@ -8,6 +8,7 @@ package AppSource.Views;
 
 import Core.Controller;
 import Core.View;
+import Core.auxil.Usuario;
 import Public.Styles.BorderRadius;
 import Public.Styles.Fonts.Raleway;
 import Public.Wnd;
