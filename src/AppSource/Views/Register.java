@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -223,8 +224,12 @@ public class Register extends View{
         public void actionPerformed(ActionEvent e) {
             if(e.getActionCommand().equals("Registrate")){
                 if(!_itel.getText().equals("")){
-                cont.InsertUser(_inombre.getText(), _ifname.getText(), _isname.getText(), Integer.parseInt(_itel.getText()), _icorreo.getText(), _ipass.getText());
-                //cont.RetreiveUser("Albert", "");
+                    try {
+                        cont.InsertUser(_inombre.getText(), _ifname.getText(), _isname.getText(), Integer.parseInt(_itel.getText()), _icorreo.getText(), _ipass.getText());
+                        //cont.RetreiveUser("Albert", "");
+                    } catch (NoSuchAlgorithmException ex) {
+                        Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null, "Llene nos campos","Error", 0, null);
                 }

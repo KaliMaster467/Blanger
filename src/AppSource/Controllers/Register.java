@@ -7,7 +7,9 @@ package AppSource.Controllers;
 
 import Core.Controller;
 import Core.ObjectFactory;
+import Core.Security;
 import Public.Wnd;
+import java.security.NoSuchAlgorithmException;
 import javax.swing.JOptionPane;
 import javax.xml.bind.JAXBElement;
 
@@ -26,7 +28,7 @@ public class Register extends Controller{
         
     }
         
-    public void InsertUser(String nombre, String fnombre, String snombre, int tel, String mail, String pass){
+    public void InsertUser(String nombre, String fnombre, String snombre, int tel, String mail, String pass) throws NoSuchAlgorithmException{
 
         
         /*if(Register.getInfo(in).equals("OK")){
@@ -50,7 +52,7 @@ public class Register extends Controller{
                     JAXBElement<String> createInputFLastName = factory.createInputFLastName(fnombre);
                     JAXBElement<String> createInputSLastName = factory.createInputSLastName(snombre);
                     JAXBElement<String> createInputName = factory.createInputName(nombre);
-                    JAXBElement<String> createInputPassw = factory.createInputPassw(pass);
+                    JAXBElement<String> createInputPassw = factory.createInputPassw(Security.md5(pass));
 
 
                     in.setTelephone(tel);

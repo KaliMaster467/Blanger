@@ -103,7 +103,7 @@ public class Store extends View{
             
             JPanel searchM = new JPanel();
             searchM.setLayout(new FlowLayout());
-            searchM.setBackground(Color.red);
+            searchM.setBackground(Color.white);
             searchM.setPreferredSize(new Dimension(this.getWidth(), 100));
             searchM.setSize(new Dimension(this.getWidth(), 100));
 

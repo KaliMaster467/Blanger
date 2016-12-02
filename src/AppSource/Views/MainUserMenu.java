@@ -79,7 +79,7 @@ public class MainUserMenu extends View implements Runnable{
     {
         _sideBar = new JPanel();
         _sideBar.setLayout(null);
-        _sideBar.setBounds(0, 0, View.VWIDTH/6, View.VHEIGHT);
+        _sideBar.setBounds(0, 0, View.VWIDTH/8, View.VHEIGHT);
         _sideBar.setBorder(new BorderRadius(Color.black, 1, 0, 0));
         _sideBar.setBackground(new Color(47, 47, 47));
         

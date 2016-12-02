@@ -7,6 +7,7 @@
 package AppSource.Views;
 
 import Core.Controller;
+import Core.Security;
 import Core.View;
 import Core.auxil.Usuario;
 import Public.Styles.BorderRadius;
@@ -36,6 +37,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
@@ -141,6 +143,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         //_logIn.setBorder(new BorderRadius(Color.white, 1, 0, 0));
         //_logIn.setFocusPainted(false);
         //_logIn.setText("Iniciar");
+        //this.getRootPane().setDefaultButton(_logIn);
         this.add(_logIn);
         this.add(reg());
         
@@ -149,6 +152,8 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         
         Thread sizes = new Thread(this);
         sizes.start();
+        
+        
     }
     protected void paintComponent(Graphics g)
     {
@@ -222,8 +227,12 @@ public class StartLauncher extends View implements Runnable, ActionListener{
                 Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else if(e.getActionCommand().equals("Iniciar")){
-            cont.RetreiveUser(_usrTxt.getText(), _pswTxt.getText()
-            );
+            try {
+                cont.RetreiveUser(_usrTxt.getText(), Security.md5(_pswTxt.getText())
+                );
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     private class StartLauncher_Main_Login_Container extends JPanel
