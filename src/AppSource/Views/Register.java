@@ -215,7 +215,7 @@ public class Register extends View{
                 _icorreo.setBounds(hInstance.getWidth()/4 * 2 - 10, _correo.getLocation().y + 50, hInstance.getWidth() / 4 - 50 , 40);
                 _pass.setBounds(hInstance.getWidth()/4 * 2 + 5, _correo.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
                 _ipass.setBounds(hInstance.getWidth()/4 * 2 - 10, _correo.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
-                but.setBounds(hInstance.getWidth()/5 * 2 - 10, _tel.getLocation().y + 180, hInstance.getWidth() / 4 - 50 , 40);
+                but.setBounds(hInstance.getWidth()/4 * 2 - 10, _tel.getLocation().y + 20, hInstance.getWidth() / 4 - 50 , 40);
             }
             
         }
