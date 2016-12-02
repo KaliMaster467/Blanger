@@ -8,8 +8,13 @@ package AppSource.Controllers;
 import Core.Controller;
 import Core.ObjectFactory;
 import Core.Security;
+import Public.ErrWnd;
+import Public.OkWnd;
 import Public.Wnd;
+import java.lang.reflect.InvocationTargetException;
 import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.xml.bind.JAXBElement;
 
@@ -63,7 +68,30 @@ public class Register extends Controller{
                     in.setSLastName(createInputSLastName);
                     in.setPassw(createInputPassw);
                     in.setName(createInputName);   
-                    System.out.println(Register.getInfo(in));
+                    
+                    String ls = Register.getInfo(in);
+                    //System.out.println(Register.getInfo(in));
+                    
+                    if(ls.equals("OK")){
+                        OkWnd ex = new OkWnd("Se registro con éxito");
+                        try {
+                            hInstance.addController("AppSource.Controllers.StartLauncher");
+                        } catch (ClassNotFoundException ex1) {
+                            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex1);
+                        } catch (NoSuchMethodException ex1) {
+                            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex1);
+                        } catch (InstantiationException ex1) {
+                            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex1);
+                        } catch (IllegalAccessException ex1) {
+                            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex1);
+                        } catch (IllegalArgumentException ex1) {
+                            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex1);
+                        } catch (InvocationTargetException ex1) {
+                            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex1);
+                        }
+                    }else{
+                        ErrWnd err = new ErrWnd("Intente de nuevo");
+                    }
                     
                 }else{
                     JOptionPane.showMessageDialog(null, "Email incorrecto");
