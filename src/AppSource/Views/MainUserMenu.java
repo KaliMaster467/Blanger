@@ -99,10 +99,10 @@ public class MainUserMenu extends View implements Runnable, ActionListener{
         _sideBar.setBackground(new Color(0,0,0,128));
         
 
-        _sideBar.add(getBut("Personaliza", 0, this.getLocation().y));
+        _sideBar.add(getBut("Mi perfil", 0, this.getLocation().y));
         _sideBar.add(getBut("Información", 0, this.getHeight()/4 + this.getHeight() / 20 + 20));
-        _sideBar.add(getBut("Contenido", 0, this.getHeight()/4 + 2*this.getHeight() / 20 + 20));
-        _sideBar.add(getBut("Mi perfil", 0, this.getHeight()/4 + 3*this.getHeight() /20 + 20));
+        _sideBar.add(getBut("", 0, this.getHeight()/4 + 2*this.getHeight() / 20 + 20));
+        //_sideBar.add(getBut("Mi perfil", 0, this.getHeight()/4 + 3*this.getHeight() /20 + 20));
         return _sideBar;
     }
     private JButton getBut(String option , int w, int h){
@@ -177,11 +177,28 @@ public class MainUserMenu extends View implements Runnable, ActionListener{
             corri.setFont(ral.getForm());
             corri.setVisible(true);   
             
+            JLabel date = new JLabel("Fecha de registro:");
+            date.setSize(200, 50);
+            date.setSize(300, 50);
+            date.setLocation(200, _userP.getHeight()/6 + 80);
+            date.setForeground(Color.white);
+            date.setFont(ral.getLabelFont());
+            date.setVisible(true);              
+            
+            JLabel idate = new JLabel(Usuario.getDate());
+            
+            idate.setSize(300, 50);
+            idate.setLocation(500, _userP.getHeight()/6 + 80);
+            idate.setForeground(Color.white);
+            idate.setFont(ral.getForm());
+            idate.setVisible(true);  
             
             _userP.add(lnombre);
             _userP.add(nombre);
             _userP.add(corr);
             _userP.add(corri);
+            _userP.add(date);
+            _userP.add(idate);
             
         }
         

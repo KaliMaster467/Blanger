@@ -244,7 +244,7 @@ public class Register extends View{
         @Override
         public void run() {
             while(true){
-                _title.setBounds(hInstance.getWidth()/5 *  2 + 20, this.getHeight()/15 - 80, hInstance.getWidth(), 95);
+                _title.setBounds(hInstance.getWidth()/5 *  2 + 20, this.getHeight()/15 , hInstance.getWidth(), 95);
                 _Nombre.setBounds(hInstance.getWidth()/5 * 2 -10, _title.getLocation().y + 120, hInstance.getWidth() / 5 , 40);
                 _inombre.setBounds(hInstance.getWidth()/5 * 2 -10, _Nombre.getLocation().y + 50, hInstance.getWidth() / 4 - 50 , 40);
                 _fname.setBounds(hInstance.getWidth()/5 * 2 -10, _Nombre.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
@@ -265,12 +265,21 @@ public class Register extends View{
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getActionCommand().equals("Registrate")){
-                if(!_itel.getText().equals("")){
-                    try {
-                        cont.InsertUser(_inombre.getText(), _ifname.getText(), _isname.getText(), Integer.parseInt(_itel.getText()), _icorreo.getText(), _ipass.getText());
-                        //cont.RetreiveUser("Albert", "");
-                    } catch (NoSuchAlgorithmException ex) {
-                        Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+                if(_inombre.equals("")|| _ifname.equals("") || _isname.equals("")
+                    || _icorreo.equals("") || _ipass.equals("")){
+                    if(!_itel.getText().equals("")){
+                        try {
+                            cont.InsertUser(_inombre.getText(), _ifname.getText(), _isname.getText(), Integer.parseInt(_itel.getText()), _icorreo.getText(), _ipass.getText());
+                            //cont.RetreiveUser("Albert", "");
+                        } catch (NoSuchAlgorithmException ex) {
+                            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+                        }catch (NumberFormatException ex){
+                            JOptionPane.showMessageDialog(null, "Telefono incorrecto");
+                        }
+                    }else if(!(_itel.getText().length() == 10)){
+                        JOptionPane.showMessageDialog(null, "Telefono incorrecto");
+                    } else{
+                        JOptionPane.showMessageDialog(null, "Llene nos campos","Error", 0, null);
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "Llene nos campos","Error", 0, null);
