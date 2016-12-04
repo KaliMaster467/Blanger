@@ -88,6 +88,8 @@ public class StartLauncher extends Controller{
              protected void done() {
          
             hInstance.WndDragger.optIni.setText("Salir");
+            hInstance.WndDragger.regist.setText("");
+            hInstance.WndDragger.regist.setEnabled(false);
         }
             
     }; 

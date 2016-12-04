@@ -145,7 +145,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         //_logIn.setText("Iniciar");
         //this.getRootPane().setDefaultButton(_logIn);
         this.add(_logIn);
-        this.add(reg());
+        //this.add(reg());
         
         
         this.setVisible(true);
@@ -196,7 +196,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         panel.setBounds(0, hInstance.getHeight() - View.VHEIGHT, 300, 100);
         panel.setLayout(new BoxLayout(panel, BoxLayout.LINE_AXIS));
         panel.setOpaque(true);
-        panel.setBackground(new Color(255, 255, 255, 50));
+        panel.setBackground(Color.black);
         
         
         JButton register = new JButton("Registrate");

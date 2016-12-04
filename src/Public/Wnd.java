@@ -81,6 +81,7 @@ public class Wnd extends JFrame{
         private JButton wndIni;
         private JButton wndHerr;
         private JButton wndSop;
+        public JButton regist;
         public JButton optIni;
         private JButton blcStore;
         private JLabel wndTit;
@@ -106,6 +107,7 @@ public class Wnd extends JFrame{
             optIni = getoptI();
             blcStore = getblcS();
             wndTit = getwndTit();
+            regist = getregis();
             addComp();
 
             
@@ -120,6 +122,7 @@ public class Wnd extends JFrame{
             this.add(optIni);
             this.add(wndTit);
             this.add(blcStore);
+            this.add(regist);
             
             this.setVisible(true);
         }
@@ -197,6 +200,7 @@ public class Wnd extends JFrame{
                     hInstance.setExtendedState(hInstance.getExtendedState() | JFrame.MAXIMIZED_BOTH);
                     optIni.setBounds(Wnd.WWIDTH - 150, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
                     blcStore.setBounds(Wnd.WWIDTH - 300, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
+                    regist.setBounds(Wnd.WWIDTH - 450, wndClose.getLocation().y + wndClose.getHeight(), 150, 30 );
                 }
               
             });
@@ -239,6 +243,7 @@ public class Wnd extends JFrame{
                     hInstance.setBounds(200, 200, Wnd.WWIDTH - 200, (int)Wnd.getWndSize().getHeight() - 100);
                     optIni.setBounds(hInstance.getWidth() - 150, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
                     blcStore.setBounds(hInstance.getWidth() - 300, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
+                    regist.setBounds(hInstance.getWidth() - 450, wndClose.getLocation().y + wndClose.getHeight(), 150, 30 );
                 }
               
             });
@@ -349,9 +354,41 @@ public class Wnd extends JFrame{
             store.setVisible(true);
             return store;
         }
+        public JButton getregis(){
+            JButton register = new JButton("Registrate");
+            //register.setBackground(new Color(23, 247, 61));
+            register.setBackground(Color.black);
+            register.setFont(fon.getMinFont());
+            register.setForeground(Color.white);
+            register.setBounds(Wnd.WWIDTH - 450, wndClose.getLocation().y + wndClose.getHeight(), 150, 30 );
+            register.setBorder(new BorderRadius(Color.black, 1, 0, 0));
+            register.setFocusPainted(false);
+            register.setVisible(true);
+            register.addActionListener(this);
+            
+            return register;
+        }
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(e.getActionCommand().equals("Inicio"))
+                    if(e.getActionCommand().equals("Registrate")){
+            try {
+               
+                hInstance.addController("AppSource.Controllers.Register");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+                    else if(e.getActionCommand().equals("Inicio"))
             {
                 //JOptionPane.showMessageDialog(null, "Inicio");
                 
@@ -433,6 +470,8 @@ public class Wnd extends JFrame{
              protected void done() {
          
             hInstance.WndDragger.optIni.setText("Iniciar sesión");
+            hInstance.WndDragger.regist.setText("Registrate");
+            hInstance.WndDragger.regist.setEnabled(true);
         }
             
     }; 

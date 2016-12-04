@@ -6,6 +6,7 @@
 package AppSource.Views;
 
 import Core.View;
+import Public.Styles.BorderRadius;
 import Public.Styles.Fonts.Lato;
 import Public.Styles.Fonts.Raleway;
 import Public.Wnd;
@@ -27,6 +28,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -52,17 +54,42 @@ public class Register extends View{
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.setLayout(null);
+        this.setLayout(new BorderLayout());
         this.setBounds(0, 60, View.VWIDTH, View.VHEIGHT);
         this.setBackground(Color.white);
         
         mainPanel = new MainPanel(this, hInstance, cont);
-        
-        add(mainPanel);
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClass‌​Name());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Store.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+        JScrollPane scroll = new JScrollPane(mainPanel);
+        scroll.getVerticalScrollBar().setUnitIncrement(16);
+        scroll.setBorder(new BorderRadius(Color.black, 1, 0, 0));
+        //scroll.setBorder(new BorderRadius(Color.BLACK, 1, 0, 0));
+        add(scroll);
+        //add(mainPanel, BorderLayout.PAGE_START);
         //add(mainScroll(mainPanel));
         //JScrollPane pane = new JScrollPane(mainPanel);
         //pane.setPreferredSize(new Dimension(400, 200));
-       
+        try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+        }       
         this.setVisible(true);
         
     }    
@@ -92,15 +119,30 @@ public class Register extends View{
             this.hInstance = hInstance;
             this.cont = cont;
             this.mainContainer = mainContainer;
-            this.setPreferredSize(new Dimension(View.VWIDTH, 3000));
+            this.setLayout(new BorderLayout());
+            this.setPreferredSize(new Dimension(mainContainer.getWidth(), 1200));
+            //this.setBackground(Color.red);
             
+            /*Lato ral = new Lato();
+            Raleway ra = new Raleway();
+            _title = new JLabel("Registrate", SwingConstants.CENTER);
+            
+            _title.setForeground(Color.black);
+            _title.setFont(ral.getTit());   
+            add(_title, BorderLayout.PAGE_START);
+            
+            _Nombre = new JLabel("Nombre:");
+            
+            _Nombre.setForeground(Color.black);
+            _Nombre.setFont(ral.getMainWnd());
+            add(_Nombre, BorderLayout.PAGE_START);*/
             init();
             
             
             
         }
         private void init(){
-            this.setBounds(0, 0, View.VWIDTH, 2000);
+            this.setBounds(0, 0, View.VWIDTH, 1200);
             
             this.setBackground(Color.white);  
             this.setLayout(new BorderLayout(0, 0));
@@ -202,20 +244,20 @@ public class Register extends View{
         @Override
         public void run() {
             while(true){
-                _title.setBounds(hInstance.getWidth()/5 *  2 + 20, this.getHeight()/15 - 80, hInstance.getWidth() / 4 - 50, 95);
-                _Nombre.setBounds(hInstance.getWidth()/10 * 2 + 5, _title.getLocation().y + 120, hInstance.getWidth() / 5 , 40);
-                _inombre.setBounds(hInstance.getWidth()/10 * 2 - 10, _Nombre.getLocation().y + 50, hInstance.getWidth() / 4 - 50 , 40);
-                _fname.setBounds(hInstance.getWidth()/10 * 2 + 5, _Nombre.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
-                _ifname.setBounds(hInstance.getWidth()/10 * 2 - 10, _Nombre.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
-                _sname.setBounds(hInstance.getWidth()/10 * 2 + 5, _fname.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
-                _isname.setBounds(hInstance.getWidth()/10 * 2 - 10, _fname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
-                _tel.setBounds(hInstance.getWidth()/10 * 2 + 5, _sname.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
-                _itel.setBounds(hInstance.getWidth()/10 * 2 - 10, _sname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
-                _correo.setBounds(hInstance.getWidth()/4 * 2 + 5, _title.getLocation().y + 120, hInstance.getWidth() / 5 , 40);
-                _icorreo.setBounds(hInstance.getWidth()/4 * 2 - 10, _correo.getLocation().y + 50, hInstance.getWidth() / 4 - 50 , 40);
-                _pass.setBounds(hInstance.getWidth()/4 * 2 + 5, _correo.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
-                _ipass.setBounds(hInstance.getWidth()/4 * 2 - 10, _correo.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
-                but.setBounds(hInstance.getWidth()/4 * 2 - 10, _tel.getLocation().y + 20, hInstance.getWidth() / 4 - 50 , 40);
+                _title.setBounds(hInstance.getWidth()/5 *  2 + 20, this.getHeight()/15 - 80, hInstance.getWidth(), 95);
+                _Nombre.setBounds(hInstance.getWidth()/5 * 2 -10, _title.getLocation().y + 120, hInstance.getWidth() / 5 , 40);
+                _inombre.setBounds(hInstance.getWidth()/5 * 2 -10, _Nombre.getLocation().y + 50, hInstance.getWidth() / 4 - 50 , 40);
+                _fname.setBounds(hInstance.getWidth()/5 * 2 -10, _Nombre.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
+                _ifname.setBounds(hInstance.getWidth()/5 * 2 -10, _Nombre.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
+                _sname.setBounds(hInstance.getWidth()/5 * 2 -10, _fname.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
+                _isname.setBounds(hInstance.getWidth()/5 * 2 -10, _fname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
+                _tel.setBounds(hInstance.getWidth()/5 * 2 -10, _sname.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
+                _itel.setBounds(hInstance.getWidth()/5 * 2 -10, _sname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
+                _correo.setBounds(hInstance.getWidth()/5 * 2 -10, _tel.getLocation().y + 120, hInstance.getWidth() / 5 , 40);
+                _icorreo.setBounds(hInstance.getWidth()/5 * 2 -10, _correo.getLocation().y + 50, hInstance.getWidth() / 4 - 50 , 40);
+                _pass.setBounds(hInstance.getWidth()/5 * 2 -10, _correo.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
+                _ipass.setBounds(hInstance.getWidth()/5 * 2 -10, _correo.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
+                but.setBounds(hInstance.getWidth()/5 * 2 -10, _ipass.getLocation().y + 150, hInstance.getWidth() / 4 - 50 , 40);
             }
             
         }

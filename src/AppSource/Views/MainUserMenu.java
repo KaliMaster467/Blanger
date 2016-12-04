@@ -16,6 +16,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +33,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author alb
  */
-public class MainUserMenu extends View implements Runnable{
+public class MainUserMenu extends View implements Runnable, ActionListener{
     
     private JPanel _sideBar;
     private Mumain _mainP;
@@ -55,7 +57,8 @@ public class MainUserMenu extends View implements Runnable{
         }
         setLayout(null);
         setBounds(0, 60, View.VWIDTH, View.VHEIGHT);
-        this.setBackground(java.awt.Color.black);
+        setBackground(new Color(0,0,0, 128));
+        setBorder(new BorderRadius(Color.black, 1, 0 ,0));
         _sideBar = this.sideBar();
         _mainP = new Mumain(this);
         _userP = userP();
@@ -65,6 +68,18 @@ public class MainUserMenu extends View implements Runnable{
         add(_sideBar);
         
      
+    }
+        public void paint(Graphics g)
+    {
+        Dimension dim = this.getSize();
+        
+        ImageIcon imgb = new ImageIcon(getClass().getResource("/res/menback.jpg"));
+        
+        g.drawImage(imgb.getImage(), 0, 0, dim.width, dim.height, null);
+        setOpaque(false);
+        
+        super.paint(g);
+                    
     }
     @Override
     public void run() {
@@ -79,12 +94,12 @@ public class MainUserMenu extends View implements Runnable{
     {
         _sideBar = new JPanel();
         _sideBar.setLayout(null);
-        _sideBar.setBounds(0, 0, View.VWIDTH/8, View.VHEIGHT);
+        _sideBar.setBounds(0,  0, View.VWIDTH/6, View.VHEIGHT);
         _sideBar.setBorder(new BorderRadius(Color.black, 1, 0, 0));
-        _sideBar.setBackground(new Color(47, 47, 47));
+        _sideBar.setBackground(new Color(0,0,0,128));
         
 
-        _sideBar.add(getBut("Personaliza", 0, this.getHeight()/4 + 20));
+        _sideBar.add(getBut("Personaliza", 0, this.getLocation().y));
         _sideBar.add(getBut("Información", 0, this.getHeight()/4 + this.getHeight() / 20 + 20));
         _sideBar.add(getBut("Contenido", 0, this.getHeight()/4 + 2*this.getHeight() / 20 + 20));
         _sideBar.add(getBut("Mi perfil", 0, this.getHeight()/4 + 3*this.getHeight() /20 + 20));
@@ -101,13 +116,15 @@ public class MainUserMenu extends View implements Runnable{
         
         JButton _personalize = new JButton(option);
         _personalize.setOpaque(true);
-        _personalize.setBackground(new Color(47, 47, 47));
+        _personalize.setBackground(new Color(0,0,0,200));
         _personalize.setForeground(Color.white);
         _personalize.setFocusable(false);
         _personalize.setBorder(null);
         _personalize.setFont(ral.getBtnFont());
-        _personalize.setBounds(1, h, _sideBar.getWidth() - 2, this.getHeight() / 20);
-        _personalize.setHorizontalAlignment(SwingConstants.CENTER);
+        _personalize.setContentAreaFilled(false);
+        _personalize.addActionListener(this);
+        _personalize.setBounds(30, h, _sideBar.getWidth() - 2, this.getHeight() / 20);
+        _personalize.setHorizontalAlignment(SwingConstants.LEFT);
         
         return _personalize;
     }
@@ -116,9 +133,9 @@ public class MainUserMenu extends View implements Runnable{
         Public.Styles.Fonts.Raleway ral = new Public.Styles.Fonts.Raleway();
         _userP = new JPanel();
         _userP.setLayout(null);
-        _userP.setBackground(Color.white);
+        _userP.setBackground(new Color(30, 32, 38, 140));
         _userP.setBorder(new BorderRadius(Color.black, 1, 0, 0));
-        _userP.setBounds(_sideBar.getWidth(), this.getHeight() / 5, View.VWIDTH - _sideBar.getWidth(), View.VHEIGHT);
+        _userP.setBounds(_sideBar.getWidth(), this.getHeight() / 7, View.VWIDTH - _sideBar.getWidth(), View.VHEIGHT);
         _userP.setVisible(true);
         
         if(Usuario.getNombre() == null){
@@ -133,14 +150,14 @@ public class MainUserMenu extends View implements Runnable{
             JLabel lnombre = new JLabel("Nombre:");
             lnombre.setSize(200, 50);
             lnombre.setLocation(200, _userP.getHeight()/8);
-            lnombre.setForeground(Color.black);
+            lnombre.setForeground(Color.white);
             lnombre.setFont(ral.getLabelFont());
             lnombre.setVisible(true);
             
             JLabel nombre = new JLabel(Usuario.getNombre());
             nombre.setSize(200, 50);
             nombre.setLocation(350, _userP.getHeight()/8);
-            nombre.setForeground(Color.black);
+            nombre.setForeground(Color.white);
             nombre.setFont(ral.getForm());
             nombre.setVisible(true); 
             
@@ -148,7 +165,7 @@ public class MainUserMenu extends View implements Runnable{
             corr.setSize(200, 50);
             corr.setSize(300, 50);
             corr.setLocation(200, _userP.getHeight()/6 + 20);
-            corr.setForeground(Color.black);
+            corr.setForeground(Color.white);
             corr.setFont(ral.getLabelFont());
             corr.setVisible(true);     
             
@@ -156,7 +173,7 @@ public class MainUserMenu extends View implements Runnable{
             corri.setSize(200, 50);
             
             corri.setLocation(520, _userP.getHeight()/6 + 20);
-            corri.setForeground(Color.black);
+            corri.setForeground(Color.white);
             corri.setFont(ral.getForm());
             corri.setVisible(true);   
             
@@ -184,6 +201,13 @@ public class MainUserMenu extends View implements Runnable{
 
         return resizedImg;
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("Mi perfil")){
+            System.out.println("GGmi");
+        }
+    }
     public class Mumain extends JPanel{
         
     private MainUserMenu mainContainer;
@@ -192,21 +216,23 @@ public class MainUserMenu extends View implements Runnable{
     {
         this.mainContainer = mainContainer;
         setLayout(null);
+        this.setBorder(new BorderRadius(Color.black, 1, 0, 0));
         setBounds(mainContainer.getSidebar().getWidth(), 0, View.VWIDTH - mainContainer.getSidebar().getWidth(), View.VHEIGHT);
-        this.setBackground(java.awt.Color.red);
+        this.setBackground(new Color(0,0,0,130));
         setVisible(true);
     }
-    public void paint(Graphics g)
+    /*public void paint(Graphics g)
     {
         Dimension dim = this.getSize();
         
-        ImageIcon imgb = new ImageIcon(getClass().getResource("/res/backIni.png"));
+        ImageIcon imgb = new ImageIcon(getClass().getResource("/res/menback.jpg"));
         
         g.drawImage(imgb.getImage(), 0, 0, dim.width, dim.height, null);
         setOpaque(false);
+        
         super.paint(g);
                     
-    }
+    }*/
 }
     
 }
