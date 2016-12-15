@@ -3,8 +3,8 @@
   <services/>
   <clients>
     <client name="CrearAlumno">
-      <wsdl-url>http://localhost/CrearAlumno.wsdl</wsdl-url>
-      <local-wsdl-file>localhost/CrearAlumno.wsdl</local-wsdl-file>
+      <wsdl-url>http://192.168.1.69/CrearAlumno.wsdl</wsdl-url>
+      <local-wsdl-file>192.168.1.69/CrearAlumno.wsdl</local-wsdl-file>
       <package-name forceReplace="true">Services</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -22,7 +22,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost/CrearAlumno.wsdl</wsimport-option-value>
+          <wsimport-option-value>http://192.168.1.69/CrearAlumno.wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -38,45 +38,9 @@
         </wsimport-option>
       </wsimport-options>
     </client>
-    <client name="CrearAlumno_1">
-      <wsdl-url>http://localhost/CrearAlumno.wsdl</wsdl-url>
-      <local-wsdl-file>localhost/CrearAlumno.wsdl</local-wsdl-file>
-      <package-name forceReplace="true">Core</package-name>
-      <catalog-file>catalog.xml</catalog-file>
-      <wsimport-options>
-        <wsimport-option>
-          <wsimport-option-name>extension</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>verbose</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>fork</wsimport-option-name>
-          <wsimport-option-value>false</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost/CrearAlumno.wsdl</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xnocompile</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>xendorsed</wsimport-option-name>
-          <wsimport-option-value>true</wsimport-option-value>
-        </wsimport-option>
-        <wsimport-option>
-          <wsimport-option-name>package</wsimport-option-name>
-          <wsimport-option-value>Core</wsimport-option-value>
-        </wsimport-option>
-      </wsimport-options>
-    </client>
     <client name="BuscarAlumno">
-      <wsdl-url>http://localhost/BuscarAlumno.wsdl</wsdl-url>
-      <local-wsdl-file>localhost/BuscarAlumno.wsdl</local-wsdl-file>
+      <wsdl-url>http://192.168.1.69/BuscarAlumno.wsdl</wsdl-url>
+      <local-wsdl-file>192.168.1.69/BuscarAlumno.wsdl</local-wsdl-file>
       <package-name forceReplace="true">Buscar</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
@@ -94,7 +58,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost/BuscarAlumno.wsdl</wsimport-option-value>
+          <wsimport-option-value>http://192.168.1.69/BuscarAlumno.wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>

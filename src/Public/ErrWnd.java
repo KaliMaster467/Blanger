@@ -28,7 +28,8 @@ public class ErrWnd extends JFrame{
         SwingUtilities.invokeLater(new Runnable() {
     @Override
     public void run() {
-      
+        
+        
         setSize(700, 300);
         setLocationRelativeTo(null);
        
@@ -64,8 +65,9 @@ public class ErrWnd extends JFrame{
         pan.add(but);*/
         
         add(pan);
-        
+       
         setVisible(true);
+        
         
     }
     });

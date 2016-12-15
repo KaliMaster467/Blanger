@@ -86,13 +86,40 @@ public class Wnd extends JFrame{
         private JButton blcStore;
         private JLabel wndTit;
         private Raleway fon;
+        private Point initialClick;
         
         public DragPanel(Wnd hInstance)
         {
-            Thread mouse = new Thread(this);
-            mouse.run();
+         this.hInstance = hInstance;   
+    addMouseListener(new MouseAdapter() {
+        public void mousePressed(MouseEvent e) {
+            initialClick = e.getPoint();
+            getComponentAt(initialClick);
+        }
+    });
+
+    addMouseMotionListener(new MouseMotionAdapter() {
+        @Override
+        public void mouseDragged(MouseEvent e) {
+
+            // get location of Window
+            int thisX = hInstance.getLocation().x;
+            int thisY = hInstance.getLocation().y;
+
+            // Determine how much the mouse moved since the initial click
+            int xMoved = (thisX + e.getX()) - (thisX + initialClick.x);
+            int yMoved = (thisY + e.getY()) - (thisY + initialClick.y);
+
+            // Move window to this position
+            int X = thisX + xMoved;
+            int Y = thisY + yMoved;
+            hInstance.setLocation(X, Y);
+        }
+    });
+            //Thread mouse = new Thread(this);
+            //mouse.run();
             fon = new Raleway();
-            this.hInstance = hInstance;
+            //this.hInstance = hInstance;
 
             this.setBounds(0, 0, this.getWidth(), 100);
             this.setLayout(null);

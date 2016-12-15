@@ -11,6 +11,7 @@ import Core.Security;
 import Core.View;
 import Core.auxil.Usuario;
 import Public.Styles.BorderRadius;
+import Public.Styles.Fonts.Lato;
 import Public.Styles.Fonts.Raleway;
 import Public.Wnd;
 import java.awt.Color;
@@ -41,6 +42,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -56,8 +58,11 @@ public class StartLauncher extends View implements Runnable, ActionListener{
     private JTextField _usrTxt;
     private JLabel _wlcTxt;
     private Raleway fon;
+    private Lato la;
     private JPasswordField _pswTxt;
     private Public.Styles.RoundedButton _logIn;
+    private JLabel loadIcon;
+    private JFrame fa;
     private final AppSource.Controllers.StartLauncher cont;
     
     public StartLauncher(Wnd hInstance, AppSource.Controllers.StartLauncher cont)
@@ -75,24 +80,26 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
         }
-        setLayout(null);
+        setLayout(new BorderLayout());
         setBounds(0, 60, View.VWIDTH, View.VHEIGHT);
         
         this.setBackground(java.awt.Color.black);
         
         //this.add(new StartLauncher_Main_Login_Container(hInstance.getLocation().x
         //,hInstance.getLocation().y));
-        ImageIcon imgus = new ImageIcon(getClass().getResource("/res/userx.png"));
+        ImageIcon imgus = new ImageIcon(getClass().getResource("/res/usxx.png"));
+
         
         Image imag = imgus.getImage();
         
-        ImageIcon nic = new ImageIcon(MainUserMenu.getScaledImage(imag, 190, 190));
+        ImageIcon nic = new ImageIcon(MainUserMenu.getScaledImage(imag, 150, 150));
         
         _wlcTxt = new JLabel("Bienvenido", SwingConstants.CENTER);
         _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/10 - 30, hInstance.getWidth() / 2, 60 );
         _wlcTxt.setForeground(Color.white);
         fon = new Raleway();
-        _wlcTxt.setFont(fon.getTitleFont());
+        la = new Lato();
+        _wlcTxt.setFont(la.getTit());
         _wlcTxt.setBorder(BorderFactory.createCompoundBorder(_wlcTxt.getBorder(), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
         _wlcTxt.setHorizontalAlignment(JLabel.CENTER);
         _wlcTxt.setVisible(true);
@@ -154,6 +161,14 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         sizes.start();
         
         
+    }
+    public void addLoad(JLabel load){
+        this.loadIcon = load;
+        
+        add(load );
+    }
+    public void removeLoad(){
+        this.remove(loadIcon);
     }
     protected void paintComponent(Graphics g)
     {

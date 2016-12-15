@@ -6,6 +6,7 @@
 package AppSource.Views;
 
 import Core.View;
+import Public.ErrWnd;
 import Public.Styles.BorderRadius;
 import Public.Styles.Fonts.Lato;
 import Public.Styles.Fonts.Raleway;
@@ -254,10 +255,10 @@ public class Register extends View{
                 _tel.setBounds(hInstance.getWidth()/5 * 2 -10, _sname.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
                 _itel.setBounds(hInstance.getWidth()/5 * 2 -10, _sname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
                 _correo.setBounds(hInstance.getWidth()/5 * 2 -10, _tel.getLocation().y + 120, hInstance.getWidth() / 5 , 40);
-                _icorreo.setBounds(hInstance.getWidth()/5 * 2 -10, _correo.getLocation().y + 50, hInstance.getWidth() / 4 - 50 , 40);
+                _icorreo.setBounds(hInstance.getWidth()/5 * 2 -10, _correo.getLocation().y + 70, hInstance.getWidth() / 4 - 50 , 40);
                 _pass.setBounds(hInstance.getWidth()/5 * 2 -10, _correo.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
                 _ipass.setBounds(hInstance.getWidth()/5 * 2 -10, _correo.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
-                but.setBounds(hInstance.getWidth()/5 * 2 -10, _ipass.getLocation().y + 150, hInstance.getWidth() / 4 - 50 , 40);
+                but.setBounds(hInstance.getWidth()/5 * 2 -10, _ipass.getLocation().y + 120, hInstance.getWidth() / 4 - 50 , 40);
             }
             
         }
@@ -274,15 +275,22 @@ public class Register extends View{
                         } catch (NoSuchAlgorithmException ex) {
                             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
                         }catch (NumberFormatException ex){
-                            JOptionPane.showMessageDialog(null, "Telefono incorrecto");
+                            //JOptionPane.showMessageDialog(null, "Telefono incorrecto");
+                            ErrWnd err = new ErrWnd("Telefono incorrecto");
                         }
                     }else if(!(_itel.getText().length() == 10)){
-                        JOptionPane.showMessageDialog(null, "Telefono incorrecto");
+                        //JOptionPane.showMessageDialog(null, "Telefono incorrecto");
+                        ErrWnd err = new ErrWnd("Telefono incorrecto");
+
                     } else{
-                        JOptionPane.showMessageDialog(null, "Llene nos campos","Error", 0, null);
+                        //JOptionPane.showMessageDialog(null, "Llene nos campos","Error", 0, null);
+                                        ErrWnd err = new ErrWnd("Llene los campos");
+
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null, "Llene nos campos","Error", 0, null);
+                                    ErrWnd err = new ErrWnd("Llene los campos");
+
+                    //JOptionPane.showMessageDialog(null, "Llene nos campos","Error", 0, null);
                 }
             }
         }

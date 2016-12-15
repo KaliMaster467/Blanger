@@ -18,8 +18,8 @@
     </target>
     <target name="wsimport-client-CrearAlumno" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/CrearAlumno"/>
-        <property name="wsdl-CrearAlumno" location="xml-resources/web-service-references/CrearAlumno/wsdl/localhost/CrearAlumno.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CrearAlumno" destdir="${build.generated.dir}/jax-wsCache/CrearAlumno" wsdl="${wsdl-CrearAlumno}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost/CrearAlumno.wsdl" xnocompile="true" xendorsed="true" package="Services">
+        <property name="wsdl-CrearAlumno" location="xml-resources/web-service-references/CrearAlumno/wsdl/192.168.1.69/CrearAlumno.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CrearAlumno" destdir="${build.generated.dir}/jax-wsCache/CrearAlumno" wsdl="${wsdl-CrearAlumno}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://192.168.1.69/CrearAlumno.wsdl" xnocompile="true" xendorsed="true" package="Services">
             <depends file="${wsdl-CrearAlumno}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/CrearAlumno"/>
         </wsimport>
@@ -33,27 +33,10 @@
         <delete dir="${build.generated.dir}/jax-wsCache/CrearAlumno"/>
         <delete dir="${build.generated.sources.dir}/jax-ws/Services"/>
     </target>
-    <target name="wsimport-client-CrearAlumno_1" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/CrearAlumno_1"/>
-        <property name="wsdl-CrearAlumno_1" location="xml-resources/web-service-references/CrearAlumno_1/wsdl/localhost/CrearAlumno.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CrearAlumno_1" destdir="${build.generated.dir}/jax-wsCache/CrearAlumno_1" wsdl="${wsdl-CrearAlumno_1}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost/CrearAlumno.wsdl" xnocompile="true" xendorsed="true" package="Core">
-            <depends file="${wsdl-CrearAlumno_1}"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/CrearAlumno_1"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/CrearAlumno_1">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-CrearAlumno_1" depends="-init-project">
-        <delete dir="${build.generated.dir}/jax-wsCache/CrearAlumno_1"/>
-        <delete dir="${build.generated.sources.dir}/jax-ws/Core"/>
-    </target>
     <target name="wsimport-client-BuscarAlumno" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/BuscarAlumno"/>
-        <property name="wsdl-BuscarAlumno" location="xml-resources/web-service-references/BuscarAlumno/wsdl/localhost/BuscarAlumno.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/BuscarAlumno" destdir="${build.generated.dir}/jax-wsCache/BuscarAlumno" wsdl="${wsdl-BuscarAlumno}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost/BuscarAlumno.wsdl" xnocompile="true" xendorsed="true" package="Buscar">
+        <property name="wsdl-BuscarAlumno" location="xml-resources/web-service-references/BuscarAlumno/wsdl/192.168.1.69/BuscarAlumno.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/BuscarAlumno" destdir="${build.generated.dir}/jax-wsCache/BuscarAlumno" wsdl="${wsdl-BuscarAlumno}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://192.168.1.69/BuscarAlumno.wsdl" xnocompile="true" xendorsed="true" package="Buscar">
             <depends file="${wsdl-BuscarAlumno}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/BuscarAlumno"/>
         </wsimport>
@@ -67,5 +50,5 @@
         <delete dir="${build.generated.dir}/jax-wsCache/BuscarAlumno"/>
         <delete dir="${build.generated.sources.dir}/jax-ws/Buscar"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-CrearAlumno, wsimport-client-CrearAlumno_1, wsimport-client-BuscarAlumno"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-CrearAlumno, wsimport-client-BuscarAlumno"/>
 </project>

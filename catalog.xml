@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://localhost/CrearAlumno.wsdl" uri="xml-resources/web-service-references/CrearAlumno_1/wsdl/localhost/CrearAlumno.wsdl"/>
     <system systemId="http://localhost/BuscarAlumno.wsdl" uri="xml-resources/web-service-references/BuscarAlumno/wsdl/localhost/BuscarAlumno.wsdl"/>
+    <system systemId="http://localhost/CrearAlumno.wsdl" uri="xml-resources/web-service-references/CrearAlumno/wsdl/localhost/CrearAlumno.wsdl"/>
+    <system systemId="http://192.168.1.69/CrearAlumno.wsdl" uri="xml-resources/web-service-references/CrearAlumno/wsdl/192.168.1.69/CrearAlumno.wsdl"/>
+    <system systemId="http://192.168.1.69/BuscarAlumno.wsdl" uri="xml-resources/web-service-references/BuscarAlumno/wsdl/192.168.1.69/BuscarAlumno.wsdl"/>
 </catalog>

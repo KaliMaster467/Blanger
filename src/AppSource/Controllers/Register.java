@@ -6,7 +6,7 @@
 package AppSource.Controllers;
 
 import Core.Controller;
-import Core.ObjectFactory;
+import Services.ObjectFactory;
 import Core.Security;
 import Public.ErrWnd;
 import Public.OkWnd;
@@ -45,7 +45,8 @@ public class Register extends Controller{
             if(nombre.equals("")|| fnombre.equals("") || snombre.equals("")
                     || mail.equals("") || pass.equals("") || tel == 0){
 
-                JOptionPane.showMessageDialog(null, "Llene los campos");
+                //JOptionPane.showMessageDialog(null, "Llene los campos");
+                ErrWnd err = new ErrWnd("Llene los campos");
                 
             }else{
                 if(emailCorrecto(mail)){
