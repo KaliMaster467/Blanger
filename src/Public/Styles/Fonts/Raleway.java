@@ -93,7 +93,7 @@ public class Raleway{
             GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
             genv.registerFont(font);
             // makesure to derive the size
-            font = font.deriveFont(30f); 
+            font = font.deriveFont(25f); 
             f =  font;
         } catch (IOException ex) {
             Logger.getLogger(Raleway.class.getName()).log(Level.SEVERE, null, ex);

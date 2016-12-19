@@ -8,6 +8,7 @@ package Public;
 import AppSource.Views.StartLauncher;
 import Core.App;
 import Core.Controller;
+import Core.View;
 import Core.auxil.Usuario;
 import Public.Styles.BorderRadius;
 import Public.Styles.Fonts.Lato;
@@ -51,6 +52,7 @@ public class Wnd extends JFrame{
     private static final int  WWIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     public DragPanel WndDragger;
     public static Usuario user = new Usuario();
+    public View View;
     
    
     public String control;
@@ -228,6 +230,7 @@ public class Wnd extends JFrame{
                     optIni.setBounds(Wnd.WWIDTH - 150, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
                     blcStore.setBounds(Wnd.WWIDTH - 300, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
                     regist.setBounds(Wnd.WWIDTH - 450, wndClose.getLocation().y + wndClose.getHeight(), 150, 30 );
+                    
                 }
               
             });
@@ -508,7 +511,7 @@ public class Wnd extends JFrame{
     }
     public void addWndFrame(JPanel hextFrame)
     {
-        
+        this.View = (View) hextFrame;
         WndDragger.removeAll();
         
         WndDragger.add(hextFrame);

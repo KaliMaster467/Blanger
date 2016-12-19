@@ -101,7 +101,7 @@ public class MainUserMenu extends View implements Runnable, ActionListener{
 
         _sideBar.add(getBut("Mi perfil", 0, this.getLocation().y));
         _sideBar.add(getBut("Información", 0, this.getHeight()/4 + this.getHeight() / 20 + 20));
-        _sideBar.add(getBut("", 0, this.getHeight()/4 + 2*this.getHeight() / 20 + 20));
+        //_sideBar.add(getBut("", 0, this.getHeight()/4 + 2*this.getHeight() / 20 + 20));
         //_sideBar.add(getBut("Mi perfil", 0, this.getHeight()/4 + 3*this.getHeight() /20 + 20));
         return _sideBar;
     }
@@ -121,7 +121,7 @@ public class MainUserMenu extends View implements Runnable, ActionListener{
         _personalize.setFocusable(false);
         _personalize.setBorder(null);
         _personalize.setFont(ral.getBtnFont());
-        _personalize.setContentAreaFilled(false);
+        //_personalize.setContentAreaFilled(false);
         _personalize.addActionListener(this);
         _personalize.setBounds(30, h, _sideBar.getWidth() - 2, this.getHeight() / 20);
         _personalize.setHorizontalAlignment(SwingConstants.LEFT);
@@ -193,12 +193,29 @@ public class MainUserMenu extends View implements Runnable, ActionListener{
             idate.setFont(ral.getForm());
             idate.setVisible(true);  
             
+            JLabel tel = new JLabel("Telefono:");
+            tel.setSize(200, 50);
+            tel.setSize(300, 50);
+            tel.setLocation(200, _userP.getHeight()/6 + 140);
+            tel.setForeground(Color.white);
+            tel.setFont(ral.getLabelFont());
+            tel.setVisible(true);     
+            
+            JLabel itel = new JLabel(Integer.toString(Usuario.getTel()));
+            itel.setSize(300, 50);
+            itel.setLocation(400, _userP.getHeight()/6 + 140);
+            itel.setForeground(Color.white);
+            itel.setFont(ral.getForm());
+            itel.setVisible(true);              
+            
             _userP.add(lnombre);
             _userP.add(nombre);
             _userP.add(corr);
             _userP.add(corri);
             _userP.add(date);
             _userP.add(idate);
+            _userP.add(tel);
+            _userP.add(itel);
             
         }
         

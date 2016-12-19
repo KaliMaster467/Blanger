@@ -10,6 +10,7 @@ import Core.Controller;
 import Core.Security;
 import Core.View;
 import Core.auxil.Usuario;
+import Public.Size;
 import Public.Styles.BorderRadius;
 import Public.Styles.Fonts.Lato;
 import Public.Styles.Fonts.Raleway;
@@ -51,7 +52,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author alb
  */
-public class StartLauncher extends View implements Runnable, ActionListener{
+public class StartLauncher extends View implements Runnable, ActionListener, Size{
     
     private final Wnd hInstance;
     private JLabel usr;
@@ -106,7 +107,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         this.add(_wlcTxt);
         
         usr = new JLabel(nic, SwingConstants.CENTER);
-    
+        usr.setBackground(Color.red);
         usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 130, hInstance.getWidth() / 3, 256 );
         usr.setLayout(null);
         usr.setVisible(true);
@@ -118,7 +119,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         _usrTxt.setLayout(null);
         _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5 , 40);
         //_usrTxt.setOpaque(false);
-        _usrTxt.setBackground(new Color(0, 0, 0, 50));
+        _usrTxt.setBackground(new Color(0, 0, 0, 0));
         _usrTxt.setForeground(Color.white);
         _usrTxt.setFont(fon.getForm());
         _usrTxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.white));
@@ -129,7 +130,7 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         this.add(_usrTxt);
         
         _pswTxt = new JPasswordField();
-        _pswTxt.setBackground(new Color(0, 0, 0, 50));
+        _pswTxt.setBackground(new Color(0, 0, 0, 0));
         _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5 , 40);
         _pswTxt.setForeground(Color.white);
         _pswTxt.setFont(fon.getForm());
@@ -157,15 +158,15 @@ public class StartLauncher extends View implements Runnable, ActionListener{
         
         this.setVisible(true);
         
-        Thread sizes = new Thread(this);
-        sizes.start();
+        //Thread sizes = new Thread(this);
+        //sizes.start();
         
         
     }
     public void addLoad(JLabel load){
         this.loadIcon = load;
         
-        add(load );
+        add(loadIcon);
     }
     public void removeLoad(){
         this.remove(loadIcon);
@@ -249,6 +250,15 @@ public class StartLauncher extends View implements Runnable, ActionListener{
                 Logger.getLogger(StartLauncher.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    @Override
+    public void Resize() {
+                    usr.setBounds((hInstance.getWidth() / 3), _wlcTxt.getHeight() + 130, hInstance.getWidth() / 3, 256 );
+            _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5, 40);
+            _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5, 40);
+            _wlcTxt.setBounds(hInstance.getWidth()/16 * 4, hInstance.getHeight()/8 - 30, hInstance.getWidth() / 2, 60 );     
+            _logIn.setBounds(hInstance.getWidth()/5 * 2, _pswTxt.getLocation().y + 100, hInstance.getWidth() / 5, 50);
     }
     private class StartLauncher_Main_Login_Container extends JPanel
     {       

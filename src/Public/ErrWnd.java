@@ -8,31 +8,34 @@ package Public;
 import AppSource.Views.MainUserMenu;
 import Public.Styles.Fonts.Lato;
 import Public.Styles.Fonts.Raleway;
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 /**
  *
  * @author root
  */
-public class ErrWnd extends JFrame{
-    private static String des;
+public class ErrWnd extends JFrame implements ActionListener{
+    private String des;
     public ErrWnd(String des){    
-        ErrWnd.des = des;
-        SwingUtilities.invokeLater(new Runnable() {
-    @Override
-    public void run() {
+        this.des = des;
+ 
         
         
         setSize(700, 300);
         setLocationRelativeTo(null);
-       
+        setUndecorated(true);
         ImageIcon imgus = new ImageIcon(getClass().getResource("/res/sad.png"));
         
         Image imag = imgus.getImage();
@@ -46,31 +49,48 @@ public class ErrWnd extends JFrame{
         pan.setVisible(true);
         
         JLabel lab = new JLabel(nic);
-        lab.setBounds(20,60, 120, 120);
+        lab.setBounds(80,80, 120, 120);
         lab.setVisible(true);
         pan.add(lab);
         
         Raleway lat = new Raleway();
         
-        JLabel des = new JLabel(ErrWnd.des);
-        des.setBounds(190, 60, 500, 100);
-        des.setForeground(Color.white);
-        des.setFont(lat.getLabelFont());
-        pan.add(des);
+        JLabel dess = new JLabel(des);
+        dess.setBounds(210, 90, 500, 100);
+        dess.setForeground(Color.white);
+        dess.setFont(lat.getLabelFont());
+        pan.add(dess);
         
-        /*JButton but = new JButton("ok");
+        JButton but = new JButton("OK");
         
-        but.setBounds(30, 40, 50, 20);
+        but.setLocation(0, pan.getHeight()-50);
         but.setVisible(true);
-        pan.add(but);*/
+        but.setSize(pan.getWidth(), 50);
+        but.addActionListener(this);
+        but.setOpaque(true);
+        but.setBackground(Color.black);
+        but.setFocusable(false);
+        but.setBorder(null);
+        but.setFocusPainted(false);
+        but.setBorderPainted(false);        
+        but.setForeground(Color.white);
+       
+       
+        pan.add(but);
         
         add(pan);
        
         setVisible(true);
         
         
-    }
-    });
+   
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("OK")){
+            this.dispose();
+        }
     }
 }

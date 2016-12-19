@@ -35,6 +35,7 @@ public class StartLauncher extends Controller{
         
         super(hInstance);
         sl = new AppSource.Views.StartLauncher(hInstance, this);
+        sl.setLayout(new BorderLayout());
         super.getView().Render(sl);
         
     }
@@ -74,10 +75,10 @@ public class StartLauncher extends Controller{
                 public Void doInBackground() {
             try{    
             
-            ImageIcon lo = new ImageIcon(getClass().getResource("/res/loo.gif"));
+            ImageIcon lo = new ImageIcon(getClass().getResource("/res/yu.gif"));
             
             JLabel load = new JLabel(lo);
-            load.setSize(300,300);
+            load.setSize(100,100);
             load.setHorizontalAlignment(SwingConstants.CENTER);
             load.setVisible(true);    
             
@@ -106,6 +107,7 @@ public class StartLauncher extends Controller{
                 Usuario.setNombre(nom.value);
                 Usuario.setDate(dat.value);
                 Usuario.setMail(mail.value);
+                Usuario.setTel(tel.value);
 
                  SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
                  @Override

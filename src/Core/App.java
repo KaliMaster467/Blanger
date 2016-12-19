@@ -8,10 +8,13 @@ package Core;
 import AppSource.Controllers.*;
 import Core.auxil.Usuario;
 import Public.Wnd;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -43,6 +46,9 @@ public class App {
             @Override
             public void run() {
                 final Public.Wnd f = new Public.Wnd();
+                       //Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/res/cool.png"));
+                ImageIcon icon = new ImageIcon("../res/cool.png");
+                f.setIconImage(icon.getImage());
                 System.out.println(System.currentTimeMillis() - now);
                 f.setBounds(20 , 0, (int)Wnd.getWndSize().getWidth() - 200
                         , (int)Wnd.getWndSize().getHeight() - 100);

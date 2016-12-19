@@ -121,7 +121,7 @@ public class Register extends View{
             this.cont = cont;
             this.mainContainer = mainContainer;
             this.setLayout(new BorderLayout());
-            this.setPreferredSize(new Dimension(mainContainer.getWidth(), 1200));
+            this.setPreferredSize(new Dimension(mainContainer.getWidth(), 1400));
             //this.setBackground(Color.red);
             
             /*Lato ral = new Lato();
@@ -143,7 +143,7 @@ public class Register extends View{
             
         }
         private void init(){
-            this.setBounds(0, 0, View.VWIDTH, 1200);
+            this.setBounds(0, 0, View.VWIDTH, 1400);
             
             this.setBackground(Color.white);  
             this.setLayout(new BorderLayout(0, 0));
