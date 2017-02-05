@@ -274,6 +274,7 @@ public class Wnd extends JFrame{
                     optIni.setBounds(hInstance.getWidth() - 150, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
                     blcStore.setBounds(hInstance.getWidth() - 300, wndClose.getLocation().y + wndClose.getHeight(), 150, 30);
                     regist.setBounds(hInstance.getWidth() - 450, wndClose.getLocation().y + wndClose.getHeight(), 150, 30 );
+                  
                 }
               
             });

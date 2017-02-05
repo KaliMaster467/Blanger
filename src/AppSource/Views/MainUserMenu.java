@@ -10,6 +10,7 @@ import Core.auxil.Usuario;
 import Public.Styles.BorderRadius;
 
 import Public.Wnd;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -33,11 +34,12 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author alb
  */
-public class MainUserMenu extends View implements Runnable, ActionListener{
+public class MainUserMenu extends View implements Runnable, ActionListener, AppSource.Views.Interfaces.ResizePath{
     
     private JPanel _sideBar;
     private Mumain _mainP;
     private JPanel _userP;
+    private JPanel _footer;
     private final Wnd hInstance;
     private final AppSource.Controllers.MainUserMenu cont;
     public MainUserMenu(Wnd hInstance, AppSource.Controllers.MainUserMenu cont)
@@ -55,17 +57,19 @@ public class MainUserMenu extends View implements Runnable, ActionListener{
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(MainUserMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        setLayout(null);
+        setLayout(new BorderLayout());
         setBounds(0, 60, View.VWIDTH, View.VHEIGHT);
         setBackground(new Color(0,0,0, 128));
         setBorder(new BorderRadius(Color.black, 1, 0 ,0));
         _sideBar = this.sideBar();
         _mainP = new Mumain(this);
         _userP = userP();
-        
+        _footer = footer();
+        add(_footer);
         add(_userP);
         add(_mainP);
         add(_sideBar);
+        
         
      
     }
@@ -89,6 +93,15 @@ public class MainUserMenu extends View implements Runnable, ActionListener{
         _userP.setBounds(_sideBar.getWidth(), this.getHeight() / 5, View.VWIDTH - _sideBar.getWidth(), View.VHEIGHT);
         }
         System.out.println("Se destruyo el hilo main");*/
+    }
+    private JPanel footer(){
+        JPanel footer = new JPanel();
+        
+        footer.setLayout(new BorderLayout());
+        footer.setBackground(Color.white);
+        footer.setBounds(0, ((int)Wnd.getWndSize().getHeight() - 100) - 125, View.VWIDTH, 65);
+        footer.setVisible(true);
+        return footer;
     }
     private JPanel sideBar()
     {
@@ -241,6 +254,16 @@ public class MainUserMenu extends View implements Runnable, ActionListener{
         if(e.getActionCommand().equals("Mi perfil")){
             System.out.println("GGmi");
         }
+    }
+
+    @Override
+    public void resizeMin() {
+        
+    }
+
+    @Override
+    public void resizeMax() {
+        
     }
     public class Mumain extends JPanel{
         

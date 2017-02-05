@@ -46,7 +46,7 @@ public class Register extends Controller{
                     || mail.equals("") || pass.equals("") || tel == 0){
 
                 //JOptionPane.showMessageDialog(null, "Llene los campos");
-                ErrWnd err = new ErrWnd("Llene los campos");
+                ErrWnd err = new ErrWnd("Llene los camposo");
                 
             }else{
                 if(emailCorrecto(mail)){

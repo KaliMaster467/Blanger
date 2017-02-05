@@ -10,7 +10,7 @@ import Core.View;
 import Public.Wnd;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import javafx.scene.paint.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 

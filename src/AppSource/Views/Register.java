@@ -268,6 +268,9 @@ public class Register extends View{
             if(e.getActionCommand().equals("Registrate")){
                 if(_inombre.equals("")|| _ifname.equals("") || _isname.equals("")
                     || _icorreo.equals("") || _ipass.equals("")){
+                        ErrWnd err = new ErrWnd("Llene los campos");
+                }else{
+                                    
                     if(!_itel.getText().equals("")){
                         try {
                             cont.InsertUser(_inombre.getText(), _ifname.getText(), _isname.getText(), Integer.parseInt(_itel.getText()), _icorreo.getText(), _ipass.getText());
@@ -282,14 +285,7 @@ public class Register extends View{
                         //JOptionPane.showMessageDialog(null, "Telefono incorrecto");
                         ErrWnd err = new ErrWnd("Telefono incorrecto");
 
-                    } else{
-                        //JOptionPane.showMessageDialog(null, "Llene nos campos","Error", 0, null);
-                                        ErrWnd err = new ErrWnd("Llene los campos");
-
-                    }
-                }else{
-                                    ErrWnd err = new ErrWnd("Llene los campos");
-
+                    } 
                     //JOptionPane.showMessageDialog(null, "Llene nos campos","Error", 0, null);
                 }
             }
