@@ -7,6 +7,7 @@ package AppSource.Views;
 
 import Core.View;
 import Core.auxil.Usuario;
+import Public.CirclePanel.CirclePanel;
 import Public.Styles.BorderRadius;
 
 import Public.Wnd;
@@ -39,6 +40,7 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
     private JPanel _sideBar;
     private Mumain _mainP;
     private JPanel _userP;
+  
     private JPanel _footer;
     private final Wnd hInstance;
     private final AppSource.Controllers.MainUserMenu cont;
@@ -65,6 +67,12 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
         _mainP = new Mumain(this);
         _userP = userP();
         _footer = footer();
+        CirclePanel usuario = new CirclePanel();
+        usuario.setBounds(_sideBar.getWidth() + 100, 30, 90, 90);
+        usuario.setVisible(true);
+        usuario.setLayout(null);
+        usuario.setBackground(Color.red);
+        add(usuario);
         add(_footer);
         add(_userP);
         add(_mainP);
@@ -97,10 +105,11 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
     private JPanel footer(){
         JPanel footer = new JPanel();
         
-        footer.setLayout(new BorderLayout());
+        footer.setLayout(null);
         footer.setBackground(Color.white);
-        footer.setBounds(0, ((int)Wnd.getWndSize().getHeight() - 100) - 125, View.VWIDTH, 65);
+        footer.setBounds(0, ((int)Wnd.getWndSize().getHeight() - 100) - 110, View.VWIDTH, 50);
         footer.setVisible(true);
+        footer.add(new Public.ChatRelated.Chatbox(footer, "Alberto Reyes"));
         return footer;
     }
     private JPanel sideBar()
