@@ -119,7 +119,7 @@ public class StartLauncher extends View implements Runnable, ActionListener, Siz
         _usrTxt.setLayout(null);
         _usrTxt.setBounds(hInstance.getWidth()/5 * 2, usr.getLocation().y + 260, hInstance.getWidth() / 5 , 40);
         //_usrTxt.setOpaque(false);
-        _usrTxt.setBackground(new Color(0, 0, 0, 0));
+        _usrTxt.setOpaque(false);
         _usrTxt.setForeground(Color.white);
         _usrTxt.setFont(fon.getForm());
         _usrTxt.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.white));
@@ -130,7 +130,7 @@ public class StartLauncher extends View implements Runnable, ActionListener, Siz
         this.add(_usrTxt);
         
         _pswTxt = new JPasswordField();
-        _pswTxt.setBackground(new Color(0, 0, 0, 0));
+        _pswTxt.setOpaque(false);
         _pswTxt.setBounds(hInstance.getWidth()/5 * 2, _usrTxt.getLocation().y + 70, hInstance.getWidth() / 5 , 40);
         _pswTxt.setForeground(Color.white);
         _pswTxt.setFont(fon.getForm());

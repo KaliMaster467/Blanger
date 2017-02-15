@@ -4,4 +4,5 @@
     <system systemId="http://localhost/BuscarAlumno.wsdl" uri="wsdl/localhost/BuscarAlumno.wsdl"/>
     <system systemId="http://192.168.1.69/CrearAlumno.wsdl" uri="wsdl/192.168.1.69/CrearAlumno.wsdl"/>
     <system systemId="http://192.168.1.69/BuscarAlumno.wsdl" uri="wsdl/192.168.1.69/BuscarAlumno.wsdl"/>
+    <system systemId="http://192.168.1.69/Chat.wsdl" uri="wsdl/192.168.1.69/Chat.wsdl"/>
 </catalog>

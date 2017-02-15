@@ -5,10 +5,14 @@
  */
 package AppSource.Views;
 
+import AppSource.Views.MainUserViews.Start;
 import Core.View;
 import Core.auxil.Usuario;
 import Public.CirclePanel.CirclePanel;
 import Public.Styles.BorderRadius;
+import Public.Styles.Fonts.Lato;
+import Public.Styles.Fonts.Raleway;
+import Public.Styles.RoundedText;
 
 import Public.Wnd;
 import java.awt.BorderLayout;
@@ -23,10 +27,12 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -67,11 +73,60 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
         _mainP = new Mumain(this);
         _userP = userP();
         _footer = footer();
+        if(Usuario.getNombre() != null){
+            Public.Styles.Fonts.Raleway ral = new Public.Styles.Fonts.Raleway();
+            JLabel lnombre = new JLabel("Usuario:");
+            lnombre.setSize(200, 50);
+            lnombre.setLocation(_sideBar.getWidth() + 300, 30);
+            lnombre.setForeground(Color.white);
+            lnombre.setFont(ral.getLabelFont());
+            lnombre.setVisible(true);
+            
+            JLabel nombre = new JLabel(Usuario.getNombre());
+            nombre.setSize(200, 50);
+            nombre.setLocation(_sideBar.getWidth() + 420,30);
+            nombre.setForeground(Color.white);
+            nombre.setFont(ral.getForm());
+            nombre.setVisible(true);  
+            
+            
+            JLabel corr = new JLabel("Correo de la cuenta:");
+         
+            corr.setSize(300, 50);
+            corr.setLocation(_sideBar.getWidth() + 300,60);
+            corr.setForeground(Color.white);
+            corr.setFont(ral.getLabelFont());
+            corr.setVisible(true);     
+            
+            JLabel corri = new JLabel(Usuario.getMail());
+            corri.setSize(300, 50);
+            
+            corri.setLocation(_sideBar.getWidth() + 600, 60);
+            corri.setForeground(Color.white);
+            corri.setFont(ral.getForm());
+            corri.setVisible(true);            
+            add(lnombre);
+            add(nombre);
+            add(corr);
+            add(corri);
+        }
+        
+        Raleway ral = new Raleway();
+       
         CirclePanel usuario = new CirclePanel();
         usuario.setBounds(_sideBar.getWidth() + 100, 30, 90, 90);
         usuario.setVisible(true);
         usuario.setLayout(null);
         usuario.setBackground(Color.red);
+        JTextField text = new JTextField();
+        text.setVisible(true);
+        text.setBounds(Wnd.WWIDTH - 700, 60, 300, 30);
+        text.setText("Buscar Usuario");
+        text.setFont(ral.getForm());
+        text.setForeground(Color.white);
+        text.setOpaque(false);
+        text.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.white));
+        add(text);
         add(usuario);
         add(_footer);
         add(_userP);
@@ -80,6 +135,13 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
         
         
      
+    }
+    public AppSource.Controllers.MainUserMenu getCont(){
+        return cont;
+    }
+    public JPanel getUserP()
+    {
+        return _userP;
     }
         public void paint(Graphics g)
     {
@@ -107,8 +169,9 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
         
         footer.setLayout(null);
         footer.setBackground(Color.white);
-        footer.setBounds(0, ((int)Wnd.getWndSize().getHeight() - 100) - 110, View.VWIDTH, 50);
+        footer.setBounds(0, ((int)Wnd.getWndSize().getHeight() - 100) - 60, View.VWIDTH, 50);
         footer.setVisible(true);
+        footer.setBorder(BorderFactory.createLineBorder(Color.black));
         footer.add(new Public.ChatRelated.Chatbox(footer, "Alberto Reyes"));
         return footer;
     }
@@ -145,7 +208,7 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
         _personalize.setFont(ral.getBtnFont());
         //_personalize.setContentAreaFilled(false);
         _personalize.addActionListener(this);
-        _personalize.setBounds(30, h, _sideBar.getWidth() - 2, this.getHeight() / 20);
+        _personalize.setBounds(30, h, _sideBar.getWidth() - 30, this.getHeight() / 20);
         _personalize.setHorizontalAlignment(SwingConstants.LEFT);
         
         return _personalize;
@@ -162,44 +225,18 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
         
         if(Usuario.getNombre() == null){
             JLabel ini = new JLabel("Inicia sesión para tener una mejor experiéncia");
-            ini.setSize(1300, 300);
+            ini.setSize(1300, 250);
             ini.setLocation(_userP.getWidth()/3, _userP.getHeight()/7);
             ini.setForeground(Color.gray);
             ini.setFont(ral.getBtnFont());
             ini.setVisible(true);
             _userP.add(ini);
         }else{
-            JLabel lnombre = new JLabel("Nombre:");
-            lnombre.setSize(200, 50);
-            lnombre.setLocation(200, _userP.getHeight()/8);
-            lnombre.setForeground(Color.white);
-            lnombre.setFont(ral.getLabelFont());
-            lnombre.setVisible(true);
+
             
-            JLabel nombre = new JLabel(Usuario.getNombre());
-            nombre.setSize(200, 50);
-            nombre.setLocation(350, _userP.getHeight()/8);
-            nombre.setForeground(Color.white);
-            nombre.setFont(ral.getForm());
-            nombre.setVisible(true); 
+   
             
-            JLabel corr = new JLabel("Correo de la cuenta:");
-            corr.setSize(200, 50);
-            corr.setSize(300, 50);
-            corr.setLocation(200, _userP.getHeight()/6 + 20);
-            corr.setForeground(Color.white);
-            corr.setFont(ral.getLabelFont());
-            corr.setVisible(true);     
-            
-            JLabel corri = new JLabel(Usuario.getMail());
-            corri.setSize(200, 50);
-            
-            corri.setLocation(520, _userP.getHeight()/6 + 20);
-            corri.setForeground(Color.white);
-            corri.setFont(ral.getForm());
-            corri.setVisible(true);   
-            
-            JLabel date = new JLabel("Fecha de registro:");
+            /*JLabel date = new JLabel("Fecha de registro:");
             date.setSize(200, 50);
             date.setSize(300, 50);
             date.setLocation(200, _userP.getHeight()/6 + 80);
@@ -230,14 +267,12 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
             itel.setFont(ral.getForm());
             itel.setVisible(true);              
             
-            _userP.add(lnombre);
-            _userP.add(nombre);
-            _userP.add(corr);
-            _userP.add(corri);
+         
+
             _userP.add(date);
             _userP.add(idate);
             _userP.add(tel);
-            _userP.add(itel);
+            _userP.add(itel);*/
             
         }
         
@@ -262,6 +297,13 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("Mi perfil")){
             System.out.println("GGmi");
+            _userP.removeAll();
+            
+            _userP.add(new Start(this));
+            _userP.revalidate();
+            _userP.repaint();
+            _footer.revalidate();
+            _footer.repaint();
         }
     }
 

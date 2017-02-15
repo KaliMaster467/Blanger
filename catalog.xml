@@ -4,4 +4,5 @@
     <system systemId="http://localhost/CrearAlumno.wsdl" uri="xml-resources/web-service-references/CrearAlumno/wsdl/localhost/CrearAlumno.wsdl"/>
     <system systemId="http://192.168.1.69/CrearAlumno.wsdl" uri="xml-resources/web-service-references/CrearAlumno/wsdl/192.168.1.69/CrearAlumno.wsdl"/>
     <system systemId="http://192.168.1.69/BuscarAlumno.wsdl" uri="xml-resources/web-service-references/BuscarAlumno/wsdl/192.168.1.69/BuscarAlumno.wsdl"/>
+    <system systemId="http://192.168.1.69/Chat.wsdl" uri="xml-resources/web-service-references/Chat/wsdl/192.168.1.69/Chat.wsdl"/>
 </catalog>

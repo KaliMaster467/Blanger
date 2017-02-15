@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions name="CrearAlumno"
-  targetNamespace="urn:CrearAlumno"
-  xmlns:tns="urn:CrearAlumno"
+<definitions name="Chat"
+  targetNamespace="urn:Chat"
+  xmlns:tns="urn:Chat"
   xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
   xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns:ns="urn:CrearAlumno"
+  xmlns:ns="urn:Chat"
   xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
   xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
   xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
@@ -16,33 +16,27 @@
 
 <types>
 
-  <schema targetNamespace="urn:CrearAlumno"
+  <schema targetNamespace="urn:Chat"
     xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
     xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:ns="urn:CrearAlumno"
+    xmlns:ns="urn:Chat"
     xmlns="http://www.w3.org/2001/XMLSchema"
     elementFormDefault="unqualified"
     attributeFormDefault="unqualified">
     <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
     <complexType name="Input"><!-- Input -->
           <sequence>
-            <element name="FLastName" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::FLastName -->
-            <element name="SLastName" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::SLastName -->
-            <element name="Name" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::Name -->
-            <element name="Telephone" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- Input::Telephone -->
-            <element name="Email" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::Email -->
-            <element name="Delegation" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::Delegation -->
-            <element name="passw" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::passw -->
-            <element name="Direction" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::Direction -->
+            <element name="Msg" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::Msg -->
+            <element name="id" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- Input::id -->
           </sequence>
     </complexType>
     <!-- operation request element -->
     <element name="getInfo">
       <complexType>
           <sequence>
-            <element name="insert" type="ns:Input" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getInfo::insert -->
+            <element name="msg" type="ns:Input" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getInfo::msg -->
           </sequence>
       </complexType>
     </element>
@@ -50,7 +44,7 @@
     <element name="getInfoResponse" type="ns:getInfoResponse"/>
     <complexType name="getInfoResponse">
           <sequence>
-            <element name="recepcion" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getInfoResponse::recepcion -->
+            <element name="rec" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getInfoResponse::rec -->
           </sequence>
     </complexType>
   </schema>
@@ -65,7 +59,7 @@
   <part name="Body" element="ns:getInfoResponse"/><!-- ns__getInfo::result_soap -->
 </message>
 
-<portType name="CrearAlumnoPortType">
+<portType name="ChatPortType">
   <operation name="getInfo">
     <documentation>Service definition of function ns__getInfo</documentation>
     <input message="tns:getInfo"/>
@@ -73,7 +67,7 @@
   </operation>
 </portType>
 
-<binding name="CrearAlumno" type="tns:CrearAlumnoPortType">
+<binding name="Chat" type="tns:ChatPortType">
   <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
   <operation name="getInfo">
     <SOAP:operation soapAction=""/>
@@ -86,10 +80,10 @@
   </operation>
 </binding>
 
-<service name="CrearAlumno">
+<service name="Chat">
   <documentation>gSOAP 2.8.36 generated service definition</documentation>
-  <port name="CrearAlumno" binding="tns:CrearAlumno">
-    <SOAP:address location="http://192.168.1.69/cgi-bin/CrearAlumno.cgi"/>
+  <port name="Chat" binding="tns:Chat">
+    <SOAP:address location="http://192.168.1.69/cgi-bin/Chat.cgi"/>
   </port>
 </service>
 

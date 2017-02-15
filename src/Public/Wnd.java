@@ -49,7 +49,7 @@ import javax.swing.SwingWorker;
 public class Wnd extends JFrame{
     
     private static final int  WHEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-    private static final int  WWIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    public static final int  WWIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     public DragPanel WndDragger;
     public static Usuario user = new Usuario();
     public View View;
