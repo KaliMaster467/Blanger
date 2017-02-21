@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CrearAlumno"
+  targetNamespace="urn:CrearAlumno"
+  xmlns:tns="urn:CrearAlumno"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:CrearAlumno"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="urn:CrearAlumno"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns="urn:CrearAlumno"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="Input"><!-- Input -->
+          <sequence>
+            <element name="FLastName" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::FLastName -->
+            <element name="SLastName" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::SLastName -->
+            <element name="Name" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::Name -->
+            <element name="Telephone" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- Input::Telephone -->
+            <element name="Email" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::Email -->
+            <element name="Delegation" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::Delegation -->
+            <element name="passw" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::passw -->
+            <element name="Direction" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::Direction -->
+          </sequence>
+    </complexType>
+    <!-- operation request element -->
+    <element name="getInfo">
+      <complexType>
+          <sequence>
+            <element name="insert" type="ns:Input" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getInfo::insert -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element and type -->
+    <element name="getInfoResponse" type="ns:getInfoResponse"/>
+    <complexType name="getInfoResponse">
+          <sequence>
+            <element name="recepcion" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getInfoResponse::recepcion -->
+          </sequence>
+    </complexType>
+  </schema>
+
+</types>
+
+<message name="getInfo">
+  <part name="Body" element="ns:getInfo"/><!-- ns__getInfo::ns__getInfo -->
+</message>
+
+<message name="getInfoResponse">
+  <part name="Body" element="ns:getInfoResponse"/><!-- ns__getInfo::result_soap -->
+</message>
+
+<portType name="CrearAlumnoPortType">
+  <operation name="getInfo">
+    <documentation>Service definition of function ns__getInfo</documentation>
+    <input message="tns:getInfo"/>
+    <output message="tns:getInfoResponse"/>
+  </operation>
+</portType>
+
+<binding name="CrearAlumno" type="tns:CrearAlumnoPortType">
+  <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="getInfo">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body parts="Body" use="literal"/>
+    </input>
+    <output>
+          <SOAP:body parts="Body" use="literal"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="CrearAlumno">
+  <documentation>gSOAP 2.8.36 generated service definition</documentation>
+  <port name="CrearAlumno" binding="tns:CrearAlumno">
+    <SOAP:address location="http://192.168.1.70/cgi-bin/CrearAlumno.cgi"/>
+  </port>
+</service>
+
+</definitions>

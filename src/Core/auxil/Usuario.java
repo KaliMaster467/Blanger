@@ -14,12 +14,21 @@ public class Usuario {
     private static String fnombre;
     private static String snombre;
     private static String mail;
+    private static int id;
     private static String pass;
     private static String date;
     private static int tel;
     
     public Usuario(){
        
+    }
+    public static void setId(int idi)
+    {
+        id = idi;
+    }
+    public static int getId()
+    {
+        return id;
     }
     public static void setDate(String dat){
         date = dat;

@@ -5,6 +5,7 @@
  */
 package AppSource.Views;
 
+import AppSource.Views.MainUserViews.Friends;
 import AppSource.Views.MainUserViews.Start;
 import Core.View;
 import Core.auxil.Usuario;
@@ -186,6 +187,7 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
 
         _sideBar.add(getBut("Mi perfil", 0, this.getLocation().y));
         _sideBar.add(getBut("Información", 0, this.getHeight()/4 + this.getHeight() / 20 + 20));
+        _sideBar.add(getBut("Friends", 0, this.getHeight()/6 + this.getHeight() / 20 + 20));
         //_sideBar.add(getBut("", 0, this.getHeight()/4 + 2*this.getHeight() / 20 + 20));
         //_sideBar.add(getBut("Mi perfil", 0, this.getHeight()/4 + 3*this.getHeight() /20 + 20));
         return _sideBar;
@@ -300,6 +302,15 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
             _userP.removeAll();
             
             _userP.add(new Start(this));
+            _userP.revalidate();
+            _userP.repaint();
+            _footer.revalidate();
+            _footer.repaint();
+        }else if(e.getActionCommand().equals("Friends"))
+        {
+            _userP.removeAll();
+            
+            _userP.add(new Friends(this));
             _userP.revalidate();
             _userP.repaint();
             _footer.revalidate();

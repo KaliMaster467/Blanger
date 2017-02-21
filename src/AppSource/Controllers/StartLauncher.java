@@ -108,6 +108,7 @@ public class StartLauncher extends Controller{
                 Usuario.setDate(dat.value);
                 Usuario.setMail(mail.value);
                 Usuario.setTel(tel.value);
+                Usuario.setId(id.value);
 
                  SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
                  @Override

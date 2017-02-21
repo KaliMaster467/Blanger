@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="BuscarAlumno"
+  targetNamespace="urn:BuscarAlumno"
+  xmlns:tns="urn:BuscarAlumno"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:BuscarAlumno"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="urn:BuscarAlumno"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns="urn:BuscarAlumno"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="Input"><!-- Input -->
+          <sequence>
+            <element name="user" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::user -->
+            <element name="pass" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- Input::pass -->
+          </sequence>
+    </complexType>
+    <!-- operation request element -->
+    <element name="getInfo">
+      <complexType>
+          <sequence>
+            <element name="search" type="ns:Input" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getInfo::search -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element and type -->
+    <element name="Usuario" type="ns:Usuario"/>
+    <complexType name="Usuario">
+          <sequence>
+            <element name="Id" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns__Usuario::Id -->
+            <element name="Date" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__Usuario::Date -->
+            <element name="FLastName" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__Usuario::FLastName -->
+            <element name="SLastName" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__Usuario::SLastName -->
+            <element name="Name" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__Usuario::Name -->
+            <element name="Telephone" type="xsd:int" minOccurs="1" maxOccurs="1"/><!-- ns__Usuario::Telephone -->
+            <element name="Email" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__Usuario::Email -->
+            <element name="Delegation" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__Usuario::Delegation -->
+            <element name="passw" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__Usuario::passw -->
+            <element name="Direction" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__Usuario::Direction -->
+            <element name="status" type="xsd:boolean" minOccurs="1" maxOccurs="1"/><!-- ns__Usuario::status -->
+          </sequence>
+    </complexType>
+  </schema>
+
+</types>
+
+<message name="getInfo">
+  <part name="Body" element="ns:getInfo"/><!-- ns__getInfo::ns__getInfo -->
+</message>
+
+<message name="Usuario">
+  <part name="Body" element="ns:Usuario"/><!-- ns__getInfo::result_soap -->
+</message>
+
+<portType name="BuscarAlumnoPortType">
+  <operation name="getInfo">
+    <documentation>Service definition of function ns__getInfo</documentation>
+    <input message="tns:getInfo"/>
+    <output message="tns:Usuario"/>
+  </operation>
+</portType>
+
+<binding name="BuscarAlumno" type="tns:BuscarAlumnoPortType">
+  <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="getInfo">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body parts="Body" use="literal"/>
+    </input>
+    <output>
+          <SOAP:body parts="Body" use="literal"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="BuscarAlumno">
+  <documentation>gSOAP 2.8.36 generated service definition</documentation>
+  <port name="BuscarAlumno" binding="tns:BuscarAlumno">
+    <SOAP:address location="http://localhost/cgi-bin/BuscarAlumno.cgi"/>
+  </port>
+</service>
+
+</definitions>
