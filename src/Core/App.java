@@ -68,6 +68,12 @@ public class App {
                         e.printStackTrace();
                     }  
                 }   
+                /*ConnectListener listener = new ConnectListener();
+                try {
+                    listener.initialize();
+                } catch (Exception ex) {
+                   System.out.println("nelpas");
+                }*/
                
             }
         });

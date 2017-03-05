@@ -9,6 +9,7 @@ import AppSource.Views.MainUserMenu;
 import Core.View;
 import Public.Styles.BorderRadius;
 import Public.Styles.Fonts.Lato;
+import Public.Styles.Fonts.Raleway;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,6 +19,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -52,10 +54,17 @@ public class Friends extends UserViews{
         setLayout(new FlowLayout());
         setBounds(0, 60, 600, View.VHEIGHT + 200);    
         this.setBackground(Color.white);
+        
+        Raleway font = new Raleway();
             
             friends = new JTextField();
             friends.setVisible(true);
-            friends.setPreferredSize(new Dimension(250, 30));
+            friends.setFont(font.getForm());
+            friends.setPreferredSize(new Dimension(300, 30));
+            
+            friends.setOpaque(false);
+            friends.setText("Search users");
+            friends.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
             
             add(friends);
             

@@ -17,6 +17,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -103,12 +104,14 @@ public class Register extends View{
         private JLabel _tel;
         private JLabel _correo;
         private JLabel _pass;
+        private JLabel _passc;
         private JTextField _inombre;
         private JTextField _ifname;
         private JTextField _isname;
         private JTextField _itel;
         private JTextField _icorreo;
         private JPasswordField _ipass;
+        private JPasswordField _ipassc;
         private Wnd hInstance;
         private JScrollPane _scroll;
         private AppSource.Controllers.Register cont;
@@ -214,6 +217,17 @@ public class Register extends View{
             _ipass.setVisible(true);
             _ipass.setFont(ra.getForm());
             
+            _passc = new JLabel("Confirmar Contraseña:");
+            _passc.setForeground(Color.black);
+            _passc.setFont(ral.getMainWnd());
+            
+            
+            _ipassc = new JPasswordField();
+            _ipassc.setBorder(BorderFactory.createMatteBorder(0,0,2,0, Color.black));
+            _ipassc.setVisible(true);
+            _ipassc.setFont(ra.getForm());
+            
+            
             but = new JButton("Registrate");
             but.addActionListener(this);
             but.setOpaque(true);
@@ -234,7 +248,9 @@ public class Register extends View{
             add(_correo);
             add(_icorreo);
             add(_pass);
+            add(_passc);
             add(_ipass);
+            add(_ipassc);
             
             this.setVisible(true);
             
@@ -256,9 +272,11 @@ public class Register extends View{
                 _itel.setBounds(hInstance.getWidth()/5 * 2 -10, _sname.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
                 _correo.setBounds(hInstance.getWidth()/5 * 2 -10, _tel.getLocation().y + 120, hInstance.getWidth() / 5 , 40);
                 _icorreo.setBounds(hInstance.getWidth()/5 * 2 -10, _correo.getLocation().y + 70, hInstance.getWidth() / 4 - 50 , 40);
+                _passc.setBounds(hInstance.getWidth()/5 * 2 - 10, _correo.getLocation().y + 250, hInstance.getWidth() / 5 , 40);
+                _ipassc.setBounds(hInstance.getWidth()/5 * 2 -10, _correo.getLocation().y + 300, hInstance.getWidth() / 4 - 50 , 40);
                 _pass.setBounds(hInstance.getWidth()/5 * 2 -10, _correo.getLocation().y + 150, hInstance.getWidth() / 5 , 40);
                 _ipass.setBounds(hInstance.getWidth()/5 * 2 -10, _correo.getLocation().y + 200, hInstance.getWidth() / 4 - 50 , 40);
-                but.setBounds(hInstance.getWidth()/5 * 2 -10, _ipass.getLocation().y + 120, hInstance.getWidth() / 4 - 50 , 40);
+                but.setBounds(hInstance.getWidth()/5 * 2 -10, _ipass.getLocation().y + 200, hInstance.getWidth() / 4 - 50, 40);
             }
             
         }
@@ -269,7 +287,8 @@ public class Register extends View{
                 if(_inombre.equals("")|| _ifname.equals("") || _isname.equals("")
                     || _icorreo.equals("") || _ipass.equals("")){
                         ErrWnd err = new ErrWnd("Llene los campos");
-                }else{
+                }else
+                {if(_ipass.getText().equals(_ipassc.getText())){
                                     
                     if(!_itel.getText().equals("")){
                         try {
@@ -287,6 +306,10 @@ public class Register extends View{
 
                     } 
                     //JOptionPane.showMessageDialog(null, "Llene nos campos","Error", 0, null);
+                }else
+                {
+                    ErrWnd errc = new ErrWnd("las contraseñas no coinciden") ;
+                }
                 }
             }
         }

@@ -20,7 +20,7 @@ public class UserViews extends JPanel {
     {
         superMenu = fatherMenu;
     }
-    public MainUserMenu getSuperMenu()
+    protected MainUserMenu getSuperMenu()
     {
         return superMenu;
     }

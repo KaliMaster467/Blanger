@@ -5,6 +5,7 @@
  */
 package AppSource.Views;
 
+import AppSource.Views.MainUserViews.Dispositivos;
 import AppSource.Views.MainUserViews.Friends;
 import AppSource.Views.MainUserViews.Start;
 import Core.View;
@@ -119,15 +120,7 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
         usuario.setVisible(true);
         usuario.setLayout(null);
         usuario.setBackground(Color.red);
-        JTextField text = new JTextField();
-        text.setVisible(true);
-        text.setBounds(Wnd.WWIDTH - 700, 60, 300, 30);
-        text.setText("Buscar Usuario");
-        text.setFont(ral.getForm());
-        text.setForeground(Color.white);
-        text.setOpaque(false);
-        text.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.white));
-        add(text);
+      
         add(usuario);
         add(_footer);
         add(_userP);
@@ -187,7 +180,8 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
 
         _sideBar.add(getBut("Mi perfil", 0, this.getLocation().y));
         _sideBar.add(getBut("Información", 0, this.getHeight()/4 + this.getHeight() / 20 + 20));
-        _sideBar.add(getBut("Friends", 0, this.getHeight()/6 + this.getHeight() / 20 + 20));
+        _sideBar.add(getBut("PulseXync", 0, this.getHeight()/3  + this.getHeight() / 20 +20));
+        _sideBar.add(getBut("Friends", 0, this.getHeight()/9 + this.getHeight() / 20 + 20));
         //_sideBar.add(getBut("", 0, this.getHeight()/4 + 2*this.getHeight() / 20 + 20));
         //_sideBar.add(getBut("Mi perfil", 0, this.getHeight()/4 + 3*this.getHeight() /20 + 20));
         return _sideBar;
@@ -315,6 +309,14 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
             _userP.repaint();
             _footer.revalidate();
             _footer.repaint();
+        }else if(e.getActionCommand().equals("PulseXync")){
+            _userP.removeAll();
+            
+            _userP.add(new Dispositivos(this));
+            _userP.revalidate();
+            _userP.repaint();
+            _footer.revalidate();
+            _footer.repaint();            
         }
     }
 
