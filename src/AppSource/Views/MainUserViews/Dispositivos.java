@@ -94,17 +94,27 @@ public class Dispositivos extends UserViews implements ActionListener{
         
         JButton but = new JButton("Azul");
         but.addActionListener(this);
+        
         but.setHorizontalAlignment(SwingConstants.CENTER);
         but.setSize(color.getHeight(), color.getHeight());
+        but.setBackground(Color.blue);
         JButton but2 = new JButton("Rojo");
         but2.setHorizontalAlignment(SwingConstants.CENTER);
         but2.addActionListener(this);
+        but2.setBackground(Color.red);
         JButton but3 = new JButton("Verde");
         but3.addActionListener(this);
+        but3.setBackground(Color.green);
         but3.setHorizontalAlignment(SwingConstants.CENTER);
+        JButton but4 = new JButton("Morado");
+        but4.addActionListener(this);
+        but4.setHorizontalAlignment(SwingConstants.CENTER);
+        but4.setBackground(Color.MAGENTA);
+        but4.setSize(color.getHeight(), color.getHeight());        
         color.add(but);
         color.add(but2);
         color.add(but3);
+        color.add(but4);
         personaliza.add(color, c);
         //Componentes del panel
         
@@ -169,6 +179,7 @@ private JPanel Per(Dispositivos father)
         JButton but3 = new JButton("Verde");
         but3.addActionListener(this);
         but3.setHorizontalAlignment(SwingConstants.CENTER);
+        
         color.add(but);
         color.add(but2);
         color.add(but3);
@@ -194,6 +205,12 @@ private JPanel Per(Dispositivos father)
         }else if(ae.getActionCommand().equals("Verde")){
             try {
                 _controller.list.setColor("3");
+            } catch (Exception ex) {
+                Logger.getLogger(Dispositivos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else if(ae.getActionCommand().equals("Morado")){
+            try {
+                _controller.list.setColor("4");
             } catch (Exception ex) {
                 Logger.getLogger(Dispositivos.class.getName()).log(Level.SEVERE, null, ex);
             }
