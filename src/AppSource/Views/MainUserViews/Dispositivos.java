@@ -35,7 +35,7 @@ public class Dispositivos extends UserViews implements ActionListener{
         
         super(fatherMenu);
         setBackground(Color.white);
-        setBounds(0,0 ,fatherMenu.getUserP().getWidth(), 775);
+        setBounds(0,0 ,fatherMenu.getUserP().getWidth(), 800);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));   
         _controller = new DispController();
         Personaliza = Personaliza(this);

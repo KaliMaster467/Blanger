@@ -37,7 +37,7 @@ public class Friends extends UserViews{
     public Friends(MainUserMenu fatherMenu) {
         super(fatherMenu);
         setBackground(Color.white);
-        setBounds(0,0 ,fatherMenu.getUserP().getWidth(), 775);
+        setBounds(0,0 ,fatherMenu.getUserP().getWidth(), 800);
         setLayout(new BorderLayout());
         JScrollPane scroll = new JScrollPane(new StartGUI(this));
         scroll.getVerticalScrollBar().setUnitIncrement(16);

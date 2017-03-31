@@ -163,7 +163,7 @@ public class MainUserMenu extends View implements Runnable, ActionListener, AppS
         
         footer.setLayout(null);
         footer.setBackground(Color.white);
-        footer.setBounds(0, ((int)Wnd.getWndSize().getHeight() - 100) - 60, View.VWIDTH, 50);
+        footer.setBounds(0, hInstance.WndDragger.getHeight() - 50, View.VWIDTH, 50);
         footer.setVisible(true);
         footer.setBorder(BorderFactory.createLineBorder(Color.black));
         footer.add(new Public.ChatRelated.Chatbox(footer, "Alberto Reyes"));
